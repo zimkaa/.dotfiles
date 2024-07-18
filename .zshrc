@@ -116,3 +116,5 @@ eval "$(pyenv init -)"
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/like_p10k.toml)"
+
+PATH=~/.console-ninja/.bin:$PATH
