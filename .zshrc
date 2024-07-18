@@ -104,7 +104,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 
 # Shell integrations
-# eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 eval "$(pyenv init -)"
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
