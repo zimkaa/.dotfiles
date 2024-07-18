@@ -48,9 +48,10 @@ bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey '^[w' kill-region
+bindkey '^ ' autosuggest-accept
 
 # History
-# HISTSIZE=5000
+HISTSIZE=15000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
