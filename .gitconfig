@@ -1,0 +1,7 @@
+[user]
+	name = Anton Zimin
+	email = 56966172+zimkaa@users.noreply.github.com
+[credential]
+	helper = store
+[checkout]
+	defaultRemote = origin
