@@ -85,6 +85,7 @@ alias la="ls -lAh"
 alias c='clear'
 alias lg='lazygit'
 alias ld='lazydocker'
+alias md='mkdir'
 alias my_tmux="
 tmux new -s work -d
 tmux new-window -a -t work:1
