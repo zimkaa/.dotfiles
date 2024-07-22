@@ -83,6 +83,7 @@ alias ls="eza --icons=always"
 alias la="ls -lAh"
 # alias vim='nvim'
 alias c='clear'
+alias cat='bat'
 alias lg='lazygit'
 alias ld='lazydocker'
 alias md='mkdir'
