@@ -89,6 +89,15 @@ alias lg='lazygit'
 alias ld='lazydocker'
 alias md='mkdir'
 alias my_tmux="
+tmux new -s labs -d
+tmux new-window -a -t labs:1
+tmux new-window -a -t labs:2
+tmux new-window -a -t labs:3
+tmux rename-window -t labs:3 turn
+tmux rename-window -t labs:4 dakr
+tmux send-key -t labs:2 'btop' enter
+tmux attach -t labs"
+alias work_tmux="
 tmux new -s work -d
 tmux new-window -a -t work:1
 tmux split-window -v -t work:1.1
