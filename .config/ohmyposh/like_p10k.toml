@@ -19,6 +19,8 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
 
     [blocks.segments.properties]
       linux = "\uF17C \uF30e"
+      # mint = "\uF30e"
+      # debian = "\uF306"
 
   [[blocks.segments]]
     type = 'path'
