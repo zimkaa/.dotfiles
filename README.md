@@ -39,3 +39,11 @@ to force rewrite files
 ```sh
 stow --adopt .
 ```
+
+## Helpful info
+
+### Reread tmux config
+
+```sh
+tmux source ~/.tmux.conf
+```
