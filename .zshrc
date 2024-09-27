@@ -3,6 +3,13 @@
 #   eval "$(/opt/homebrew/bin/brew shellenv)"
 # fi
 
+if test -n "$KITTY_INSTALLATION_DIR"; then
+    export KITTY_SHELL_INTEGRATION="enabled"
+    autoload -Uz -- "$KITTY_INSTALLATION_DIR"/shell-integration/zsh/kitty-integration
+    kitty-integration
+    unfunction kitty-integration
+fi
+
 if [ -n "$TTY" ]; then
   export GPG_TTY=$(tty)
 else
