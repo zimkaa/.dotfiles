@@ -1,13 +1,20 @@
-# if [[ -f "/opt/homebrew/bin/brew" ]] then
-#   # If you're using macOS, you'll want this enabled
-#   eval "$(/opt/homebrew/bin/brew shellenv)"
-# fi
+# Shell integrations
+# if [[ $(uname -m) == 'arm64' ]]; then  # Other way to check macos
+if [[ -f "/opt/homebrew/bin/brew" ]] then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
+if [[ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]] then
+  # If you're using brew in linux, you'll want this enabled
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
+# Terminal configs for kitty
 if test -n "$KITTY_INSTALLATION_DIR"; then
-    export KITTY_SHELL_INTEGRATION="enabled"
-    autoload -Uz -- "$KITTY_INSTALLATION_DIR"/shell-integration/zsh/kitty-integration
-    kitty-integration
-    unfunction kitty-integration
+  export KITTY_SHELL_INTEGRATION="enabled"
+  autoload -Uz -- "$KITTY_INSTALLATION_DIR"/shell-integration/zsh/kitty-integration
+  kitty-integration
+  unfunction kitty-integration
 fi
 
 if [ -n "$TTY" ]; then
@@ -21,8 +28,8 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
 # Download Zinit, if it's not there yet
 if [ ! -d "$ZINIT_HOME" ]; then
-   mkdir -p "$(dirname $ZINIT_HOME)"
-   git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+  mkdir -p "$(dirname $ZINIT_HOME)"
+  git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
 
 # dotenv settings
@@ -132,7 +139,6 @@ export PYENV_ROOT="$HOME/.pyenv"
 PATH=~/.console-ninja/.bin:$PATH
 
 # Shell integrations
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 eval "$(pyenv init -)"
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
