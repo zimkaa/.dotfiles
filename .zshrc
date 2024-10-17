@@ -1,10 +1,10 @@
 # Shell integrations
 # if [[ $(uname -m) == 'arm64' ]]; then  # Other way to check macos
-if [[ -f "/opt/homebrew/bin/brew" ]] then
+if [[ -f "/opt/homebrew/bin/brew" ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-if [[ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]] then
+if [[ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]]; then
   # If you're using brew in linux, you'll want this enabled
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
