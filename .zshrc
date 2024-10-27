@@ -98,7 +98,6 @@ alias ls="eza --icons=always"
 alias la="ls -lAhg"
 # alias vim='nvim'
 alias c='clear'
-alias b='devbox'
 alias cat='bat'
 alias lg='lazygit'
 alias ld='lazydocker'
@@ -143,5 +142,3 @@ eval "$(pyenv init -)"
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/like_p10k.toml)"
-export XDG_DATA_HOME="$HOME/.config"
-eval "$(devbox global shellenv)"
