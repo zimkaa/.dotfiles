@@ -17,6 +17,11 @@ if test -n "$KITTY_INSTALLATION_DIR"; then
   unfunction kitty-integration
 fi
 
+if [[ "$(uname)" == "Linux" ]]; then
+  # Nix Troubleshooting
+  export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
+fi
+
 if [ -n "$TTY" ]; then
   export GPG_TTY=$(tty)
 else
