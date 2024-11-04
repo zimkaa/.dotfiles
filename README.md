@@ -47,3 +47,17 @@ stow --adopt .
 ```sh
 tmux source ~/.tmux.conf
 ```
+
+## Uninstall
+
+### delete links
+
+```sh
+stow -D .
+```
+
+### delete stow
+
+```sh
+sudo apt remove stow
+```
