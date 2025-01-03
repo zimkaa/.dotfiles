@@ -92,6 +92,7 @@
           "appcleaner"
           "bitwarden"
           "caffeine"
+          "chatgpt"
           "cheatsheet"
           "dbeaver-community"
           "devtoys"
