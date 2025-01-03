@@ -1,0 +1,10 @@
+{
+    "cSpell.ignorePaths": [
+        ".git",
+        ".github",
+        ".vscode",
+        ".zshrc",
+        "*.nix",
+        "*.lua"
+    ]
+}

@@ -142,6 +142,10 @@ export PYENV_ROOT="$HOME/.pyenv"
 
 PATH=~/.console-ninja/.bin:$PATH
 
+if ssh-add -l | grep -q "The agent has no identities"; then
+  ssh-add ~/.ssh/id_ed25519
+fi
+
 # Shell integrations
 eval "$(pyenv init -)"
 eval "$(fzf --zsh)"

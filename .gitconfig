@@ -1,7 +1,10 @@
 [user]
 	name = Anton Zimin
-	email = 56966172+zimkaa@users.noreply.github.com
-[credential]
-	helper = store
-[checkout]
-	defaultRemote = origin
+	email = zimkaa87@gmail.com
+[core]
+	excludesfile = /Users/antonzimin/.gitignore_global
+	editor = vim
+[commit]
+	template = /Users/antonzimin/.stCommitMsg
+[alias]
+	pr = pull --rebase

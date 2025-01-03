@@ -27,40 +27,40 @@
       nixpkgs.config.allowUnfree = true;
 
       environment.systemPackages = [
-        pkgs.vim
-        pkgs.neovim
-        pkgs.tmux
-        pkgs.kitty
-        pkgs.mkalias
-        pkgs.obsidian
-        pkgs.stow
-        pkgs.btop
-        pkgs.htop
-        pkgs.pyenv
-        pkgs.fzf
-        pkgs.zoxide
-        pkgs.yazi
-        pkgs.eza
-        pkgs.poetry
-        pkgs.oh-my-posh
-        pkgs.duf
-        pkgs.fd
-        pkgs.bat
-        pkgs.lazydocker
-        pkgs.dust
-        pkgs.lazygit
-        pkgs.ripgrep
-        pkgs.discord
-        pkgs.tldr
-        pkgs.devbox
-        pkgs.go-task
-        pkgs.nixd
         pkgs.alejandra
+        pkgs.bat
+        pkgs.btop
         pkgs.cookiecutter
+        pkgs.devbox
+        pkgs.discord
+        pkgs.duf
+        pkgs.dust
+        pkgs.eza
+        pkgs.fd
+        pkgs.fzf
+        pkgs.go-task
+        pkgs.htop
+        pkgs.lazydocker
+        pkgs.lazygit
+        pkgs.mkalias
+        pkgs.neovim
+        pkgs.nixd
+        pkgs.obsidian
+        pkgs.oh-my-posh
+        pkgs.poetry
+        pkgs.pyenv
+        pkgs.ripgrep
+        pkgs.rustup
+        pkgs.stow
+        pkgs.tldr
+        pkgs.tmux
+        pkgs.vim
+        pkgs.yazi
+        pkgs.zoxide
       ];
 
       fonts.packages = [
-        (pkgs.nerdfonts.override {fonts = ["FiraCode"];})
+        pkgs.nerd-fonts.fira-code
       ];
 
       security.pam.enableSudoTouchIdAuth = true;
@@ -76,35 +76,40 @@
         loginwindow.GuestEnabled = false;
         NSGlobalDomain.AppleICUForce24HourTime = true;
         NSGlobalDomain.AppleInterfaceStyle = "Dark";
-        NSGlobalDomain.KeyRepeat = 2;
+        # NSGlobalDomain.KeyRepeat = 2;
       };
 
       homebrew = {
         enable = true;
         brews = [
           "mas"
+          "openssl@3"
+          "pkg-config"
+          "protobuf"
           "syncthing"
         ];
         casks = [
-          "firefox"
-          "iina"
-          "the-unarchiver"
-          "docker"
-          "maccy"
-          "stats"
-          "rectangle"
-          "devtoys"
-          "hiddenbar"
-          "cheatsheet"
-          "bitwarden"
           "appcleaner"
-          "pycharm"
+          "bitwarden"
           "caffeine"
-          "keycastr"
-          "thunderbird"
-          "obs"
-          "pritunl"
+          "cheatsheet"
           "dbeaver-community"
+          "devtoys"
+          "docker"
+          "firefox"
+          "hiddenbar"
+          "iina"
+          "keycastr"
+          "kitty"
+          "maccy"
+          "obs"
+          "postman"
+          "pycharm"
+          "rectangle"
+          "stats"
+          "termius"
+          "the-unarchiver"
+          "thunderbird"
           "visual-studio-code"
         ];
         masApps = {
@@ -131,7 +136,7 @@
           rm -rf /Applications/Nix\ Apps
           mkdir -p /Applications/Nix\ Apps
           find ${env}/Applications -maxdepth 1 -type l -exec readlink '{}' + |
-          while read src; do
+          while read -r src; do
             app_name=$(basename "$src")
             echo "copying $src" >&2
             ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
