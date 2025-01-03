@@ -106,6 +106,7 @@
           "postman"
           "pycharm"
           "rectangle"
+          "royal-tsx"
           "stats"
           "termius"
           "the-unarchiver"

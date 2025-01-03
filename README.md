@@ -28,7 +28,7 @@ git clone git@github.com:zimkaa/.dotfiles.git
 cd .dotfiles
 ```
 
-then use GNU stow to create symlinks
+Then use GNU stow to create symlinks
 
 ```sh
 stow .
@@ -60,4 +60,12 @@ stow -D .
 
 ```sh
 sudo apt remove stow
+```
+
+## Nix
+
+Update configuration
+
+```sh
+nix flake update --flake ~/.dotfiles/nix/darwin && darwin-rebuild switch --flake ~/.dotfiles/nix/darwin#macpro
 ```
