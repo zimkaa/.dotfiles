@@ -54,10 +54,10 @@
         pkgs.stow
         pkgs.tldr
         pkgs.tmux
+        pkgs.uv
         pkgs.vim
         pkgs.yazi
         pkgs.zoxide
-        pkgs.uv
       ];
 
       fonts.packages = [
