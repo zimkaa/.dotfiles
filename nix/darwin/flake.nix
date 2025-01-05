@@ -57,6 +57,7 @@
         pkgs.vim
         pkgs.yazi
         pkgs.zoxide
+        pkgs.uv
       ];
 
       fonts.packages = [
