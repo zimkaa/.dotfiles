@@ -103,6 +103,8 @@ alias ls="eza --icons=always"
 alias la="ls -lAhg"
 alias n='nvim'
 alias c='clear'
+alias cr='cargo run'
+alias ct='cargo test'
 alias cat='bat'
 alias lg='lazygit'
 alias ld='lazydocker'
