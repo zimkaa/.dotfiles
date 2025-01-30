@@ -17,6 +17,9 @@ if test -n "$KITTY_INSTALLATION_DIR"; then
   unfunction kitty-integration
 fi
 
+# Node js
+export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
+
 if [[ "$(uname)" == "Linux" ]]; then
   # Nix Troubleshooting
   export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
