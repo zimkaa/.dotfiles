@@ -17,8 +17,10 @@ if test -n "$KITTY_INSTALLATION_DIR"; then
   unfunction kitty-integration
 fi
 
-# Node js
-export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
+# Node js macos
+if [[ $(uname -m) == 'arm64' ]]; then
+  export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
+fi
 
 if [[ "$(uname)" == "Linux" ]]; then
   # Nix Troubleshooting
