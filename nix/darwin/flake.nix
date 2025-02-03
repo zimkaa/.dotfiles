@@ -84,6 +84,7 @@
         enable = true;
         brews = [
           "mas"
+          "ollama"
           "openssl@3"
           "pkg-config"
           "protobuf"
