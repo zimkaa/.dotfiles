@@ -83,6 +83,7 @@
       homebrew = {
         enable = true;
         brews = [
+          "asitop"
           "mas"
           "ollama"
           "openssl@3"
@@ -97,8 +98,8 @@
           "chatgpt"
           "cheatsheet"
           "dbeaver-community"
+          "devpod"
           "devtoys"
-          # "docker"
           "firefox"
           "hiddenbar"
           "iina"
