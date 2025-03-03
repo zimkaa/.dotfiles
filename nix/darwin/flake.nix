@@ -64,7 +64,8 @@
         pkgs.nerd-fonts.fira-code
       ];
 
-      security.pam.enableSudoTouchIdAuth = true;
+      # SudoTouchIdAuth for not enter password for sudo commands
+      security.pam.services.sudo_local.touchIdAuth = true;
 
       system.defaults = {
         dock.autohide = true;
