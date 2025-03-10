@@ -95,6 +95,7 @@
         casks = [
           "appcleaner"
           "bitwarden"
+          "balenaetcher"
           "caffeine"
           "chatgpt"
           "cheatsheet"
