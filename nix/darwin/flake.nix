@@ -111,7 +111,6 @@
           "obs"
           "orbstack"
           "postman"
-          "pycharm"
           "rectangle"
           "royal-tsx"
           "stats"
