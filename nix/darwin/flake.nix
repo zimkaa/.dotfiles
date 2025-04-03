@@ -38,6 +38,7 @@
         pkgs.eza
         pkgs.fd
         pkgs.fzf
+        pkgs.go
         pkgs.go-task
         pkgs.htop
         pkgs.lazydocker
