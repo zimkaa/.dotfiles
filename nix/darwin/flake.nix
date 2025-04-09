@@ -106,6 +106,7 @@
           "firefox"
           "hiddenbar"
           "iina"
+          "insomnia"
           "keycastr"
           "kitty"
           "maccy"
