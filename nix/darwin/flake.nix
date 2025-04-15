@@ -112,7 +112,7 @@
           "maccy"
           "obs"
           "orbstack"
-          "postman"
+          # "postman"
           "rectangle"
           "royal-tsx"
           "stats"
