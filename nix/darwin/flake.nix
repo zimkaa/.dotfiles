@@ -32,7 +32,6 @@
         pkgs.btop
         pkgs.cookiecutter
         pkgs.devbox
-        pkgs.discord
         pkgs.duf
         pkgs.dust
         pkgs.eza
@@ -103,6 +102,7 @@
           "dbeaver-community"
           "devpod"
           "devtoys"
+          "discord"
           "firefox"
           "hiddenbar"
           "iina"
