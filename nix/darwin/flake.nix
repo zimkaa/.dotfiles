@@ -53,6 +53,7 @@
         pkgs.ripgrep
         pkgs.rustup
         pkgs.stow
+        pkgs.templ  # for LSP
         pkgs.tldr
         pkgs.tmux
         pkgs.uv
