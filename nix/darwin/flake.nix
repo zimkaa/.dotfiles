@@ -40,6 +40,7 @@
         pkgs.go
         pkgs.go-task
         pkgs.htop
+        pkgs.httpie
         pkgs.lazydocker
         pkgs.lazygit
         pkgs.mkalias
