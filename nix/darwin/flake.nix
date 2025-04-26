@@ -27,6 +27,7 @@
       nixpkgs.config.allowUnfree = true;
 
       environment.systemPackages = [
+        pkgs.air  # for GO develop
         pkgs.alejandra
         pkgs.bat
         pkgs.btop
@@ -53,7 +54,7 @@
         pkgs.ripgrep
         pkgs.rustup
         pkgs.stow
-        pkgs.templ  # for LSP
+        pkgs.templ  # LSP for GO develop
         pkgs.tldr
         pkgs.tmux
         pkgs.uv
