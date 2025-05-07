@@ -71,7 +71,7 @@
       security.pam.services.sudo_local.touchIdAuth = true;
 
       system.defaults = {
-        dock.autohide = true;
+        dock.autohide = false;
         #dock.persistent-apps = [
         #  ""
         #];
