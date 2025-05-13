@@ -34,7 +34,7 @@ Then use GNU stow to create symlinks
 stow .
 ```
 
-to force rewrite files
+To force rewrite files
 
 ```sh
 stow --adopt .
