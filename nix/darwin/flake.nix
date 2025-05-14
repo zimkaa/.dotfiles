@@ -112,6 +112,7 @@
           "insomnia"
           "keycastr"
           "kitty"
+          "libreoffice"
           "maccy"
           "obs"
           "orbstack"
