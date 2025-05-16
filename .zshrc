@@ -107,7 +107,7 @@ alias ls="eza --icons=always"
 # alias ls="ls --color"
 alias la="ls -lAhg"
 alias n='nvim'
-alias c='clear'
+alias c='clear'  # Use ctrl + l
 alias cr='cargo run'
 alias ct='cargo test'
 alias cat='bat'
