@@ -1,65 +1,49 @@
 { inputs, pkgs, ... }:
-let
-  inherit (inputs) nixpkgs;
-in
 {
+  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
   nixpkgs.config.allowUnfree = true;
+
   environment.systemPackages = with pkgs; [
-    # nixpkgs-unstable.legacyPackages.${pkgs.system}.beszel
-    # nixpkgs-unstable.legacyPackages.${pkgs.system}.talosctl
-    nixpkgs.legacyPackages.${pkgs.system}.talosctl
+    # # nixpkgs-unstable.legacyPackages.${pkgs.system}.beszel
+    # # nixpkgs-unstable.legacyPackages.${pkgs.system}.talosctl
+    # nixpkgs.legacyPackages.${pkgs.system}.talosctl
 
-    ## stable
-    # act
-    # ansible
-    # btop
-    # coreutils
-    # diffr # Modern Unix `diff`
-    # difftastic # Modern Unix `diff`
-    # drill
-    # du-dust # Modern Unix `du`
-    # dua # Modern Unix `du`
-    # duf # Modern Unix `df`
-    # entr # Modern Unix `watch`
-    # esptool
-    # fastfetch
-    # fd
-    # ffmpeg
-    # figurine
-    # fira-code
-    # fira-code-nerdfont
-    # fira-mono
-    # gh
-    # git-crypt
-    # gnused
-    # go
-    # hugo
-    # iperf3
-    # ipmitool
-    # jetbrains-mono # font
-    # jq
-    # just
-    # kubectl
-    # mc
-    # mosh
-    # nerdfonts
-    # nmap
-    # qemu
-    # ripgrep
-    # skopeo
-    # smartmontools
-    # television
-    # terraform
-    # tree
-    # unzip
-    # watch
-    # wget
-    # wireguard-tools
-    # zoxide
-
+    air  # for GO develop
+    alejandra
+    bat
     btop
+    cookiecutter
+    devbox
+    duf
+    dust
+    eza
+    fd
+    fzf
+    go
+    go-task
+    htop
+    httpie
+    lazydocker
+    lazygit
+    mkalias
+    neovim
+    nixd
+    obsidian
+    oh-my-posh
+    poetry
+    pyenv
+    ripgrep
+    rustup
+    stow
+    templ  # LSP for GO develop
+    tldr
+    tmux
+    uv
+    vim
+    yazi
+    zoxide
 
-    # requires nixpkgs.config.allowUnfree = true;
-    vscode-extensions.ms-vscode-remote.remote-ssh
+    # # requires nixpkgs.config.allowUnfree = true;
+    # vscode-extensions.ms-vscode-remote.remote-ssh
   ];
 }

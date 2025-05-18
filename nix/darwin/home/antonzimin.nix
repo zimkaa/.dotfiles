@@ -1,6 +1,6 @@
 { config, inputs, pkgs, lib, ... }:
 {
-  home.stateVersion = "24.11";
+  home.stateVersion = "25.05";
 
   # list of programs
   # https://mipmip.github.io/home-manager-option-search
@@ -12,12 +12,12 @@
   #   })
   # ];
 
-  programs.gpg.enable = true;
+  # programs.gpg.enable = true;
 
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-  };
+  # programs.direnv = {
+  #   enable = true;
+  #   nix-direnv.enable = true;
+  # };
 
   # programs.eza = {
   #   enable = true;
@@ -47,6 +47,7 @@
     userName = "Anton Zimin";
     diff-so-fancy.enable = true;
     lfs.enable = true;
+    core.editor = "vim";
     extraConfig = {
       init = {
         defaultBranch = "main";
@@ -84,20 +85,20 @@
     #initExtra = (builtins.readFile ../mac-dot-zshrc);
   };
 
-  programs.tmux = {
-    enable = true;
-    #keyMode = "vi";
-    clock24 = true;
-    historyLimit = 10000;
-    plugins = with pkgs.tmuxPlugins; [
-      gruvbox
-      vim-tmux-navigator
-    ];
-    extraConfig = ''
-      new-session -s main
-      bind-key -n C-a send-prefix
-    '';
-  };
+  # programs.tmux = {
+  #   enable = true;
+  #   #keyMode = "vi";
+  #   clock24 = true;
+  #   historyLimit = 10000;
+  #   plugins = with pkgs.tmuxPlugins; [
+  #     gruvbox
+  #     vim-tmux-navigator
+  #   ];
+  #   extraConfig = ''
+  #     new-session -s main
+  #     bind-key -n C-a send-prefix
+  #   '';
+  # };
 
   programs.home-manager.enable = true;
   programs.nix-index.enable = true;
