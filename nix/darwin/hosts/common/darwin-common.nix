@@ -3,7 +3,9 @@ let
   inherit (inputs) nixpkgs nixpkgs-unstable;
 in
 {
-  users.users.antonzimin.home = "/Users/antonzimin";
+  users.users.${username}.home = "/Users/antonzimin";
+
+  system.primaryUser = username;
 
   nixpkgs = {
     config.allowUnfree = true;

@@ -26,6 +26,7 @@
     lazydocker
     lazygit
     mkalias
+    neohtop
     neovim
     nixd
     obsidian

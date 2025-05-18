@@ -67,7 +67,7 @@ sudo apt remove stow
 See generations
 
 ```sh
-sudo darwin-rebuild list-generations
+sudo darwin-rebuild --list-generations
 ```
 
 OR

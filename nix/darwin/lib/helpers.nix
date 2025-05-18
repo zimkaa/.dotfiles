@@ -8,7 +8,6 @@
     customConf = if builtins.pathExists (customConfPath) then (customConfPath + "/default.nix") else ./../hosts/common/darwin-common-dock.nix;
   in
     inputs.nix-darwin.lib.darwinSystem {
-      system.primaryUser = username;
       specialArgs = { inherit system inputs username unstablePkgs; };
       #extraSpecialArgs = { inherit inputs; }
       modules = [
@@ -29,6 +28,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.backupFileExtension = "backup";
             #home-manager.sharedModules = [ inputs.nixvim.homeManagerModules.nixvim ];
             home-manager.users.${username} = { imports = [ ./../home/${username}.nix ]; };
         }

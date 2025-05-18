@@ -31,15 +31,15 @@
   #   ];
   # };
 
-  programs.fzf = {
-    enable = true;
-    enableBashIntegration = true;
-    enableZshIntegration = true;
-    tmux.enableShellIntegration = true;
-    defaultOptions = [
-      "--no-mouse"
-    ];
-  };
+  # programs.fzf = {
+  #   enable = true;
+  #   enableBashIntegration = true;
+  #   enableZshIntegration = true;
+  #   tmux.enableShellIntegration = true;
+  #   defaultOptions = [
+  #     "--no-mouse"
+  #   ];
+  # };
 
   programs.git = {
     enable = true;
@@ -47,8 +47,10 @@
     userName = "Anton Zimin";
     diff-so-fancy.enable = true;
     lfs.enable = true;
-    core.editor = "vim";
     extraConfig = {
+      core = {
+        editor = "vim";
+      };
       init = {
         defaultBranch = "main";
       };
@@ -78,12 +80,52 @@
 
   programs.bash.enable = true;
 
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    autosuggestion.enable = true;
-    #initExtra = (builtins.readFile ../mac-dot-zshrc);
+  # programs.zsh = {
+  #   enable = true;
+  #   enableCompletion = true;
+  #   autosuggestion.enable = true;
+  #   #initExtra = (builtins.readFile ../mac-dot-zshrc);
+  # };
+
+  home.file = {
+    # ".config".source = config.lib.file.mkOutOfStoreSymlink "./../../../.config";
+    # ".config".source = ./../../../.config;
+    # ".config" = {
+    #   source = ./../../../.config;
+    #   recursive = true;
+    # };
+    ".zshrc".source = ./../../../.zshrc;
+    ".vimrc".source = ./../../../.vimrc;
+    ".config/kitty" = {
+      source = ./../../../.config/kitty;
+      recursive = true;
+    };
+    # ".config/kitty".source = config.lib.file.mkOutOfStoreSymlink "./../../../kitty";
+    ".config/ohmyposh" = {
+      source = ./../../../.config/ohmyposh;
+      recursive = true;
+    };
+    ".config/tmux" = {
+      source = ./../../../.config/tmux;
+      recursive = true;
+    };
+    ".config/nvim" = {
+      source = ./../../../.config/nvim;
+      recursive = true;
+    };
+    # ".config/kitty".source = {
+    #   source = ./../../../.config/kitty;
+    #   recursive = true;
+    # };
   };
+
+  # programs.kitty = {
+  #   extraConfig = ''
+  #     shell_integration disabled
+  #     bold_font auto
+  #   '';
+  #   font.name = "FiraCode Nerd Font Mono";
+  # };
 
   # programs.tmux = {
   #   enable = true;
