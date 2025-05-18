@@ -3,9 +3,27 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nix-darwin.url = "github:LnL7/nix-darwin";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+
+    # nix-darwin.url = "github:LnL7/nix-darwin";
+    # nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
+    homebrew-bundle = {
+      url = "github:homebrew/homebrew-bundle";
+      flake = false;
+    };
   };
 
   outputs = {
@@ -13,6 +31,9 @@
     nix-darwin,
     nixpkgs,
     nix-homebrew,
+    homebrew-core,
+    homebrew-cask,
+    homebrew-bundle,
   } @ inputs: let
     configuration = {
       pkgs,
@@ -21,6 +42,8 @@
     }: {
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
+
+      system.primaryUser = "antonzimin";
 
       nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 
@@ -97,8 +120,8 @@
         ];
         casks = [
           "appcleaner"
-          "bitwarden"
           "balenaetcher"
+          "bitwarden"
           "caffeine"
           "chatgpt"
           "cheatsheet"
@@ -178,6 +201,7 @@
   in {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#simple
+    
     darwinConfigurations."macpro" = nix-darwin.lib.darwinSystem {
       modules = [
         configuration
@@ -190,7 +214,15 @@
             # User owning the Homebrew prefix
             user = "antonzimin";
             # if already installed homebrew
-            # autoMigrate = true;
+            autoMigrate = true;
+
+            mutableTaps = true;
+
+            taps = {
+              "homebrew/homebrew-core" = homebrew-core;
+              "homebrew/homebrew-cask" = homebrew-cask;
+              "homebrew/homebrew-bundle" = homebrew-bundle;
+            };
           };
         }
       ];

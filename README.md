@@ -64,8 +64,44 @@ sudo apt remove stow
 
 ## Nix
 
+See generations
+
+```sh
+sudo darwin-rebuild list-generations
+```
+
+OR
+
+```sh
+sudo nix-env --list-generations --profile /nix/var/nix/profiles/system
+```
+
 Update configuration
 
 ```sh
-nix flake update --flake ~/.dotfiles/nix/darwin && darwin-rebuild switch --flake ~/.dotfiles/nix/darwin#macpro
+nix flake update --flake ~/.dotfiles/nix/darwin && sudo darwin-rebuild switch --flake ~/.dotfiles/nix/darwin#macpro
+```
+
+### Rollback
+
+```sh
+sudo darwin-rebuild switch --rollback
+```
+
+### Delete generation
+
+```sh
+sudo nix-env -p /nix/var/nix/profiles/system --delete-generations 133
+```
+
+Old hostname
+
+```text
+Antons-MacBook-Pro
+```
+
+New hostname
+
+```text
+pro
 ```
