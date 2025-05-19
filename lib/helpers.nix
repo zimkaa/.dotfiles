@@ -11,8 +11,8 @@
       specialArgs = { inherit system inputs username unstablePkgs; };
       #extraSpecialArgs = { inherit inputs; }
       modules = [
-        ../hosts/common/common-packages.nix
-        ../hosts/common/darwin-common.nix
+        ./../hosts/common/common-packages.nix
+        ./../hosts/common/darwin-common.nix
         customConf
         # Add nodejs overlay to fix build issues (https://github.com/NixOS/nixpkgs/issues/402079)
         {
@@ -48,8 +48,5 @@
         }
 
       ];
-      # ] ++ lib.optionals (builtins.pathExists ./../hosts/darwin/${hostname}/default.nix) [
-      #     (import ./../hosts/darwin/${hostname}/default.nix)
-      #   ];
     };
 }

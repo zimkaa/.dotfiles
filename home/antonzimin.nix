@@ -88,35 +88,24 @@
   # };
 
   home.file = {
-    # ".config".source = config.lib.file.mkOutOfStoreSymlink "./../../../.config";
-    # ".config".source = ./../../../.config;
-    # ".config" = {
-    #   source = ./../../../.config;
-    #   recursive = true;
-    # };
-    ".zshrc".source = ./../../../.zshrc;
-    ".vimrc".source = ./../../../.vimrc;
+    ".zshrc".source = ./../.zshrc;
+    ".vimrc".source = ./../.vimrc;
     ".config/kitty" = {
-      source = ./../../../.config/kitty;
+      source = ./../.config/kitty;
       recursive = true;
     };
-    # ".config/kitty".source = config.lib.file.mkOutOfStoreSymlink "./../../../kitty";
     ".config/ohmyposh" = {
-      source = ./../../../.config/ohmyposh;
+      source = ./../.config/ohmyposh;
       recursive = true;
     };
     ".config/tmux" = {
-      source = ./../../../.config/tmux;
+      source = ./../.config/tmux;
       recursive = true;
     };
     ".config/nvim" = {
-      source = ./../../../.config/nvim;
+      source = ./../.config/nvim;
       recursive = true;
     };
-    # ".config/kitty".source = {
-    #   source = ./../../../.config/kitty;
-    #   recursive = true;
-    # };
   };
 
   # programs.kitty = {
