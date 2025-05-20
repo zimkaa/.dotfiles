@@ -9,5 +9,7 @@ in {
 
     home.packages = (map (name: pkgs.${name}) packageNames);
 
+    imports = [ ./../../home/${username}.nix ];
+
     programs.home-manager.enable = true;
 }

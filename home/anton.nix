@@ -1,7 +1,5 @@
 { config, inputs, pkgs, lib, ... }:
 {
-  home.stateVersion = "25.05";
-
   # list of programs
   # https://mipmip.github.io/home-manager-option-search
 
