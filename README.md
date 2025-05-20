@@ -38,10 +38,24 @@ cd .dotfiles
 
 ## Helpful info
 
-### Reread tmux config
+### Tmux
+
+#### Install
 
 ```sh
-tmux source ~/.tmux.conf
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+
+#### Reread conf
+
+```sh
+tmux source ~/.config/tmux/.tmux.conf
+```
+
+And install plugins
+
+```sh
+prefix + I
 ```
 
 ## Usage
