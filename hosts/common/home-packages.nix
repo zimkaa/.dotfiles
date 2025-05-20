@@ -7,7 +7,7 @@ in {
     home.username = username;
     home.homeDirectory = "/home/${username}";
 
-    home.packages = with pkgs; (map (name: pkgs.${name}) packageNames);
+    home.packages = (map (name: pkgs.${name}) packageNames);
 
     programs.home-manager.enable = true;
 }
