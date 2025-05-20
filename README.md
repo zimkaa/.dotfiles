@@ -12,10 +12,18 @@ Ensure you have the following installed on your system
 sudo apt install git
 ```
 
-### Stow
+### Nix [install](https://nixos.org/download/)
+
+#### Linux
 
 ```sh
-sudo apt install stow
+sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon
+```
+
+#### MacOS
+
+```sh
+sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install)
 ```
 
 ## Installation
@@ -28,6 +36,81 @@ git clone git@github.com:zimkaa/.dotfiles.git
 cd .dotfiles
 ```
 
+## Helpful info
+
+### Reread tmux config
+
+```sh
+tmux source ~/.tmux.conf
+```
+
+## Usage
+
+### Configuration
+
+#### MacOS conf
+
+##### Switch
+
+```sh
+sudo darwin-rebuild switch --flake ~/.dotfiles/nix/darwin#macpro
+```
+
+##### Update
+
+```sh
+nix flake update --flake ~/.dotfiles/nix/darwin && sudo darwin-rebuild switch --flake ~/.dotfiles/nix/darwin#macpro
+```
+
+#### Linux `zimaa`
+
+##### Switch `zimaa`
+
+```sh
+nix run --extra-experimental-features 'nix-command flakes' home-manager switch -- --flake /home/anton/.dotfiles#zimaa
+```
+
+##### Update `zimaa`
+
+```sh
+nix flake update --flake ~/.dotfiles && \
+nix run --extra-experimental-features 'nix-command flakes' home-manager switch -- --flake /home/anton/.dotfiles#zimaa
+```
+
+#### Mint machine `honor`
+
+```sh
+nix run --extra-experimental-features 'nix-command flakes' home-manager switch -- --flake /home/anton//.#fdg
+```
+
+## See generations
+
+```sh
+sudo darwin-rebuild --list-generations
+```
+
+OR
+
+```sh
+sudo nix-env --list-generations --profile /nix/var/nix/profiles/system
+```
+
+### Rollback
+
+#### MacOS generation
+
+```sh
+sudo darwin-rebuild switch --rollback
+```
+
+### Delete generation
+
+```sh
+sudo nix-env -p /nix/var/nix/profiles/system --delete-generations 133
+```
+
+## Old version with stow
+
 Then use GNU stow to create symlinks
 
 ```sh
@@ -38,14 +121,6 @@ To force rewrite files
 
 ```sh
 stow --adopt .
-```
-
-## Helpful info
-
-### Reread tmux config
-
-```sh
-tmux source ~/.tmux.conf
 ```
 
 ## Uninstall
@@ -60,48 +135,4 @@ stow -D .
 
 ```sh
 sudo apt remove stow
-```
-
-## Nix
-
-See generations
-
-```sh
-sudo darwin-rebuild --list-generations
-```
-
-OR
-
-```sh
-sudo nix-env --list-generations --profile /nix/var/nix/profiles/system
-```
-
-Update configuration
-
-```sh
-nix flake update --flake ~/.dotfiles/nix/darwin && sudo darwin-rebuild switch --flake ~/.dotfiles/nix/darwin#macpro
-```
-
-### Rollback
-
-```sh
-sudo darwin-rebuild switch --rollback
-```
-
-### Delete generation
-
-```sh
-sudo nix-env -p /nix/var/nix/profiles/system --delete-generations 133
-```
-
-Old hostname
-
-```text
-Antons-MacBook-Pro
-```
-
-New hostname
-
-```text
-pro
 ```
