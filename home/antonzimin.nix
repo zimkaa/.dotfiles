@@ -1,4 +1,4 @@
-{ config, inputs, pkgs, lib, ... }:
+{ config, inputs, pkgs, lib, username, ... }:
 {
   home.stateVersion = "25.05";
 
@@ -88,22 +88,22 @@
   # };
 
   home.file = {
-    ".zshrc".source = ./../.zshrc;
-    ".vimrc".source = ./../.vimrc;
+    ".zshrc".source = config.lib.file.mkOutOfStoreSymlink "/Users/${username}/.dotfiles/.zshrc";
+    ".vimrc".source = config.lib.file.mkOutOfStoreSymlink "/Users/${username}/.dotfiles/.vimrc";
     ".config/kitty" = {
-      source = ./../.config/kitty;
+      source = config.lib.file.mkOutOfStoreSymlink "/Users/${username}/.dotfiles/.config/kitty";
       recursive = true;
     };
     ".config/ohmyposh" = {
-      source = ./../.config/ohmyposh;
+      source = config.lib.file.mkOutOfStoreSymlink "/Users/${username}/.dotfiles/.config/ohmyposh";
       recursive = true;
     };
     ".config/tmux" = {
-      source = ./../.config/tmux;
+      source = config.lib.file.mkOutOfStoreSymlink "/Users/${username}/.dotfiles/.config/tmux";
       recursive = true;
     };
     ".config/nvim" = {
-      source = ./../.config/nvim;
+      source = config.lib.file.mkOutOfStoreSymlink "/Users/${username}/.dotfiles/.config/nvim";
       recursive = true;
     };
   };
