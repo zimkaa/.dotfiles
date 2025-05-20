@@ -10,5 +10,6 @@ in
 {
   inherit (helpers)
     mkDarwin
+    mkLinuxConfig
     ;
 }

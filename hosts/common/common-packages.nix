@@ -25,7 +25,6 @@
     httpie
     lazydocker
     lazygit
-    mkalias
     neohtop
     neovim
     nixd

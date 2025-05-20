@@ -26,6 +26,7 @@ in
     # pkgs.lima
     # pkgs.nix
     neofetch
+    mkalias
   ];
 
   fonts.packages = [

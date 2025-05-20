@@ -46,7 +46,24 @@
             };
           };
         }
+      ];
+    };
 
+  mkLinuxConfig = { hostname, username ? "anton", system ? "x86_64-linux",}:
+  let
+    inherit (inputs.nixpkgs) lib;
+  in
+    inputs.home-manager.lib.homeManagerConfiguration {
+      #specialArgs = { inherit system inputs username unstablePkgs; };
+      extraSpecialArgs = { inherit username stateVersion; };
+
+      pkgs = import inputs.nixpkgs {
+        system = system;
+        config.allowUnfree = true;
+      };
+
+      modules = [
+        ../hosts/common/home-packages.nix
       ];
     };
 }
