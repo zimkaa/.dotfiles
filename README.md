@@ -67,13 +67,13 @@ prefix + I
 ##### Switch
 
 ```sh
-sudo darwin-rebuild switch --flake ~/.dotfiles/nix/darwin#macpro
+sudo darwin-rebuild switch --flake ~/.dotfiles#macpro
 ```
 
 ##### Update
 
 ```sh
-nix flake update --flake ~/.dotfiles/nix/darwin && sudo darwin-rebuild switch --flake ~/.dotfiles/nix/darwin#macpro
+nix flake update --flake ~/.dotfiles && sudo darwin-rebuild switch --flake ~/.dotfiles#macpro
 ```
 
 #### Linux `zimaa`
@@ -81,20 +81,33 @@ nix flake update --flake ~/.dotfiles/nix/darwin && sudo darwin-rebuild switch --
 ##### Switch `zimaa`
 
 ```sh
-nix run --extra-experimental-features 'nix-command flakes' home-manager switch -- --flake /home/anton/.dotfiles#zimaa
+home-manager switch --flake ~/.dotfiles#zimaa
+```
+
+OR
+
+```sh
+nix run --extra-experimental-features 'nix-command flakes' home-manager switch -- --flake ~/.dotfiles#zimaa
 ```
 
 ##### Update `zimaa`
 
 ```sh
 nix flake update --flake ~/.dotfiles && \
-nix run --extra-experimental-features 'nix-command flakes' home-manager switch -- --flake /home/anton/.dotfiles#zimaa
+home-manager switch --flake ~/.dotfiles#zimaa
+```
+
+OR
+
+```sh
+nix flake update --flake ~/.dotfiles && \
+nix run --extra-experimental-features 'nix-command flakes' home-manager switch -- --flake ~/.dotfiles#zimaa
 ```
 
 #### Mint machine `honor`
 
 ```sh
-nix run --extra-experimental-features 'nix-command flakes' home-manager switch -- --flake /home/anton//.#fdg
+nix run --extra-experimental-features 'nix-command flakes' home-manager switch -- --flake ~/.dotfiles##fdg
 ```
 
 ## See generations
