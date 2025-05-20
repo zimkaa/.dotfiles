@@ -4,7 +4,7 @@
     "bat"
     "btop"
     "cookiecutter"
-    "devbox"
+    # "devbox"
     "duf"
     "dust"
     "eza"
@@ -14,22 +14,22 @@
     "go-task"
     "htop"
     "httpie"
+    # "kanata"
     "lazydocker"
     "lazygit"
     "neohtop"
     "neovim"
     "nixd"
-    "obsidian"
     "oh-my-posh"
-    "poetry"
-    "pyenv"
+    "poetry"  # TODO: delete
+    "pyenv"  # TODO: delete
     "ripgrep"
     "rustup"
-    "stow"
+    "stow"  # TODO: delete
     "templ"  # LSP for GO develop
     "tldr"
     "tmux"
-    "uv"
+    "uv"  # replacement for poetry and pyenv
     "vim"
     "yazi"
     "zoxide"

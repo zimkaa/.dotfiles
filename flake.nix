@@ -48,7 +48,12 @@
       };
 
       homeConfigurations = {
+        # personal
         zimaa = libx.mkLinuxConfig { hostname = "zimaa"; };
+        honor = libx.mkLinuxConfig { hostname = "anton-laptop"; };
+
+        # work
+
       };
     };
 }

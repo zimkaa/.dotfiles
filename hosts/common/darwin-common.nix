@@ -1,9 +1,13 @@
 { inputs, outputs, config, lib, hostname, system, username, pkgs, ... }:
 let
   inherit (inputs) nixpkgs nixpkgs-unstable;
+  casksPckgs = import ./casks-packages.nix;
+  commonPckgs = import ./gui-packages.nix;
+
+  casks = commonPckgs ++ casksPckgs;
 in
 {
-  users.users.${username}.home = "/Users/antonzimin";
+  users.users.${username}.home = "/Users/${username}";
 
   system.primaryUser = username;
 
@@ -49,42 +53,43 @@ in
     brews = [
       "asitop"
       "mas"
-      "ollama"
+      "ollama"  # service
       "openssl@3"
       "pkg-config"
       "protobuf"
-      "syncthing"
+      "syncthing"  # service
     ];
-    casks = [
-      "appcleaner"
-      "balenaetcher"
-      "bitwarden"
-      "caffeine"
-      "chatgpt"
-      "cheatsheet"
-      "dbeaver-community"
-      "devpod"
-      "devtoys"
-      "discord"
-      "firefox"
-      "hiddenbar"
-      "iina"
-      "insomnia"
-      "keycastr"
-      "kitty"
-      "libreoffice"
-      "maccy"
-      "obs"
-      "orbstack"
-      # "postman"
-      "rectangle"
-      "royal-tsx"
-      "stats"
-      "termius"
-      "the-unarchiver"
-      "thunderbird"
-      "visual-studio-code"
-    ];
+    casks = casks;
+    # casks = [
+    #   "appcleaner"
+    #   "balenaetcher"
+    #   "bitwarden"
+    #   "caffeine"
+    #   "chatgpt"
+    #   "cheatsheet"
+    #   "dbeaver-community"
+    #   "devpod"
+    #   "devtoys"
+    #   "discord"
+    #   "firefox"
+    #   "hiddenbar"
+    #   "iina"
+    #   "insomnia"
+    #   "keycastr"
+    #   "kitty"
+    #   "libreoffice"
+    #   "maccy"
+    #   "obs"
+    #   "orbstack"
+    #   # "postman"
+    #   "rectangle"
+    #   "royal-tsx"
+    #   "stats"
+    #   "termius"
+    #   "the-unarchiver"
+    #   "thunderbird"
+    #   "visual-studio-code"
+    # ];
     masApps = {
       "hand mirror" = 1502839586;
       "outline-secure-internet-access" = 1356178125;

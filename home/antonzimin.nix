@@ -1,6 +1,6 @@
-{ config, inputs, pkgs, lib, username, ... }:
+{ config, inputs, pkgs, lib, username, stateVersion, ... }:
 {
-  home.stateVersion = "25.05";
+  home.stateVersion = stateVersion;
 
   # list of programs
   # https://mipmip.github.io/home-manager-option-search

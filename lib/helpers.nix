@@ -27,7 +27,7 @@
             networking.hostName = hostname;
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit inputs username; };
+            home-manager.extraSpecialArgs = { inherit inputs username stateVersion; };
             home-manager.backupFileExtension = "backup";
             #home-manager.sharedModules = [ inputs.nixvim.homeManagerModules.nixvim ];
             home-manager.users.${username} = { imports = [ ./../home/${username}.nix ]; };
@@ -63,7 +63,7 @@
       };
 
       modules = [
-        ../hosts/common/home-packages.nix
+        ./../hosts/common/home-packages.nix
       ];
     };
 }
