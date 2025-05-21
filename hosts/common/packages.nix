@@ -17,7 +17,6 @@
     # "kanata"
     "lazydocker"
     "lazygit"
-    "neohtop"
     "neovim"
     "nixd"
     "oh-my-posh"

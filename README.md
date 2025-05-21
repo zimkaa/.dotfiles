@@ -20,10 +20,23 @@ sudo apt install git
 sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon
 ```
 
+#### Enable flakes
+
+```sh
+mkdir -p "$HOME/.config/nix/" && \
+echo "experimental-features = nix-command flakes" | tee -a ~/.config/nix/nix.conf > /dev/null
+```
+
 #### MacOS
 
 ```sh
 sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install)
+```
+
+##### Enable flakes global
+
+```sh
+echo "experimental-features = nix-command flakes" | sudo tee -a /etc/nix/nix.conf > /dev/null
 ```
 
 ## Installation
@@ -109,13 +122,13 @@ nix run --extra-experimental-features 'nix-command flakes' home-manager switch -
 ##### Switch `honor`
 
 ```sh
-home-manager switch --flake ~/.dotfiles#honor
+home-manager switch -b backup --flake ~/.dotfiles#honor
 ```
 
 OR
 
 ```sh
-nix run --extra-experimental-features 'nix-command flakes' home-manager switch -- --flake ~/.dotfiles#honor
+nix run --extra-experimental-features 'nix-command flakes' home-manager switch -- -b backup --flake ~/.dotfiles#honor
 ```
 
 ##### Update `honor`
