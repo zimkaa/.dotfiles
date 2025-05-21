@@ -33,6 +33,14 @@ else
   export GPG_TTY="$TTY"
 fi
 
+# dotenv settings
+ZSH_DOTENV_FILE=.dev.env
+ZSH_DOTENV_PROMPT=false
+
+# You may need to manually set your language environment
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
@@ -42,9 +50,9 @@ if [ ! -d "$ZINIT_HOME" ]; then
   git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
 
-# dotenv settings
-ZSH_DOTENV_FILE=.dev.env
-ZSH_DOTENV_PROMPT=false
+if [ ! -d "$HOME/.cache/zinit/completions" ]; then
+  mkdir -p "$HOME/.cache/zinit/completions"
+fi
 
 # Source/Load zinit
 source "${ZINIT_HOME}/zinit.zsh"
@@ -69,9 +77,6 @@ zinit snippet OMZP::command-not-found
 autoload -Uz compinit && compinit
 
 zinit cdreplay -q
-
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
 
 # Keybindings
 bindkey -e
@@ -106,6 +111,7 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza --icons=always -1 --col
 alias ls="eza --icons=always"
 # alias ls="ls --color"
 alias la="ls -lAhg"
+alias las="ls -lAhg --sort oldest"
 alias n='nvim'
 alias c='clear'  # Use ctrl + l
 alias cr='cargo run'
@@ -143,7 +149,7 @@ export NVM_DIR="$HOME/.nvm"
 # autoconfig fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# pyenv
+# pyenv  # TODO: delete
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 
@@ -154,7 +160,9 @@ if ssh-add -l | grep -q "The agent has no identities"; then
 fi
 
 # Shell integrations
-eval "$(pyenv init -)"
+if [[ ! "$shell" == /nix/store/* ]]; then
+  eval "$(pyenv init -)"
+fi
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/like_p10k.toml)"
