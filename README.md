@@ -81,6 +81,10 @@ prefix + I
 nix-collect-garbage -d --delete-older-than 10d
 ```
 
+```sh
+home-manager expire-generations "-10 days"
+```
+
 #### MacOS conf
 
 ##### Switch
@@ -100,27 +104,27 @@ nix flake update --flake ~/.dotfiles && sudo darwin-rebuild switch --flake ~/.do
 ##### Switch `zimaa`
 
 ```sh
-home-manager switch --flake ~/.dotfiles#zimaa
+home-manager switch -b backup --flake ~/.dotfiles#zimaa
 ```
 
 OR
 
 ```sh
-nix run --extra-experimental-features 'nix-command flakes' home-manager switch -- --flake ~/.dotfiles#zimaa
+nix run --extra-experimental-features 'nix-command flakes' home-manager switch -- -b backup --flake ~/.dotfiles#zimaa
 ```
 
 ##### Update `zimaa`
 
 ```sh
 nix flake update --flake ~/.dotfiles && \
-home-manager switch --flake ~/.dotfiles#zimaa
+home-manager switch -b backup --flake ~/.dotfiles#zimaa
 ```
 
 OR
 
 ```sh
 nix flake update --flake ~/.dotfiles && \
-nix run --extra-experimental-features 'nix-command flakes' home-manager switch -- --flake ~/.dotfiles#zimaa
+nix run --extra-experimental-features 'nix-command flakes' home-manager switch -- -b backup --flake ~/.dotfiles#zimaa
 ```
 
 #### Linux Mint `honor`
@@ -141,14 +145,14 @@ nix run --extra-experimental-features 'nix-command flakes' home-manager switch -
 
 ```sh
 nix flake update --flake ~/.dotfiles && \
-home-manager switch --flake ~/.dotfiles#honor
+home-manager switch -b backup --flake ~/.dotfiles#honor
 ```
 
 OR
 
 ```sh
 nix flake update --flake ~/.dotfiles && \
-nix run --extra-experimental-features 'nix-command flakes' home-manager switch -- --flake ~/.dotfiles#honor
+nix run --extra-experimental-features 'nix-command flakes' home-manager switch -- -b backup --flake ~/.dotfiles#honor
 ```
 
 ## See generations
@@ -169,6 +173,12 @@ sudo nix-env --list-generations --profile /nix/var/nix/profiles/system
 
 ```sh
 sudo darwin-rebuild switch --rollback
+```
+
+#### Linux generation
+
+```sh
+home-manager switch --rollback
 ```
 
 ### Delete generation
