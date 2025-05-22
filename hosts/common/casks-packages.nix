@@ -12,7 +12,7 @@
     "iina"  # Mac only
     "keycastr"  # Mac only
     "maccy"  # Mac only
-    "neohtop"  # Mac only
+    "neohtop"  # Stable work version Mac only
     "obs"  # Brew name
     "orbstack"  # Mac only
     "rectangle"  # Mac only

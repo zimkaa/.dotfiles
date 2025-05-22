@@ -5,8 +5,7 @@ let
   commonPckgs = import ./gui-packages.nix;
 
   casks = commonPckgs ++ casksPckgs;
-in
-{
+in {
   users.users.${username}.home = "/Users/${username}";
 
   system.primaryUser = username;
@@ -42,7 +41,7 @@ in
   security.pam.services.sudo_local.touchIdAuth = true;
 
   homebrew = {
-    # enable = true;
+    enable = true;
     onActivation = {
       cleanup = "zap";
       autoUpdate = true;
@@ -137,7 +136,7 @@ in
       done
     '';
 
-    system.defaults = {
+  system.defaults = {
     dock.autohide = false;
     #dock.persistent-apps = [
     #  ""
@@ -268,5 +267,4 @@ in
   #       PMPrintingExpandedStateForPrint2 = true;
   #     };
   # };
-
 }
