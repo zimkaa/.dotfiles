@@ -75,6 +75,12 @@ prefix + I
 
 ### Configuration
 
+#### Clear old
+
+```sh
+nix-collect-garbage -d --delete-older-than 10d
+```
+
 #### MacOS conf
 
 ##### Switch
