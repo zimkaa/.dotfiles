@@ -62,6 +62,13 @@
     };
   };
 
+  programs.lazygit = {
+    enable = true;
+    settings = {
+      git.pull.mode = "rebase";
+    };
+  };
+
   # programs.htop = {
   #   enable = true;
   #   settings.show_program_path = true;
