@@ -10,6 +10,7 @@
     "eza"
     "fd"
     "fzf"
+    "ggh"
     "go"
     "go-task"
     "htop"
