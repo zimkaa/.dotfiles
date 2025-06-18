@@ -5,6 +5,7 @@
     "caffeine"  # Mac only
     "chatgpt"  # Mac only
     "cheatsheet"  # Mac only
+    "cursor"  # Brew name
     "dbeaver-community"  # Brew name
     "devpod"  # Brew name
     "devtoys"  # Mac only
