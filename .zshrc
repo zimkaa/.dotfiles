@@ -107,7 +107,15 @@ zstyle ':fzf-tab:complete:code:*' fzf-preview 'eza --icons=always -1 --color=alw
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza --icons=always -1 --color=always $realpath'
 
 # Aliases
-# ---- Eza (better ls) -----
+if [[ "$(uname)" == "Linux" ]]; then
+  cur() {
+    nohup cursor "$@" >/dev/null 2>&1 &
+    disown $!
+  }
+else
+  alias cur="cursor"
+fi
+
 alias ls="eza --icons=always"
 # alias ls="ls --color"
 alias la="ls -lAhg"
