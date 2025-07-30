@@ -174,3 +174,13 @@ fi
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/like_p10k.toml)"
+
+if [[ "$TERM" == "tmux-256color" ]]; then
+    # \e[5 q - мигающий бар
+    # \e[1 q - немигающий бар
+    # \e[3 q - мигающий underline
+    # \e[4 q - немигающий underline
+    # \e[7 q - мигающий блок
+    # \e[2 q - немигающий блок
+    echo -ne "\e[5 q"
+fi
