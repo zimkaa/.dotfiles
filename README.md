@@ -116,6 +116,8 @@ nix run --extra-experimental-features 'nix-command flakes' home-manager switch -
 ##### Update `zimaa`
 
 ```sh
+cd ~/.dotfiles && \
+git pull && \
 nix flake update --flake ~/.dotfiles && \
 home-manager switch -b backup --flake ~/.dotfiles#zimaa
 ```
@@ -123,6 +125,8 @@ home-manager switch -b backup --flake ~/.dotfiles#zimaa
 OR
 
 ```sh
+cd ~/.dotfiles && \
+git pull && \
 nix flake update --flake ~/.dotfiles && \
 nix run --extra-experimental-features 'nix-command flakes' home-manager switch -- -b backup --flake ~/.dotfiles#zimaa
 ```
@@ -144,6 +148,8 @@ nix run --extra-experimental-features 'nix-command flakes' home-manager switch -
 ##### Update `honor`
 
 ```sh
+cd ~/.dotfiles && \
+git pull && \
 nix flake update --flake ~/.dotfiles && \
 home-manager switch -b backup --flake ~/.dotfiles#honor
 ```
@@ -151,6 +157,8 @@ home-manager switch -b backup --flake ~/.dotfiles#honor
 OR
 
 ```sh
+cd ~/.dotfiles && \
+git pull && \
 nix flake update --flake ~/.dotfiles && \
 nix run --extra-experimental-features 'nix-command flakes' home-manager switch -- -b backup --flake ~/.dotfiles#honor
 ```
