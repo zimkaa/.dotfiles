@@ -4,6 +4,7 @@
     "bat"
     "btop"
     "cookiecutter"
+    "claude-code"
     # "devbox"
     "duf"
     "dust"
