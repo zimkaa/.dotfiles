@@ -16,7 +16,7 @@
     "go-task"
     "htop"
     "httpie"
-    # "kanata"
+    "kanata"
     "lazydocker"
     "lazygit"
     "neovim"
