@@ -5,5 +5,5 @@
     "dbeaver-bin"
     "devpod-desktop"
     "obs-studio"
-    "termius"  # Only linux architecture
+    # "termius"  # Only linux architecture
 ]

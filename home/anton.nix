@@ -112,6 +112,10 @@
       source = config.lib.file.mkOutOfStoreSymlink "/home/${username}/.dotfiles/.config/nvim";
       recursive = true;
     };
+    ".config/yazi" = {
+      source = config.lib.file.mkOutOfStoreSymlink "/home/${username}/.dotfiles/.config/yazi";
+      recursive = true;
+    };
   };
 
   # programs.kitty = {

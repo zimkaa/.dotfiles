@@ -65,7 +65,7 @@ zinit light Aloxaf/fzf-tab
 
 # Add in snippets
 zinit snippet OMZP::git
-zinit snippet OMZP::sudo
+# zinit snippet OMZP::sudo
 zinit snippet OMZP::dotenv
 zinit snippet OMZP::aws
 zinit snippet OMZP::kubectl
@@ -156,6 +156,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # autoconfig fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_OPTS="--bind 'ctrl-j:accept'"
 
 # pyenv  # TODO: delete
 export PYENV_ROOT="$HOME/.pyenv"
