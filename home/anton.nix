@@ -116,6 +116,26 @@
       source = config.lib.file.mkOutOfStoreSymlink "/home/${username}/.dotfiles/.config/yazi";
       recursive = true;
     };
+    ".config/kanata" = {
+      source = config.lib.file.mkOutOfStoreSymlink "/home/${username}/.dotfiles/.config/kanata";
+      recursive = true;
+    };
+  };
+
+  systemd.user.services.kanata = {
+    Unit = {
+      Description = "Kanata Keyboard Remapper";
+      After = [ "graphical.target" ];
+    };
+
+    Service = {
+      ExecStart = "${pkgs.kanata}/bin/kanata -c ${config.home.homeDirectory}/.config/kanata/config.kbd";
+      Restart = "always";
+    };
+
+    Install = {
+      WantedBy = [ "default.target" ];
+    };
   };
 
   # programs.kitty = {
