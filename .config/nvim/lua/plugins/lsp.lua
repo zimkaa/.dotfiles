@@ -1,5 +1,16 @@
 return {
   {
-    "mfussenegger/nvim-dap",
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        ruff = {
+          capabilities = {
+            general = {
+              positionEncodings = { "utf-16" }
+            },
+          },
+        },
+      },
+    },
   },
 }
