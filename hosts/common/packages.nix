@@ -11,7 +11,7 @@
     "eza"
     "fd"
     "fzf"
-    "ghostty"
+    # "ghostty"
     "ggh"
     "go"
     "go-task"

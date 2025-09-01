@@ -4,3 +4,5 @@
 vim.opt.wrap = true
 
 vim.g.lazyvim_python_ruff = "ruff"
+
+vim.opt.scrolloff = 10
