@@ -7,6 +7,7 @@
     "cheatsheet"  # Mac only
     "cursor"  # Brew name
     "dbeaver-community"  # Brew name
+    "ghostty"  # gui terminal
     "devpod"  # Brew name
     "devtoys"  # Mac only
     "hiddenbar"  # Mac only
