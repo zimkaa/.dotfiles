@@ -43,6 +43,20 @@ if vim.g.vscode then
     { "n", "<leader>fr", "references-view.findReferences" },
     -- NOTE: search trigger
     { "n", "<leader>sr", "editor.action.referenceSearch.trigger" },
+    -- NOTE: search in file
+    { "n", "<leader>ff", "action.find" },
+    -- NOTE: find and replase in file
+    { "n", "<leader>fr", "editor.action.startFindReplaceAction" },
+    -- NOTE: search global
+    { "n", "<leader>fg", "workbench.action.findInFiles" },
+    -- NOTE: find and replase global
+    { "n", "<leader>rg", "workbench.action.replaseInFiles" },
+    -- NOTE: replase global
+    { "n", "<leader>re", "editor.action.rename" },
+    -- NOTE: refactor
+    { "n", "<leader>rf", "editor.action.refactor" },
+    -- NOTE: quick fix
+    { "n", "<leader>qf", "editor.action.quickFix" },
   }
 
   for _, mapping in ipairs(mappings) do
