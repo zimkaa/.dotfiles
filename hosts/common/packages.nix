@@ -12,6 +12,7 @@
     "fd"
     "fzf"
     # "ghostty"
+    "gemini-cli"
     "ggh"
     "go"
     "go-task"
