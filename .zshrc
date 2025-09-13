@@ -33,6 +33,9 @@ else
   export GPG_TTY="$TTY"
 fi
 
+# VIM MODE
+bindkey -v
+
 # dotenv settings
 ZSH_DOTENV_FILE=.dev.env
 ZSH_DOTENV_PROMPT=false
@@ -80,7 +83,6 @@ autoload -Uz compinit && compinit
 zinit cdreplay -q
 
 # Keybindings
-bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey '^[w' kill-region
