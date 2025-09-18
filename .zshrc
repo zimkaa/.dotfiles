@@ -1,5 +1,5 @@
 # Shell integrations
-# if [[ $(uname -m) == 'arm64' ]]; then  # Other way to check macos
+# if [[ $(uname -m) == "arm64" ]]; then  # Other way to check macos
 if [[ -f "/opt/homebrew/bin/brew" ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
@@ -18,7 +18,7 @@ if test -n "$KITTY_INSTALLATION_DIR"; then
 fi
 
 # Node js macos
-if [[ $(uname -m) == 'arm64' ]]; then
+if [[ $(uname -m) == "arm64" ]]; then
   export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
 fi
 
@@ -32,9 +32,6 @@ if [ -n "$TTY" ]; then
 else
   export GPG_TTY="$TTY"
 fi
-
-# VIM MODE
-bindkey -v
 
 # dotenv settings
 ZSH_DOTENV_FILE=.dev.env
@@ -83,10 +80,11 @@ autoload -Uz compinit && compinit
 zinit cdreplay -q
 
 # Keybindings
-bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
-bindkey '^[w' kill-region
-bindkey '^ ' autosuggest-accept
+bindkey -v # VIM MODE
+bindkey "^p" history-search-backward
+bindkey "^n" history-search-forward
+bindkey "^[w" kill-region
+bindkey "^f" autosuggest-accept
 
 # History
 HISTSIZE=15000
@@ -102,12 +100,12 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 
 # Completion styling
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza --icons=always -1 --color=always $realpath'
-zstyle ':fzf-tab:complete:code:*' fzf-preview 'eza --icons=always -1 --color=always $realpath'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza --icons=always -1 --color=always $realpath'
+zstyle ":completion:*" matcher-list "m:{a-z}={A-Za-z}"
+zstyle ":completion:*" list-colors "${(s.:.)LS_COLORS}"
+zstyle ":completion:*" menu no
+zstyle ":fzf-tab:complete:cd:*" fzf-preview "eza --icons=always -1 --color=always $realpath"
+zstyle ":fzf-tab:complete:code:*" fzf-preview "eza --icons=always -1 --color=always $realpath"
+zstyle ":fzf-tab:complete:__zoxide_z:*" fzf-preview "eza --icons=always -1 --color=always $realpath"
 
 # Aliases
 if [[ "$(uname)" == "Linux" ]]; then
@@ -115,22 +113,26 @@ if [[ "$(uname)" == "Linux" ]]; then
     nohup cursor "$@" >/dev/null 2>&1 &
     disown $!
   }
-else
-  alias cur="cursor"
+fi
+
+if [[ "$(uname -m)" == "arm64" ]]; then
+  cur() {
+    cursor
+  }
 fi
 
 alias ls="eza --icons=always"
 # alias ls="ls --color"
 alias la="ls -lAhg"
 alias las="ls -lAhg --sort oldest"
-alias n='nvim'
-alias c='clear'  # Use ctrl + l
-alias cr='cargo run'
-alias ct='cargo test'
-alias cat='bat'
-alias lg='lazygit'
-alias ld='lazydocker'
-alias md='mkdir'
+alias n="nvim"
+alias c="clear"  # Use ctrl + l
+alias cr="cargo run"
+alias ct="cargo test"
+alias cat="bat"
+alias lg="lazygit"
+alias ld="lazydocker"
+alias md="mkdir"
 alias my_tmux="
 tmux new -s labs -d
 tmux new-window -a -t labs:1
@@ -150,7 +152,7 @@ tmux split-window -h -t work:1.3
 tmux send-key -t work:2.1 'btop' enter
 tmux new-window -a -t work:2
 tmux attach -t work"
-# tmux send-key -t work:3.1 'cd PetProject/trading_bot/new_bot/' enter
+# tmux send-key -t work:3.1 "cd PetProject/trading_bot/new_bot/" enter
 
 # node version manager
 export NVM_DIR="$HOME/.nvm"

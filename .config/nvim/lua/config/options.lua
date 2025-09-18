@@ -15,3 +15,5 @@ vim.opt.updatetime = 50
 vim.opt.clipboard = "unnamedplus"
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+
+vim.opt.colorcolumn = "80,120"
