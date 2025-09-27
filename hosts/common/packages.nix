@@ -11,7 +11,7 @@
     "eza"
     "fd"
     "fzf"
-    # "ghostty"
+    # "ghostty"  # trouble with building
     "gemini-cli"
     "ggh"
     "go"

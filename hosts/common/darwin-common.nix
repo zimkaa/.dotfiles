@@ -59,36 +59,6 @@ in {
       "syncthing"  # service
     ];
     casks = casks;
-    # casks = [
-    #   "appcleaner"
-    #   "balenaetcher"
-    #   "bitwarden"
-    #   "caffeine"
-    #   "chatgpt"
-    #   "cheatsheet"
-    #   "dbeaver-community"
-    #   "devpod"
-    #   "devtoys"
-    #   "discord"
-    #   "firefox"
-    #   "hiddenbar"
-    #   "iina"
-    #   "insomnia"
-    #   "keycastr"
-    #   "kitty"
-    #   "libreoffice"
-    #   "maccy"
-    #   "obs"
-    #   "orbstack"
-    #   # "postman"
-    #   "rectangle"
-    #   "royal-tsx"
-    #   "stats"
-    #   "termius"
-    #   "the-unarchiver"
-    #   "thunderbird"
-    #   "visual-studio-code"
-    # ];
     masApps = {
       "hand mirror" = 1502839586;
       "outline-secure-internet-access" = 1356178125;
