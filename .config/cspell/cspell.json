@@ -1,0 +1,24 @@
+{
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+  "version": "0.2",
+  "language": "ru,en",
+  "dictionaries": [
+    "ru_ru",
+    "en",
+    "my"
+  ],
+  "dictionaryDefinitions": [
+    {
+      "name": "ru_ru",
+      "path": "~/.nvm/versions/node/v24.8.0/lib/node_modules/@cspell/dict-ru_ru/ru_ru.trie.gz"
+    },
+    {
+      "name": "my",
+      "path": "~/.config/cspell/dicts/user.txt",
+      "addWords": true
+    }
+  ],
+  "ignorePaths": [
+    "node_modules"
+  ]
+}

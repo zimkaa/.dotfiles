@@ -98,6 +98,8 @@
   home.file = {
     ".zshrc".source = config.lib.file.mkOutOfStoreSymlink "/Users/${username}/.dotfiles/.zshrc";
     ".vimrc".source = config.lib.file.mkOutOfStoreSymlink "/Users/${username}/.dotfiles/.vimrc";
+    ".cspell.json".source = config.lib.file.mkOutOfStoreSymlink "/Users/${username}/.dotfiles/.cspell.json";
+    "project-words.txt".source = config.lib.file.mkOutOfStoreSymlink "/Users/${username}/.dotfiles/project-words.txt";
     ".config/kitty" = {
       source = config.lib.file.mkOutOfStoreSymlink "/Users/${username}/.dotfiles/.config/kitty";
       recursive = true;

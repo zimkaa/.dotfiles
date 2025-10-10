@@ -71,6 +71,21 @@ And install plugins
 prefix + I
 ```
 
+### Nvim spelling
+
+#### Install node
+
+```sh
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+\. "$HOME/.nvm/nvm.sh"
+nvm install 24
+
+# Verify versions:
+node -v # Should print "v24.10.0".
+npm -v # Should print "11.6.1".
+```
+
+
 ## Usage
 
 ### Configuration
@@ -96,7 +111,10 @@ sudo darwin-rebuild switch --flake ~/.dotfiles#macpro
 ##### Update
 
 ```sh
-nix flake update --flake ~/.dotfiles && sudo darwin-rebuild switch --flake ~/.dotfiles#macpro
+nix flake update --flake ~/.dotfiles && \
+sudo darwin-rebuild switch --flake ~/.dotfiles#macpro && \
+rm -rf ~/.cache/oh-my-posh && \
+source ~/.zshrc
 ```
 
 #### Linux Arch `zimaa`
