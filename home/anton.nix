@@ -96,6 +96,10 @@
   home.file = {
     ".zshrc".source = config.lib.file.mkOutOfStoreSymlink "/home/${username}/.dotfiles/.zshrc";
     ".vimrc".source = config.lib.file.mkOutOfStoreSymlink "/home/${username}/.dotfiles/.vimrc";
+    ".config/cspell" = {
+      source = config.lib.file.mkOutOfStoreSymlink "/Users/${username}/.dotfiles/.config/cspell";
+      recursive = true;
+    };
     ".config/kitty" = {
       source = config.lib.file.mkOutOfStoreSymlink "/home/${username}/.dotfiles/.config/kitty";
       recursive = true;

@@ -85,6 +85,18 @@ node -v # Should print "v24.10.0".
 npm -v # Should print "11.6.1".
 ```
 
+```sh
+npm install -g cspell@latest
+```
+
+```sh
+npm install -g @vlabo/cspell-lsp
+```
+
+Dictionary
+
+```sh
+```
 
 ## Usage
 
