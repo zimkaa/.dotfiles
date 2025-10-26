@@ -24,7 +24,7 @@ if vim.g.vscode then
     { "n", "b", "cursorWordPartLeft" },
     { "v", "w", "cursorWordPartRightSelect" },
     { "v", "b", "cursorWordPartLeftSelect" },
-    { "n", "<leare>re", "editor.action.rename" },
+    { "n", "<leader>re", "editor.action.rename" },
     -- NOTE: search symbol
     { "n", "<leader>ss", "workbench.action.showAllSymbols" },
     -- NOTE: command panel
