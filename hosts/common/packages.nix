@@ -1,19 +1,20 @@
+
 [
     "air"  # for GO develop
     "alejandra"
     "bat"
     "btop"
-    "cookiecutter"
     "claude-code"
+    "cookiecutter"
     # "devbox"
     "duf"
     "dust"
     "eza"
     "fd"
     "fzf"
-    # "ghostty"  # trouble with building
     "gemini-cli"
     "ggh"
+    # "ghostty"  # trouble with building
     "go"
     "go-task"
     "htop"
@@ -26,17 +27,17 @@
     "oh-my-posh"
     "poetry"  # TODO: delete
     "pyenv"  # TODO: delete
+    # # requires nixpkgs.config.allowUnfree = true;
     "ripgrep"
     "rustup"
+    "sshs"
     "stow"  # TODO: delete
     "templ"  # LSP for GO develop
     "tldr"
     "tmux"
     "uv"  # replacement for poetry and pyenv
     "vim"
+    # vscode-extensions.ms-vscode-remote.remote-ssh
     "yazi"
     "zoxide"
-
-    # # requires nixpkgs.config.allowUnfree = true;
-    # vscode-extensions.ms-vscode-remote.remote-ssh
 ]

@@ -39,13 +39,12 @@
   #   ];
   # };
 
+  programs.diff-so-fancy.enableGitIntegration = true;
   programs.git = {
     enable = true;
-    userEmail = "zimkaa87@gmail.com";
-    userName = "Anton Zimin";
-    diff-so-fancy.enable = true;
-    lfs.enable = true;
-    extraConfig = {
+    settings = {
+      user.email = "zimkaa87@gmail.com";
+      user.name = "Anton Zimin";
       core = {
         editor = "vim";
       };
@@ -56,10 +55,12 @@
         conflictStyle = "diff3";
         tool = "meld";
       };
-      pull = {
-        rebase = true;
-      };
+      # pull = {
+      #   rebase = true;
+      # };
     };
+    # diff-so-fancy.enable = true;
+    lfs.enable = true;
   };
 
   # # test
