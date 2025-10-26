@@ -1,0 +1,106 @@
+130   2025-05-15 10:27:52   
+ 131   2025-05-15 14:04:21   
+ 132   2025-05-16 11:26:31   (current)
+
+
+
+140
+
+
+132 Stable version (old)
+
+152 Stable version Home-manager
+
+155 New structure Home-managers
+
+157
+
+sudo darwin-rebuild switch --flake ~/.dotfiles/nix/darwin#macpro
+
+
+Old hostname
+
+```text
+Antons-MacBook-Pro
+```
+
+New hostname
+
+```text
+pro
+```
+
+
+
+programs.lazygit = {
+    enable = true;
+    settings = {
+      git.pull.mode = "rebase";
+    };
+  };
+
+
+git config --unset pull.rebase
+
+
+
+
+
+
+
+
+lua require("lint").try_lint()
+
+
+lua print(vim.inspect(require("lint").linters.markdownlint_cli2))
+- выдает nil  "Error running vale: ENOENT: no such file or directory"
+
+{
+  args = { "--config", "/Users/antonzimin/.config/markdownlint-cli2.json", "--" },
+  cmd = "/Users/antonzimin/.local/share/nvim/mason/bin/markdownlint-cli2",
+  ignore_exitcode = true,
+  name = "markdownlint-cli2",
+  parser = <function 1>,
+  stdin = false,
+  stream = "stdout"
+}
+
+
+
+return {
+  "mfussenegger/nvim-lint",
+  opts = {
+    linters_by_ft = {
+      markdown = { "markdownlint-cli2" },
+    },
+  },
+  config = function(_, opts)
+    local lint = require("lint")
+
+    -- Определяем линтер markdownlint-cli2
+    lint.linters.markdownlint_cli2 = {
+      name = "markdownlint-cli2",
+      cmd = vim.fn.expand("~/.local/share/nvim/mason/bin/markdownlint-cli2"),
+      stdin = false,
+      args = {
+        "--config",
+        vim.fn.expand("~/.config/.markdownlint-cli2.jsonc"),
+        "--",
+      },
+      -- markdownlint-cli2 выводит JSON, парсим стандартным методом
+      parser = require("lint.parser").from_json({
+        source = "markdownlint",
+        severity = vim.diagnostic.severity.WARN,
+        attributes = {
+          message = "message",
+          line = "lineNumber",
+          column = "columnNumber",
+          code = "ruleNames",
+        },
+      }),
+    }
+
+    lint.linters_by_ft = opts.linters_by_ft
+  end,
+}
+
