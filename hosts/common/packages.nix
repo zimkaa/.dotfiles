@@ -9,6 +9,7 @@
     # "devbox"
     "duf"
     "dust"
+    "dive"  # docker image inspecrot
     "eza"
     "fd"
     "fzf"
