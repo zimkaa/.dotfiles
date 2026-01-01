@@ -30,7 +30,7 @@
     "pyenv"  # TODO: delete
     # # requires nixpkgs.config.allowUnfree = true;
     "ripgrep"
-    "rustup"
+    # "rustup"  # rust
     "sshs"
     "stow"  # TODO: delete
     "templ"  # LSP for GO develop

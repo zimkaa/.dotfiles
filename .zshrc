@@ -33,6 +33,9 @@ else
   export GPG_TTY="$TTY"
 fi
 
+# Rust locally
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # dotenv settings
 ZSH_DOTENV_FILE=.dev.env
 ZSH_DOTENV_PROMPT=false
