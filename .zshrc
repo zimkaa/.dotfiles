@@ -132,6 +132,14 @@ function vi-yank-clipboard {
 zle -N vi-yank-clipboard
 bindkey -M vicmd 'y' vi-yank-clipboard
 
+# Suffix aliases
+alias -s md="bat"
+alias -s go="nvim"
+alias -s py="nvim"
+alias -s rs="nvim"
+alias -s yaml="bat -l yaml"
+alias -s json="jless"
+
 # History
 HISTSIZE=15000
 HISTFILE=~/.zsh_history

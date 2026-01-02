@@ -7,9 +7,9 @@
     "claude-code"
     "cookiecutter"
     # "devbox"
+    "dive"  # docker image inspecrot
     "duf"
     "dust"
-    "dive"  # docker image inspecrot
     "eza"
     "fd"
     "fzf"
@@ -20,6 +20,7 @@
     "go-task"
     "htop"
     "httpie"
+    "jless"
     "kanata"
     "lazydocker"
     "lazygit"
