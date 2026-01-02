@@ -88,6 +88,49 @@ bindkey "^p" history-search-backward
 bindkey "^n" history-search-forward
 bindkey "^[w" kill-region
 bindkey "^f" autosuggest-accept
+export KEYTIMEOUT=1
+
+# edit command
+export EDITOR='nvim'
+autoload edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+
+# # old cursor
+#  if [[ "$TERM" == "tmux-256color" ]]; then
+#     # \e[5 q - мигающий бар
+#     # \e[1 q - немигающий бар
+#     # \e[3 q - мигающий underline
+#     # \e[4 q - немигающий underline
+#     # \e[7 q - мигающий блок
+#     # \e[2 q - немигающий блок
+#     echo -ne "\e[5 q"
+# fi
+
+export VI_MODE_SET_CURSOR=true
+
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]]; then
+    echo -ne '\e[2 q'
+  else
+    echo -ne '\e[6 q'
+  fi
+}
+zle -N zle-keymap-select
+
+function zle-line-init() {
+  zle -K viins
+  echo -ne '\e[6 q'
+}
+zle -N zle-line-init
+
+# yank
+function vi-yank-clipboard {
+  zle vi-yank
+  exho "$CUTBUFFER" | pbcopy -i
+}
+zle -N vi-yank-clipboard
+bindkey -M vicmd 'y' vi-yank-clipboard
 
 # History
 HISTSIZE=15000
@@ -184,12 +227,3 @@ eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/like_p10k.toml)"
 
-if [[ "$TERM" == "tmux-256color" ]]; then
-    # \e[5 q - мигающий бар
-    # \e[1 q - немигающий бар
-    # \e[3 q - мигающий underline
-    # \e[4 q - немигающий underline
-    # \e[7 q - мигающий блок
-    # \e[2 q - немигающий блок
-    echo -ne "\e[5 q"
-fi
