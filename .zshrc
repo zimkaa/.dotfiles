@@ -136,6 +136,12 @@ alias -s rs="$EDITOR"
 alias -s yaml="bat -l yaml"
 alias -s json="jless"
 
+# Global aliases
+alias -g NE='2>/dev/null'  # example `df -h / NE` instead `df -h / 2> /devnull`
+alias -g ND='>/dev/null'
+alias -g NUL='>/dev/null 2>1'
+alias -g L='| less'
+
 # History
 HISTSIZE=15000
 HISTFILE=~/.zsh_history
@@ -177,7 +183,7 @@ alias la="ls -lAhg"
 alias las="ls -lAhg --sort oldest"
 alias n="nvim"
 alias c="clear"  # Use ctrl + l
-alias cr="cargo run"
+alias cr="cargo run --release"
 alias ct="cargo test"
 alias cat="bat"
 alias lg="lazygit"
