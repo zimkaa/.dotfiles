@@ -4,20 +4,23 @@
     "alejandra"
     "bat"
     "btop"
-    "claude-code"
+    "claude-code"  # AI instrument
     "cookiecutter"
     # "devbox"
+    "direnv"
     "dive"  # docker image inspecrot
+    "dotenvx"
     "duf"
     "dust"
     "eza"
     "fd"
     "fzf"
-    "gemini-cli"
+    "gemini-cli"  # AI instrument
     "ggh"
-    # "ghostty"  # trouble with building
-    "go"
     "go-task"
+    "go"
+    # "ghostty"  # trouble with building
+    "hadolint"  # docker linter
     "htop"
     "httpie"
     "jless"
@@ -29,7 +32,6 @@
     "oh-my-posh"
     "poetry"  # TODO: delete
     "pyenv"  # TODO: delete
-    # # requires nixpkgs.config.allowUnfree = true;
     "ripgrep"
     # "rustup"  # rust
     "sshs"
@@ -39,7 +41,8 @@
     "tmux"
     "uv"  # replacement for poetry and pyenv
     "vim"
-    # vscode-extensions.ms-vscode-remote.remote-ssh
     "yazi"
     "zoxide"
+    # # requires nixpkgs.config.allowUnfree = true;
+    # vscode-extensions.ms-vscode-remote.remote-ssh
 ]

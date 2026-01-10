@@ -36,10 +36,6 @@ fi
 # Rust locally
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# dotenv settings
-ZSH_DOTENV_FILE=.dev.env
-ZSH_DOTENV_PROMPT=false
-
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -70,7 +66,7 @@ zinit wait lucid for MichaelAquilina/zsh-autoswitch-virtualenv
 # Add in snippets
 zinit snippet OMZP::git
 # zinit snippet OMZP::sudo
-zinit snippet OMZP::dotenv
+zinit snippet OMZP::direnv
 zinit snippet OMZP::aws
 zinit snippet OMZP::kubectl
 zinit snippet OMZP::kubectx

@@ -43,7 +43,7 @@ in {
   homebrew = {
     enable = true;
     onActivation = {
-      cleanup = "zap";
+      cleanup = "zap";  # FIXME: temporary
       autoUpdate = true;
       upgrade = true;
     };

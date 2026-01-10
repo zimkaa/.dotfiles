@@ -252,3 +252,14 @@ stow -D .
 ```sh
 sudo apt remove stow
 ```
+
+## Troubles
+
+```text
+rsync (Permission denied в ~/Applications
+```
+
+```sh
+rm -rf "~/Applications/Home Manager Apps"
+```
+
