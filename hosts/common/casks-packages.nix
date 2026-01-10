@@ -7,14 +7,15 @@
     "cheatsheet"  # Mac only
     "cursor"  # Brew name
     "dbeaver-community"  # Brew name
-    "ghostty"  # gui terminal
     "devpod"  # Brew name
     "devtoys"  # Mac only
+    "ghostty"  # gui terminal
     "hiddenbar"  # Mac only
     "iina"  # Mac only
     "keycastr"  # Mac only
     "maccy"  # Mac only
     "neohtop"  # Stable work version Mac only
+    "nextcloud-talk"  # Mac only
     "obs"  # Brew name
     "orbstack"  # Mac only
     "rectangle"  # Mac only
