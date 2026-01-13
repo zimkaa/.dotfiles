@@ -4,10 +4,9 @@ let
     guiPackageNames = import ./gui-packages.nix;
     linuxGuiPackageNames = import ./linux-gui-packages.nix;
 
-    stable-pkgs = inputs.nixpkgs-stable.legacyPackages.${pkgs.system};
+    stable-pkgs = inputs.nixpkgs-stable.legacyPackages.${pkgs.stdenv.hostPlatform.system};
     stableList = [
         "dotenvx"
-        # "zed-editor"
     ];
 in {
     home.stateVersion = stateVersion;
@@ -15,7 +14,6 @@ in {
     home.username = username;
     home.homeDirectory = "/home/${username}";
 
-    # home.packages = map (name: pkgs.${name}) (packageNames ++ guiPackageNames ++ linuxGuiPackageNames);
     home.packages = map (name:
       if builtins.elem name stableList
       then stable-pkgs.dotenvx
