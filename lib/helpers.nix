@@ -55,7 +55,7 @@
   in
     inputs.home-manager.lib.homeManagerConfiguration {
       #specialArgs = { inherit system inputs username unstablePkgs; };
-      extraSpecialArgs = { inherit username stateVersion; };
+      extraSpecialArgs = { inherit inputs username stateVersion; };
 
       pkgs = import inputs.nixpkgs {
         system = system;

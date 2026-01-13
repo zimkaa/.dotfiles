@@ -1,9 +1,10 @@
-{ config, pkgs, username, stateVersion, ... }:
+{ config, pkgs, username, stateVersion, inputs, ... }:
 let
     packageNames = import ./packages.nix;
     guiPackageNames = import ./gui-packages.nix;
     linuxGuiPackageNames = import ./linux-gui-packages.nix;
 
+    stable-pkgs = inputs.nixpkgs-stable.legacyPackages.${pkgs.system};
     stableList = [
         "dotenvx"
         # "zed-editor"
@@ -19,7 +20,7 @@ in {
       if builtins.elem name stableList
       then stable-pkgs.dotenvx
       else pkgs.${name}
-    ) (packageNames ++ guiPackageNames);
+    ) (packageNames ++ guiPackageNames ++ linuxGuiPackageNames);
 
     imports = [ ./../../home/${username}.nix ];
 
