@@ -104,3 +104,9 @@ return {
   end,
 }
 
+
+plugins mason
+
+rust-alalyzer
+lua-language-server
+

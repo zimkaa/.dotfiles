@@ -7,4 +7,5 @@
     "devpod"  # temporary solution
     "obs-studio"
     # "termius"  # Only linux architecture
+    "zed-editor"  # AI instrument
 ]

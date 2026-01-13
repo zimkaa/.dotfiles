@@ -24,4 +24,5 @@
     "termius"  # Only brew install
     "the-unarchiver"  # Brew name
     "visual-studio-code"  # Brew name
+    "zed"  # AI instrument # WORK well
 ]

@@ -1,5 +1,6 @@
 
 [
+    "aerc"  # email shell client
     "air"  # for GO develop
     "alejandra"
     "bat"
@@ -13,6 +14,7 @@
     "duf"
     "dust"
     "eza"
+    "fabric-ai"  # AI instrument
     "fd"
     "fzf"
     "gemini-cli"  # AI instrument
@@ -41,6 +43,7 @@
     "tmux"
     "uv"  # replacement for poetry and pyenv
     "vim"
+    "w3m"  # text-mode web browser
     "yazi"
     "zoxide"
     # # requires nixpkgs.config.allowUnfree = true;
