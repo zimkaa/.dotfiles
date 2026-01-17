@@ -32,8 +32,6 @@
     "neovim"
     "nixd"
     "oh-my-posh"
-    "poetry"  # TODO: delete
-    "pyenv"  # TODO: delete
     "ripgrep"
     # "rustup"  # rust
     "sshs"
