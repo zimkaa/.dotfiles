@@ -33,7 +33,6 @@
     "nixd"
     "oh-my-posh"
     "ripgrep"
-    # "rustup"  # rust
     "sshs"
     "stow"  # TODO: delete
     "templ"  # LSP for GO develop
