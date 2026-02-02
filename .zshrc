@@ -65,7 +65,6 @@ zinit wait lucid for MichaelAquilina/zsh-autoswitch-virtualenv
 
 # Add in snippets
 zinit snippet OMZP::git
-# zinit snippet OMZP::sudo
 zinit snippet OMZP::direnv
 zinit snippet OMZP::aws
 zinit snippet OMZP::kubectl
@@ -91,17 +90,6 @@ export EDITOR='nvim'
 autoload edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
-
-# # old cursor
-#  if [[ "$TERM" == "tmux-256color" ]]; then
-#     # \e[5 q - мигающий бар
-#     # \e[1 q - немигающий бар
-#     # \e[3 q - мигающий underline
-#     # \e[4 q - немигающий underline
-#     # \e[7 q - мигающий блок
-#     # \e[2 q - немигающий блок
-#     echo -ne "\e[5 q"
-# fi
 
 export VI_MODE_SET_CURSOR=true
 
@@ -219,7 +207,6 @@ tmux split-window -h -t work:1.3
 tmux send-key -t work:2.1 'btop' enter
 tmux new-window -a -t work:2
 tmux attach -t work"
-# tmux send-key -t work:3.1 "cd PetProject/trading_bot/new_bot/" enter
 
 # node version manager
 export NVM_DIR="$HOME/.nvm"
