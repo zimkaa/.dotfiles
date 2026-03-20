@@ -19,9 +19,9 @@
     "fzf"
     "gemini-cli"  # AI instrument
     "ggh"
-    "go-task"
-    "go"
     # "ghostty"  # trouble with building
+    "go"
+    "go-task"
     "hadolint"  # docker linter
     "htop"
     "httpie"
