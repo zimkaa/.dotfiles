@@ -1,7 +1,5 @@
 [
-    "bitwarden-desktop"
-    # "code-cursor-fhs"  # cursor
-    "code-cursor"  # cursor
+    # "bitwarden-desktop"
     "dbeaver-bin"
     # "devpod-desktop"  # problem woth install
     "devpod"  # temporary solution

@@ -32,6 +32,7 @@
     "neovim"
     "nixd"
     "oh-my-posh"
+    "pyenv"
     "ripgrep"
     "sshs"
     "stow"  # TODO: delete
