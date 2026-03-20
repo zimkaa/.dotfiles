@@ -28,7 +28,6 @@ in {
     # pkgs.just
     # pkgs.lima
     # pkgs.nix
-    neofetch
     mkalias
   ];
 
@@ -64,6 +63,7 @@ in {
       "outline-secure-internet-access" = 1356178125;
       "Telegram Lite" = 946399090;
       "Slack for Desktop" = 803453959;
+      "v2raytun" = 6476628951;
     };
   };
 
