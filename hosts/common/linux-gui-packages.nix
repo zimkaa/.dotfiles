@@ -1,9 +1,8 @@
 [
-    # "bitwarden-desktop"
+    # "bitwarden-desktop"  # problem with install
     "dbeaver-bin"
-    # "devpod-desktop"  # problem woth install
-    "devpod"  # temporary solution
+    "devpod"
     "obs-studio"
     # "termius"  # Only linux architecture
-    # "zed-editor"  # AI instrument  # now it's not working on linux
+    "zed-editor"  # AI instrument  # now it's not working on linux
 ]

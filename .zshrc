@@ -176,8 +176,17 @@ if [[ "$(uname -m)" == "arm64" ]]; then
   }
 fi
 
+alias t='task'
+alias ds='devpod ssh'
+alias ta='tmux attach -t work'
+alias td='tmux detach'
+alias tn='tmux new -t work'
+alias gpf='git push --force-with-lease'
+alias amgp='amend && gpf'
+alias amgpnv='amendnv && gpf'
+alias amend='git commit --amend'
+alias amendnv='git commit --amend --no-verify'
 alias ls="eza --icons=always"
-# alias ls="ls --color"
 alias la="ls -lAhg"
 alias las="ls -lAhg --sort oldest"
 alias n="nvim"
