@@ -20,11 +20,29 @@ sudo apt install git
 sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon
 ```
 
-#### Enable flakes
+##### Enable flakes
 
 ```sh
 mkdir -p "$HOME/.config/nix/" && \
 echo "experimental-features = nix-command flakes" | tee -a ~/.config/nix/nix.conf > /dev/null
+```
+
+##### Update system
+
+```sh
+sudo apt update -y && \
+sudo apt upgrade -y && \
+nix-channel --update && \
+nix-collect-garbage -d && \
+nix-store --gc && \
+sudo apt autoremove -y && \
+sudo apt autoclean -y && \
+sudo apt clean -y && \
+sudo journalctl --disk-usage && \
+sudo journalctl --vacuum-time=3d && \
+df -h && \
+rm -rf ~/.cache/oh-my-posh && \
+source ~/.zshrc
 ```
 
 #### MacOS

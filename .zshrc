@@ -17,6 +17,11 @@ if test -n "$KITTY_INSTALLATION_DIR"; then
   unfunction kitty-integration
 fi
 
+# podman
+if [[ "$(uname)" == "Linux" ]]; then
+  export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock
+fi
+
 # Node js macos
 if [[ $(uname -m) == "arm64" ]]; then
   export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
@@ -176,6 +181,17 @@ if [[ "$(uname -m)" == "arm64" ]]; then
   }
 fi
 
+## git clone to directory
+gcld() {
+  # Берем имя репозитория из URL (удаляем .git и всё до последнего слэша)
+  local repo_url=$1
+  local repo_name=$(basename "$repo_url" .git)
+
+  # Клонируем в структуру имя/имя
+  git clone "$repo_url" "$repo_name/$repo_name"
+  cd "$repo_name/$repo_name"
+}
+
 alias t='task'
 alias ds='devpod ssh'
 alias ta='tmux attach -t work'
@@ -243,4 +259,7 @@ fi
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/like_p10k.toml)"
+
+## worktrunk
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
 

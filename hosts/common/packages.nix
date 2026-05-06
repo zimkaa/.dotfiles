@@ -42,6 +42,7 @@
     "uv"  # replacement for poetry and pyenv
     "vim"
     "w3m"  # text-mode web browser
+    "worktrunk"  # CLI for git worktree management
     "yazi"
     "zoxide"
     # # requires nixpkgs.config.allowUnfree = true;

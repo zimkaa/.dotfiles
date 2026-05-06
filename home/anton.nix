@@ -143,6 +143,88 @@
     };
   };
 
+  home.sessionVariables = {
+    DOCKER_HOST = "unix:///run/user/${toString config.home.uid}/podman/podman.sock";
+  };
+
+  systemd.user.sockets.podman = {
+    Unit = {
+      Description = "Podman Socket";
+    };
+    Socket = {
+      ListenStream = "%t/podman/podman.sock";
+      SocketMode = "0660";
+    };
+    Install = {
+      WantedBy = [ "sockets.target" ];
+    };
+  };
+
+  systemd.user.services.podman = {
+    Unit = {
+      Description = "Podman API Service";
+    };
+    Service = {
+      ExecStart = "${pkgs.podman}/bin/podman system service --time=0";
+    };
+  };
+
+  xdg.configFile."jesseduffield/lazydocker/config.yml".text = ''
+    gui:
+      scrollHeight: 2
+    commandTemplates:
+      dockerCompose: podman-compose # Или 'podman compose', если используешь встроенный
+      restartService: 'podman-compose restart {{ .Service.Name }}'
+      stopService: 'podman-compose stop {{ .Service.Name }}'
+    customCommands:
+      containers:
+        - name: bash
+          attach: true
+          command: 'podman exec -it {{ .Container.ID }} /bin/sh'
+          serviceNames: []
+  '';
+
+  xdg.configFile."containers/policy.json".text = ''
+    {
+      "default": [
+        {
+          "type": "reject"
+        }
+      ],
+      "transports": {
+        "docker": {
+          "docker.io": [
+            {"type": "insecureAcceptAnything"}
+          ],
+          "ghcr.io": [
+            {"type": "insecureAcceptAnything"}
+          ],
+          "mcr.microsoft.com": [
+            {"type": "insecureAcceptAnything"}
+          ]
+        },
+        "docker-archive": {
+          "": [
+            {"type": "insecureAcceptAnything"}
+          ]
+        },
+        "oci-archive": {
+          "": [
+            {"type": "insecureAcceptAnything"}
+          ]
+        },
+        "dir": {
+          "": [
+            {"type": "insecureAcceptAnything"}
+          ]
+        }
+      }
+    }
+  '';
+
+  xdg.configFile."containers/registries.conf".text = ''
+    unqualified-search-registries = ["docker.io", "quay.io"]
+  '';
   # programs.kitty = {
   #   extraConfig = ''
   #     shell_integration disabled
