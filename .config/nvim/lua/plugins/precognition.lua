@@ -2,6 +2,10 @@ return {
   "tris203/precognition.nvim",
   --event = "VeryLazy",
   opts = {
+      targetedMotionHints = {
+          enabled = false,
+          prio = 0,
+      },
     -- startVisible = true,
     -- showBlankVirtLine = true,
     -- highlightColor = { link = "Comment" },

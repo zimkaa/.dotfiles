@@ -27,6 +27,7 @@
     "httpie"
     "jless"
     "kanata"
+    "kubectl"
     "lazydocker"
     "lazygit"
     "neovim"

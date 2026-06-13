@@ -80,7 +80,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 #### Reread conf
 
 ```sh
-tmux source ~/.config/tmux/.tmux.conf
+tmux source ~/.config/tmux/tmux.conf
 ```
 
 And install plugins
@@ -145,6 +145,39 @@ nix flake update --flake ~/.dotfiles && \
 sudo darwin-rebuild switch --flake ~/.dotfiles#macpro && \
 rm -rf ~/.cache/oh-my-posh && \
 source ~/.zshrc
+```
+
+#### Linux Cachyos `hp`
+
+install home-manager
+
+
+```sh
+nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager && \
+nix-channel --update && \
+nix run home-manager switch -- -b backup --flake ~/.dotfiles#hp && \
+nix flake update --flake ~/.dotfiles && \
+home-manager switch -b backup --flake ~/.dotfiles#hp
+```
+
+##### kanata
+
+```sh
+sudo groupdel uinput 2>/dev/null
+sudo groupadd --system uinput
+sudo usermod -aG input $USER
+sudo usermod -aG uinput $USER
+sudo modprobe uinput
+sudo tee /etc/udev/rules.d/99-input.rules > /dev/null <<EOF
+KERNEL=="uinput", MODE="0660", GROUP="uinput", OPTIONS+="static_node=uinput"
+EOF
+sudo udevadm control --reload-rules && sudo udevadm trigger
+```
+
+##### devpod
+
+```sh
+devpod provider add github.com/kuju63/devpod-provider-podman
 ```
 
 #### Linux Arch `zimaa`

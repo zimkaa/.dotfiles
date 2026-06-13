@@ -3,7 +3,7 @@ return {
     opts = {
         formatters_by_ft = {
             markdown = { "markdownlint-cli2", "markdown-toc" },
-
+            python = { "ruff_organize_imports", "ruff_format" },
         },
         formatters = {
             ["markdownlint-cli2"] = {

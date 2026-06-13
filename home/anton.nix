@@ -105,6 +105,10 @@
       source = config.lib.file.mkOutOfStoreSymlink "/home/${username}/.dotfiles/.config/kitty";
       recursive = true;
     };
+    ".config/ghostty" = {
+      source = config.lib.file.mkOutOfStoreSymlink "/home/${username}/.dotfiles/.config/ghostty";
+      recursive = true;
+    };
     ".config/ohmyposh" = {
       source = config.lib.file.mkOutOfStoreSymlink "/home/${username}/.dotfiles/.config/ohmyposh";
       recursive = true;
@@ -123,6 +127,14 @@
     };
     ".config/kanata" = {
       source = config.lib.file.mkOutOfStoreSymlink "/home/${username}/.dotfiles/.config/kanata/linux";
+      recursive = true;
+    };
+    ".config/markdownlint" = {
+      source = config.lib.file.mkOutOfStoreSymlink "/home/${username}/.dotfiles/.config/markdownlint";
+      recursive = true;
+    };
+    ".config/worktrunk" = {
+      source = config.lib.file.mkOutOfStoreSymlink "/home/${username}/.dotfiles/.config/worktrunk";
       recursive = true;
     };
   };

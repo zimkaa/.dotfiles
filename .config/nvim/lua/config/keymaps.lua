@@ -45,13 +45,13 @@ if vim.g.vscode then
     { "n", "<leader>sr", "editor.action.referenceSearch.trigger" },
     -- NOTE: search in file
     { "n", "<leader>ff", "action.find" },
-    -- NOTE: find and replase in file
+    -- NOTE: find and replace in file
     { "n", "<leader>fr", "editor.action.startFindReplaceAction" },
     -- NOTE: search global
     { "n", "<leader>fg", "workbench.action.findInFiles" },
-    -- NOTE: find and replase global
+    -- NOTE: find and replace global
     { "n", "<leader>rg", "workbench.action.replaseInFiles" },
-    -- NOTE: replase global
+    -- NOTE: replace global
     { "n", "<leader>re", "editor.action.rename" },
     -- NOTE: refactor
     { "n", "<leader>rf", "editor.action.refactor" },

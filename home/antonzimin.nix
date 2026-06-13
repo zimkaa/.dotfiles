@@ -124,6 +124,14 @@
       source = config.lib.file.mkOutOfStoreSymlink "/Users/${username}/.dotfiles/.config/yazi";
       recursive = true;
     };
+    ".config/worktrunk" = {
+      source = config.lib.file.mkOutOfStoreSymlink "/home/${username}/.dotfiles/.config/worktrunk";
+      recursive = true;
+    };
+    ".config/markdownlint" = {
+      source = config.lib.file.mkOutOfStoreSymlink "/home/${username}/.dotfiles/.config/markdownlint";
+      recursive = true;
+    };
     ".config/kanata" = {
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/kanata/macos";
       recursive = true;

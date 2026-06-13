@@ -10,6 +10,15 @@ return {
             },
           },
         },
+        -- jedi_language_server = false,
+        pyright = {
+          settings = {
+            python = {
+              venvPath = ".",
+              pythonPath = "./.venv/bin/python",
+            },
+          },
+        },
       },
       vim.lsp.enable("cspell_ls"),
       vim.lsp.config("cspell_ls", {
