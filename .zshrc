@@ -135,7 +135,6 @@ bindkey -M vicmd 'y' vi-yank-clipboard
 # Suffix aliases
 alias -s md="bat"
 alias -s go="$EDITOR"
-alias -s py="$EDITOR"
 alias -s rs="$EDITOR"
 alias -s yaml="bat -l yaml"
 alias -s json="jless"

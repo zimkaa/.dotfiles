@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
 
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
@@ -35,7 +35,7 @@
     let
       inherit (self) outputs;
 
-      stateVersion = "25.11";
+      stateVersion = "26.05";
       libx = import ./lib { inherit inputs outputs stateVersion; };
 
     in {

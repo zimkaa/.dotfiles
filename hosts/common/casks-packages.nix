@@ -12,6 +12,7 @@
     "hiddenbar"  # Mac only
     "iina"  # Mac only
     "keycastr"  # Mac only
+    "lm-studio"
     "maccy"  # Mac only
     "neohtop"  # Stable work version Mac only
     "nextcloud-talk"  # Mac only
