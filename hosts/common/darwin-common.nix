@@ -29,6 +29,7 @@ in {
     # pkgs.lima
     # pkgs.nix
     mkalias
+    pkgs.kanata
   ];
 
   fonts.packages = [
@@ -41,9 +42,10 @@ in {
 
   homebrew = {
     enable = true;
+    user = "antonzimin";
     onActivation = {
       cleanup = "zap";  # FIXME: temporary
-      autoUpdate = true;
+      autoUpdate = false;
       upgrade = true;
     };
     global.autoUpdate = true;
@@ -53,7 +55,8 @@ in {
       "mas"
       "ollama"  # service
       "openssl@3"
-      "pkg-config"
+      # "pkg-config"  # old name
+      "pkgconf"  # new name
       "protobuf"
       "syncthing"  # service
     ];

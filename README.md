@@ -223,6 +223,10 @@ OR
 sudo nix-env --list-generations --profile /nix/var/nix/profiles/system
 ```
 
+```sh
+sudo nix-env -p /nix/var/nix/profiles/system --delete-generations 30d
+```
+
 ### Rollback
 
 #### MacOS generation

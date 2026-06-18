@@ -122,7 +122,7 @@
       recursive = true;
     };
     ".config/kanata" = {
-      source = config.lib.file.mkOutOfStoreSymlink "/home/${username}/.dotfiles/.config/kanata";
+      source = config.lib.file.mkOutOfStoreSymlink "/home/${username}/.dotfiles/.config/kanata/linux";
       recursive = true;
     };
   };
