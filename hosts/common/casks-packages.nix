@@ -11,6 +11,7 @@
     "ghostty"  # gui terminal
     "hiddenbar"  # Mac only
     "iina"  # Mac only
+    "karabiner-elements"  # for kanata keyremaping
     "keycastr"  # Mac only
     "lm-studio"
     "maccy"  # Mac only

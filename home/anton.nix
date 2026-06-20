@@ -134,7 +134,7 @@
     };
 
     Service = {
-      ExecStart = "${pkgs.kanata}/bin/kanata -c ${config.home.homeDirectory}/.config/kanata/config.kbd";
+      ExecStart = "${pkgs.kanata}/bin/kanata -c ${config.home.homeDirectory}/.config/kanata/kanata.kbd";
       Restart = "always";
     };
 

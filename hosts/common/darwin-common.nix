@@ -32,6 +32,48 @@ in {
     pkgs.kanata
   ];
 
+
+  environment.etc."LaunchDaemons/com.kanata.keyremap.plist".text = ''
+    <?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+    <plist version="1.0">
+    <dict>
+        <key>Label</key>
+        <string>com.kanata.keyremap</string>
+        <key>ProgramArguments</key>
+        <array>
+            <string>${pkgs.kanata}/bin/kanata</string>
+            <string>--cfg</string>
+            <string>/Users/antonzimin/.config/kanata/kanata.kbd</string>
+        </array>
+        <key>RunAtLoad</key>
+        <true/>
+        <key>KeepAlive</key>
+        <true/>
+        <key>StandardOutPath</key>
+        <string>/var/log/kanata.out.log</string>
+        <key>StandardErrorPath</key>
+        <string>/var/log/kanata.err.log</string>
+    </dict>
+    </plist>
+  '';
+
+  system.activationScripts.postActivation.text = ''
+    echo "Activation: Setting up kanata launchd service..."
+
+    # 1. Создаем симлинк в системную директорию /Library/LaunchDaemons
+    # Использование ln -sfn перезаписывает ссылку, если она уже существовала
+    ln -sfn /etc/LaunchDaemons/com.kanata.keyremap.plist /Library/LaunchDaemons/com.kanata.keyremap.plist
+
+    # 2. Регистрируем службу (bootstrap) в системе, если она еще не зарегистрирована
+    # Перенаправляем ошибки в /dev/null на случай, если служба уже добавлена
+    launchctl bootstrap system /Library/LaunchDaemons/com.kanata.keyremap.plist 2>/dev/null || true
+
+    # 3. Принудительно запускаем или перезапускаем службу, чтобы применились изменения в конфигах
+    launchctl kickstart -kp system/com.kanata.keyremap
+    '';
+
+
   fonts.packages = [
     pkgs.nerd-fonts.fira-code
     pkgs.nerd-fonts.fira-mono

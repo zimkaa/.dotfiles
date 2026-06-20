@@ -224,7 +224,12 @@ sudo nix-env --list-generations --profile /nix/var/nix/profiles/system
 ```
 
 ```sh
-sudo nix-env -p /nix/var/nix/profiles/system --delete-generations 30d
+sudo nix-env -p /nix/var/nix/profiles/system --delete-generations 10d && \
+nix-env --delete-generations 10d && \
+sudo nix-store --gc && \
+sudo nix-store --optimise && \
+brew cleanup -s && \
+nix-collect-garbage -d
 ```
 
 ### Rollback
