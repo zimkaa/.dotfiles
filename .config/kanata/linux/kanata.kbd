@@ -6,9 +6,10 @@
 (defsrc
   caps a s d f j k l ;
 )
+
 (defvar
-  tap-time 150
-  hold-time 200
+  tap-time 300
+  hold-time 300
 )
 
 (defalias

@@ -63,7 +63,7 @@
       };
 
       modules = [
-        ./../hosts/common/home-packages.nix
+        ./../hosts/common/home-manager-packages.nix
       ];
     };
 }

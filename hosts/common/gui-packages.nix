@@ -5,6 +5,5 @@
     "kitty"
     "obsidian"
     "libreoffice"
-    # "postman"
     "thunderbird"
 ]
