@@ -208,6 +208,7 @@ alias n="nvim"
 alias c="clear"  # Use ctrl + l
 alias cr="cargo run --release"
 alias ct="cargo test"
+alias ctc="cargo test && cargo clippy --all-targets --fix --allow-dirty"
 alias cat="bat"
 alias lg="lazygit"
 alias ld="lazydocker"
@@ -266,3 +267,5 @@ eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/like_p10k.toml)"
 ## worktrunk
 if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
 
+# Taskfile
+eval "$(task --completion zsh)"
