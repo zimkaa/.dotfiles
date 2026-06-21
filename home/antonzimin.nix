@@ -138,6 +138,17 @@
     };
   };
 
+  programs.hunk = {
+    enable = true;
+    enableGitIntegration = true; # Интеграция с вашим programs.git.enable = true;
+
+    settings = {
+      theme = "graphite";
+      mode = "split";
+      line_numbers = true;
+    };
+  };
+
   # programs.kitty = {
   #   extraConfig = ''
   #     shell_integration disabled

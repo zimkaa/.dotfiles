@@ -39,6 +39,17 @@
   #   ];
   # };
 
+  programs.hunk = {
+    enable = true;
+    enableGitIntegration = true; # Интеграция с вашим programs.git.enable = true;
+
+    settings = {
+      theme = "graphite";
+      mode = "split";
+      line_numbers = true;
+    };
+  };
+
   programs.diff-so-fancy.enableGitIntegration = true;
   programs.git = {
     enable = true;

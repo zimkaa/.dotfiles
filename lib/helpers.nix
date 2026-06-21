@@ -30,7 +30,10 @@
             home-manager.extraSpecialArgs = { inherit inputs username stateVersion; };
             home-manager.backupFileExtension = "backup";
             #home-manager.sharedModules = [ inputs.nixvim.homeManagerModules.nixvim ];
-            home-manager.users.${username} = { imports = [ ./../home/${username}.nix ]; };
+            home-manager.users.${username} = { imports = [
+              ./../home/${username}.nix
+              inputs.hunk.homeManagerModules.default
+            ]; };
         }
         inputs.nix-homebrew.darwinModules.nix-homebrew {
           nix-homebrew = {

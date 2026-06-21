@@ -20,7 +20,10 @@ in {
       else pkgs.${name}
     ) (packageNames ++ guiPackageNames ++ linuxGuiPackageNames);
 
-    imports = [ ./../../home/${username}.nix ];
+    imports = [
+      ./../../home/${username}.nix
+      inputs.hunk.homeManagerModules.default
+    ];
 
     programs.home-manager.enable = true;
 }

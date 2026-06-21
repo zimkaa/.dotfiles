@@ -10,6 +10,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hunk = {
+      url = "github:modem-dev/hunk";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -30,7 +35,7 @@
     };
   };
 
-  outputs = { ... }@inputs:
+  outputs = { hunk, ... }@inputs:
     with inputs;
     let
       inherit (self) outputs;
