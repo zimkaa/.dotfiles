@@ -246,7 +246,7 @@ export FZF_DEFAULT_OPTS="--bind 'ctrl-j:accept'"
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 
-PATH=~/.console-ninja/.bin:$PATH
+
 
 if [ -z "$SSH_AUTH_SOCK" ] ; then
   eval `ssh-agent -s` > /dev/null
