@@ -40,6 +40,7 @@ sudo apt autoclean -y && \
 sudo apt clean -y && \
 sudo journalctl --disk-usage && \
 sudo journalctl --vacuum-time=3d && \
+podman builder prune --all || echo "podman not installed" && \
 df -h && \
 rm -rf ~/.cache/oh-my-posh && \
 source ~/.zshrc
