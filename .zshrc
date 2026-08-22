@@ -246,14 +246,19 @@ export FZF_DEFAULT_OPTS="--bind 'ctrl-j:accept'"
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 
-
-
-if [ -z "$SSH_AUTH_SOCK" ] ; then
-  eval `ssh-agent -s` > /dev/null
+if [ -z "$SSH_AUTH_SOCK" ] || [ ! -S "$SSH_AUTH_SOCK" ] ; then
+  eval "$(ssh-agent -s)" > /dev/null
 fi
 
-if ssh-add -l | grep -q "The agent has no identities"; then
-  ssh-add ~/.ssh/id_ed25519
+# if ssh-add -l | grep -q "The agent has no identities"; then
+#   ssh-add ~/.ssh/id_ed25519
+# fi
+if [ -S "$SSH_AUTH_SOCK" ]; then
+  ssh-add -l >/dev/null 2>&1
+  if [ $? -eq 1 ]; then
+    # Код возврата 1 означает "Agent has no identities"
+    ssh-add ~/.ssh/id_ed25519 2>/dev/null
+  fi
 fi
 
 # Shell integrations
