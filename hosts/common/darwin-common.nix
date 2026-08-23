@@ -86,7 +86,7 @@ in {
     enable = true;
     user = "antonzimin";
     onActivation = {
-      cleanup = "zap";  # FIXME: temporary
+      # cleanup = "zap";  # FIXME: temporary
       autoUpdate = false;
       upgrade = true;
     };
