@@ -2,9 +2,10 @@
     "appcleaner"  # Mac only
     "balenaetcher"  # Brew name
     "bitwarden"  # Brew name
+    "brave-browser"  # Brew name
     "caffeine"  # Mac only
     "chatgpt"  # Mac only
-    "cheatsheet"  # Mac only
+    # "cheatsheet"  # Mac only
     "dbeaver-community"  # Brew name
     "devpod"  # Brew name
     "devtoys"  # Mac only
