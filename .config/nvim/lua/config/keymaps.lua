@@ -8,6 +8,9 @@
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "move lines down in visual selection" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "move lines up in visual selection" })
 
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "centred after scroll" })
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "centred after scroll" })
+
 -- -- Not work for my config.
 -- -- Centred find word
 -- vim.keymap.set("n", "n", "nzzzv")
