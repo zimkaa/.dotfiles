@@ -125,11 +125,11 @@
       recursive = true;
     };
     ".config/worktrunk" = {
-      source = config.lib.file.mkOutOfStoreSymlink "/home/${username}/.dotfiles/.config/worktrunk";
+      source = config.lib.file.mkOutOfStoreSymlink "/Users/${username}/.dotfiles/.config/worktrunk";
       recursive = true;
     };
     ".config/markdownlint" = {
-      source = config.lib.file.mkOutOfStoreSymlink "/home/${username}/.dotfiles/.config/markdownlint";
+      source = config.lib.file.mkOutOfStoreSymlink "/Users/${username}/.dotfiles/.config/markdownlint";
       recursive = true;
     };
     ".config/kanata" = {

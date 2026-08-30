@@ -19,6 +19,7 @@
     "fzf"
     "gemini-cli"  # AI instrument
     "ggh"
+    "gping"
     # "ghostty"  # trouble with building
     "go"
     "go-task"
