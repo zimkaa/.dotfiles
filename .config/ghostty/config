@@ -1,3 +1,5 @@
 font-family = "FiraCode Nerd Font Mono"
 
 keybind = ctrl+m=text:\x0D
+
+macos-option-as-alt = true

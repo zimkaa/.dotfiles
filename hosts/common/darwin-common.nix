@@ -59,6 +59,10 @@ in {
   '';
 
   system.activationScripts.postActivation.text = ''
+    # Включаем "Option as Meta" для профиля по умолчанию (Basic)
+    /usr/bin/defaults write com.apple.Terminal "Default Window Settings" -string "Basic"
+    /usr/bin/defaults write com.apple.Terminal "Window Settings" -dict-add "Basic" "{useOptionAsMetaKey = 1;}"
+
     echo "Activation: Setting up kanata launchd service..."
 
     # 1. Создаем симлинк в системную директорию /Library/LaunchDaemons
@@ -71,7 +75,7 @@ in {
 
     # 3. Принудительно запускаем или перезапускаем службу, чтобы применились изменения в конфигах
     launchctl kickstart -kp system/com.kanata.keyremap
-    '';
+  '';
 
 
   fonts.packages = [

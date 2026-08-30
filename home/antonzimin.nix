@@ -108,6 +108,10 @@
       source = config.lib.file.mkOutOfStoreSymlink "/Users/${username}/.dotfiles/.config/kitty";
       recursive = true;
     };
+    ".config/ghostty" = {
+      source = config.lib.file.mkOutOfStoreSymlink "/Users/${username}/.dotfiles/.config/ghostty";
+      recursive = true;
+    };
     ".config/ohmyposh" = {
       source = config.lib.file.mkOutOfStoreSymlink "/Users/${username}/.dotfiles/.config/ohmyposh";
       recursive = true;
