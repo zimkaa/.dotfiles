@@ -9,6 +9,16 @@ if [[ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
+OS_NAME=$(. /etc/os-release && echo "$ID")
+
+if [ "$OS_NAME" = "linuxmint" ]; then
+  # main machine
+else
+  # inside container
+  # Load completions
+  autoload -Uz compinit && compinit
+fi
+
 # Terminal configs for kitty
 if test -n "$KITTY_INSTALLATION_DIR"; then
   export KITTY_SHELL_INTEGRATION="enabled"
@@ -27,23 +37,28 @@ if [[ $(uname -m) == "arm64" ]]; then
   export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
 fi
 
-if [[ "$(uname)" == "Linux" ]]; then
-  # Nix Troubleshooting
-  export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
-fi
-
 if [ -n "$TTY" ]; then
   export GPG_TTY=$(tty)
 else
   export GPG_TTY="$TTY"
 fi
 
+if [ "$OS_NAME" = "linuxmint" ]; then
+  # main machine
+  export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
+else
+  # inside container
+fi
+
 # Rust locally
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # You may need to manually set your language environment
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
+if [ "$OS_NAME" = "linuxmint" ]; then
+  # main machine
+  export LANG=en_US.UTF-8
+  export LC_ALL=en_US.UTF-8
+fi
 
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -76,9 +91,6 @@ zinit snippet OMZP::kubectl
 zinit snippet OMZP::kubectx
 zinit snippet OMZP::rust
 zinit snippet OMZP::command-not-found
-
-# Load completions
-autoload -Uz compinit && compinit
 
 zinit cdreplay -q
 
@@ -166,20 +178,6 @@ zstyle ":fzf-tab:complete:cd:*" fzf-preview "eza --icons=always -1 --color=alway
 zstyle ":fzf-tab:complete:code:*" fzf-preview "eza --icons=always -1 --color=always $realpath"
 zstyle ":fzf-tab:complete:__zoxide_z:*" fzf-preview "eza --icons=always -1 --color=always $realpath"
 
-# Aliases
-if [[ "$(uname)" == "Linux" ]]; then
-  cur() {
-    nohup cursor "$@" >/dev/null 2>&1 &
-    disown $!
-  }
-fi
-
-if [[ "$(uname -m)" == "arm64" ]]; then
-  cur() {
-    cursor
-  }
-fi
-
 ## git clone to directory
 gcld() {
   # Берем имя репозитория из URL (удаляем .git и всё до последнего слэша)
@@ -192,27 +190,49 @@ gcld() {
 }
 
 alias t='task'
-alias ds='devpod ssh'
-alias ta='tmux attach -t work'
-alias td='tmux detach'
-alias tn='tmux new -t work'
+alias n='nvim'
+alias c='clear'  # Use ctrl + l
+alias vc='nvim --clean'  # for too long text file
+
+## git 
+gcld() {
+  # Берем имя репозитория из URL (удаляем .git и всё до последнего слэша)
+  local repo_url=$1
+  local repo_name=$(basename "$repo_url" .git)
+  
+  # Клонируем в структуру имя/имя
+  git clone "$repo_url" "$repo_name/$repo_name"
+  cd "$repo_name/$repo_name"
+}
 alias gpf='git push --force-with-lease'
 alias amgp='amend && gpf'
 alias amgpnv='amendnv && gpf'
 alias amend='git commit --amend'
 alias amendnv='git commit --amend --no-verify'
+alias ws='wt switch'
+alias wl='wt list'
+
+alias di='t deb-install -- $(fd -g "*.deb" | fzf)'  # install debian package
+alias sr='source ~/.zshrc'  # source reload
+alias ve='. ./.venv/bin/activate'  # short cut for venv activate
+alias ds='devpod ssh'
+alias dst='devpod stop'
+alias ta='tmux attach -t work'
+alias td='tmux detach'
+alias tn='tmux new -t work'
 alias ls="eza --icons=always"
 alias la="ls -lAhg"
 alias las="ls -lAhg --sort oldest"
-alias n="nvim"
-alias c="clear"  # Use ctrl + l
 alias cr="cargo run --release"
-alias ct="cargo test"
+alias ct='cargo test'
 alias ctc="cargo test && cargo clippy --all-targets --fix --allow-dirty"
-alias cat="bat"
-alias lg="lazygit"
-alias ld="lazydocker"
-alias md="mkdir"
+alias cat='batcat'
+alias lg='lazygit'
+alias ld='lazydocker'
+alias rm='rm -i'
+alias md='mkdir'
+alias diff='diff --color=always'
+
 alias my_tmux="
 tmux new -s labs -d
 tmux new-window -a -t labs:1
@@ -250,6 +270,9 @@ if [ -z "$SSH_AUTH_SOCK" ] || [ ! -S "$SSH_AUTH_SOCK" ] ; then
   eval "$(ssh-agent -s)" > /dev/null
 fi
 
+# nvim go connection problem
+go env -w GOPROXY=https://goproxy.cn,direct
+
 # if ssh-add -l | grep -q "The agent has no identities"; then
 #   ssh-add ~/.ssh/id_ed25519
 # fi
@@ -262,12 +285,31 @@ if [ -S "$SSH_AUTH_SOCK" ]; then
 fi
 
 # Shell integrations
-if [[ ! "$shell" == /nix/store/* ]]; then
-  eval "$(pyenv init -)"
+## pyenv
+if [ "$OS_NAME" = "linuxmint" ]; then
+  # main machine
+  export PYENV_ROOT="$HOME/.pyenv"
+  [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+
+  if [[ ! "$SHELL" == /nix/store/* ]]; then
+    eval "$(pyenv init -)"
+  fi
+else
+  # inside container
+  # do nothing
 fi
+
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
-eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/like_p10k.toml)"
+if [ "$OS_NAME" = "linuxmint" ]; then
+  # main machine
+  eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/like_p10k.toml)"
+else
+  # inside container
+  [ -f "$HOME/.config/ohmyposh/spaceship.omp.json" ] || curl -o "$HOME/.config/ohmyposh/spaceship.omp.json" "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/refs/heads/main/themes/spaceship.omp.json"
+  eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/spaceship.omp.json)"
+  eval "$(uv generate-shell-completion zsh)"
+fi
 
 ## worktrunk
 if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
