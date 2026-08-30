@@ -3,6 +3,7 @@
     "aerc"  # email shell client
     "air"  # for GO develop
     "alejandra"
+    "antigravity-cli" #  old name gemini-cli  # AI instrument
     "bat"
     "btop"
     "claude-code"  # AI instrument
@@ -17,7 +18,6 @@
     "fabric-ai"  # AI instrument
     "fd"
     "fzf"
-    "gemini-cli"  # AI instrument
     "ggh"
     "gping"
     # "ghostty"  # trouble with building

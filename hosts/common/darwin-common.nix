@@ -30,9 +30,21 @@ in {
     # pkgs.nix
     mkalias
     pkgs.kanata
+
+    # --- ДОБАВЛЯЕМ RUST ---
+    rustc
+    cargo
+    rust-analyzer
+    rustfmt
+    clippy
   ];
 
+  # Добавляем переменные окружения для Rust глобально
+  environment.variables = {
+    RUST_BACKTRACE = "1";
+  };
 
+  # --- ИСПРАВЛЕННЫЙ БЛОК KANATA ---
   environment.etc."LaunchDaemons/com.kanata.keyremap.plist".text = ''
     <?xml version="1.0" encoding="UTF-8"?>
     <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -44,7 +56,8 @@ in {
         <array>
             <string>${pkgs.kanata}/bin/kanata</string>
             <string>--cfg</string>
-            <string>/Users/antonzimin/.config/kanata/kanata.kbd</string>
+            <string>/Users/${username}/.config/kanata/kanata.kbd</string>
+            <string>--nativetool-allowed</string>
         </array>
         <key>RunAtLoad</key>
         <true/>
@@ -58,6 +71,7 @@ in {
     </plist>
   '';
 
+  # --- ИСПРАВЛЕННЫЙ БЛОК АКТИВАЦИИ ---
   system.activationScripts.postActivation.text = ''
     # Включаем "Option as Meta" для профиля по умолчанию (Basic)
     /usr/bin/defaults write com.apple.Terminal "Default Window Settings" -string "Basic"
@@ -66,18 +80,16 @@ in {
     echo "Activation: Setting up kanata launchd service..."
 
     # 1. Создаем симлинк в системную директорию /Library/LaunchDaemons
-    # Использование ln -sfn перезаписывает ссылку, если она уже существовала
     ln -sfn /etc/LaunchDaemons/com.kanata.keyremap.plist /Library/LaunchDaemons/com.kanata.keyremap.plist
 
-    # 2. Регистрируем службу (bootstrap) в системе, если она еще не зарегистрирована
-    # Перенаправляем ошибки в /dev/null на случай, если служба уже добавлена
+    # 2. Регистрируем службу (bootstrap) в системе
     launchctl bootstrap system /Library/LaunchDaemons/com.kanata.keyremap.plist 2>/dev/null || true
 
-    # 3. Принудительно запускаем или перезапускаем службу, чтобы применились изменения в конфигах
+    # 3. Принудительно запускаем или перезапускаем службу
     launchctl kickstart -kp system/com.kanata.keyremap
   '';
 
-
+  # --- ИСПРАВЛЕННЫЙ БЛОК ШРИФТОВ ---
   fonts.packages = [
     pkgs.nerd-fonts.fira-code
     pkgs.nerd-fonts.fira-mono
@@ -88,7 +100,7 @@ in {
 
   homebrew = {
     enable = true;
-    user = "antonzimin";
+    user = "${username}"; # Использование переменной вместо хардкода
     onActivation = {
       # cleanup = "zap";  # FIXME: temporary
       autoUpdate = false;
@@ -194,7 +206,6 @@ in {
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system.stateVersion = 5;
-
 
   # TODO: Find out 
 
