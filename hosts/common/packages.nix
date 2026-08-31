@@ -24,6 +24,7 @@
     "go"
     "go-task"
     "hadolint"  # docker linter
+    "herdr"
     "htop"
     "httpie"
     "jless"
