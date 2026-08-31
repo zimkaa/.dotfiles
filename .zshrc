@@ -139,7 +139,7 @@ function y() {
 # yank
 function vi-yank-clipboard {
   zle vi-yank
-  exho "$CUTBUFFER" | pbcopy -i
+  echo "$CUTBUFFER" | pbcopy -i
 }
 zle -N vi-yank-clipboard
 bindkey -M vicmd 'y' vi-yank-clipboard
