@@ -28,7 +28,7 @@ if test -n "$KITTY_INSTALLATION_DIR"; then
 fi
 
 # podman
-if [[ "$(uname)" == "Linux" ]]; then
+if [[ "$(uname)" == "Linux" ]] && [[ -S "$XDG_RUNTIME_DIR/podman/podman.sock" ]]; then
   export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock
 fi
 
@@ -37,11 +37,7 @@ if [[ $(uname -m) == "arm64" ]]; then
   export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
 fi
 
-if [ -n "$TTY" ]; then
-  export GPG_TTY=$(tty)
-else
-  export GPG_TTY="$TTY"
-fi
+export GPG_TTY="$TTY"
 
 if [ "$OS_NAME" = "linuxmint" ] || [ "$(uname -s)" = "Darwin" ]; then
   # main machine
@@ -139,7 +135,13 @@ function y() {
 # yank
 function vi-yank-clipboard {
   zle vi-yank
-  echo "$CUTBUFFER" | pbcopy -i
+  if command -v pbcopy >/dev/null 2>&1; then
+    echo -n "$CUTBUFFER" | pbcopy
+  elif command -v xclip >/dev/null 2>&1; then
+    echo -n "$CUTBUFFER" | xclip -selection clipboard
+  elif command -v xsel >/dev/null 2>&1; then
+    echo -n "$CUTBUFFER" | xsel --clipboard --input
+  fi
 }
 zle -N vi-yank-clipboard
 bindkey -M vicmd 'y' vi-yank-clipboard
@@ -149,7 +151,7 @@ alias -s md="bat"
 alias -s go="$EDITOR"
 alias -s rs="$EDITOR"
 alias -s yaml="bat -l yaml"
-alias -s json="jless"
+command -v jless >/dev/null 2>&1 && alias -s json="jless"
 
 # Global aliases
 alias -g NE='2>/dev/null'  # example `df -h / NE` instead `df -h / 2> /devnull`
@@ -232,7 +234,7 @@ elif command -v batcat >/dev/null 2>&1; then
     alias cat='batcat'
 fi
 alias lg='lazygit'
-alias ld='lazydocker'
+command -v lazydocker >/dev/null 2>&1 && alias ld="lazydocker"
 alias rm='rm -i'
 alias md='mkdir'
 alias diff='diff --color=always'
@@ -277,9 +279,6 @@ fi
 # nvim go connection problem
 go env -w GOPROXY=https://goproxy.cn,direct
 
-# if ssh-add -l | grep -q "The agent has no identities"; then
-#   ssh-add ~/.ssh/id_ed25519
-# fi
 if [ -S "$SSH_AUTH_SOCK" ]; then
   ssh-add -l >/dev/null 2>&1
   if [ $? -eq 1 ]; then
