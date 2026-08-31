@@ -226,7 +226,11 @@ alias las="ls -lAhg --sort oldest"
 alias cr="cargo run --release"
 alias ct='cargo test'
 alias ctc="cargo test && cargo clippy --all-targets --fix --allow-dirty"
-alias cat='batcat'
+if command -v bat >/dev/null 2>&1; then
+    alias cat='bat'
+elif command -v batcat >/dev/null 2>&1; then
+    alias cat='batcat'
+fi
 alias lg='lazygit'
 alias ld='lazydocker'
 alias rm='rm -i'
