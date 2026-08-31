@@ -11,7 +11,7 @@ fi
 
 OS_NAME=$(. /etc/os-release && echo "$ID")
 
-if [ "$OS_NAME" = "linuxmint" ]; then
+if [ "$OS_NAME" = "linuxmint" ] || [ "$(uname -s)" = "Darwin" ]; then
   # main machine
 else
   # inside container
@@ -43,7 +43,7 @@ else
   export GPG_TTY="$TTY"
 fi
 
-if [ "$OS_NAME" = "linuxmint" ]; then
+if [ "$OS_NAME" = "linuxmint" ] || [ "$(uname -s)" = "Darwin" ]; then
   # main machine
   export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
 else
@@ -286,7 +286,7 @@ fi
 
 # Shell integrations
 ## pyenv
-if [ "$OS_NAME" = "linuxmint" ]; then
+if [ "$OS_NAME" = "linuxmint" ] || [ "$(uname -s)" = "Darwin" ]; then
   # main machine
   export PYENV_ROOT="$HOME/.pyenv"
   [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
@@ -301,7 +301,7 @@ fi
 
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
-if [ "$OS_NAME" = "linuxmint" ]; then
+if [ "$OS_NAME" = "linuxmint" ] || [ "$(uname -s)" = "Darwin" ]; then
   # main machine
   eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/like_p10k.toml)"
 else
