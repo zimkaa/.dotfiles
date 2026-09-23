@@ -193,6 +193,8 @@ gcld() {
 
 alias t='task'
 alias ds='devpod ssh'
+alias dst='devpod stop'
+alias dsd='devpod delete'
 alias ta='tmux attach -t work'
 alias td='tmux detach'
 alias tn='tmux new -t work'
