@@ -1,44 +1,5 @@
 { config, inputs, pkgs, lib, username, ... }:
 {
-  # list of programs
-  # https://mipmip.github.io/home-manager-option-search
-
-  # aerospace config
-  # home.file = lib.mkMerge [
-  #   (lib.mkIf pkgs.stdenv.isDarwin {
-  #     ".config/aerospace/aerospace.toml".text = builtins.readFile ./aerospace/aerospace.toml;
-  #   })
-  # ];
-
-  # programs.gpg.enable = true;
-
-  # programs.direnv = {
-  #   enable = true;
-  #   nix-direnv.enable = true;
-  # };
-
-  # programs.eza = {
-  #   enable = true;
-  #   enableZshIntegration = true;
-  #   icons = "auto";
-  #   git = true;
-  #   extraOptions = [
-  #     "--group-directories-first"
-  #     "--header"
-  #     "--color=auto"
-  #   ];
-  # };
-
-  # programs.fzf = {
-  #   enable = true;
-  #   enableBashIntegration = true;
-  #   enableZshIntegration = true;
-  #   tmux.enableShellIntegration = true;
-  #   defaultOptions = [
-  #     "--no-mouse"
-  #   ];
-  # };
-
   # 1. Включаем systemd-сервис ssh-agent для пользователя
   services.ssh-agent.enable = true;
 
@@ -276,6 +237,10 @@
 
   xdg.configFile."containers/registries.conf".text = ''
     unqualified-search-registries = ["docker.io", "quay.io"]
+  '';
+  xdg.configFile."containers/containers.conf".text = ''
+    [network]
+    default_rootless_network_cmd = "pasta"
   '';
   # programs.kitty = {
   #   extraConfig = ''

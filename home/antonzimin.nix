@@ -2,46 +2,6 @@
 {
   home.stateVersion = stateVersion;
 
-  # list of programs
-  # https://mipmip.github.io/home-manager-option-search
-
-  # aerospace config
-  # home.file = lib.mkMerge [
-  #   (lib.mkIf pkgs.stdenv.isDarwin {
-  #     ".config/aerospace/aerospace.toml".text = builtins.readFile ./aerospace/aerospace.toml;
-  #   })
-  # ];
-
-  # programs.gpg.enable = true;
-
-  # programs.direnv = {
-  #   enable = true;
-  #   nix-direnv.enable = true;
-  # };
-
-  # programs.eza = {
-  #   enable = true;
-  #   enableZshIntegration = true;
-  #   icons = "auto";
-  #   git = true;
-  #   extraOptions = [
-  #     "--group-directories-first"
-  #     "--header"
-  #     "--color=auto"
-  #   ];
-  # };
-
-  # programs.fzf = {
-  #   enable = true;
-  #   enableBashIntegration = true;
-  #   enableZshIntegration = true;
-  #   tmux.enableShellIntegration = true;
-  #   defaultOptions = [
-  #     "--no-mouse"
-  #   ];
-  # };
-
-
   programs.diff-so-fancy.enableGitIntegration = true;
   programs.git = {
     enable = true;
