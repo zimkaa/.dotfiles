@@ -1,5 +1,13 @@
-font-family = "FiraCode Nerd Font Mono"
+# font-family = "FiraCode Nerd Font Mono"
+font-family = "Fira Code"
 
+# sent normal command to terminal ctrl+m = enter
 keybind = ctrl+m=text:\x0D
 
+# sent normal command to terminal ctrl+[ = esc
+keybind = ctrl+[=text:\x1b
+
 macos-option-as-alt = true
+
+# problem connect inside container
+term = xterm-256color
