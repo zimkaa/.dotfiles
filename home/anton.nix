@@ -63,7 +63,7 @@
         UserKnownHostsFile = "~/.ssh/known_hosts";
 
         # Замена для extraConfig IdentityAgent
-        IdentityAgent = "\${XDG_RUNTIME_DIR}/ssh-agent.socket";
+        IdentityAgent = "/run/user/1000/ssh-agent.socket";
       };
     };
   };
