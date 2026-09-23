@@ -37,8 +37,8 @@
     "neovim"
     "nixd"
     "oh-my-posh"
-    "podman"  # docker replacement
     "podman-compose"
+    "podman"  # docker replacement
     "pyenv"
     "ripgrep"
     "sshs"
