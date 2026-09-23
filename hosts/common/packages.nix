@@ -33,6 +33,7 @@
     "lazydocker"
     "lazygit"
     "neovim"
+    "netcat-openbsd"
     "nixd"
     "oh-my-posh"
     "podman-compose"

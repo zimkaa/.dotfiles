@@ -45,6 +45,24 @@ rm -rf ~/.cache/oh-my-posh && \
 source ~/.zshrc
 ```
 
+#### Cachyos
+
+##### Update system
+
+```sh
+sudo pacman -Syu --noconfirm && \
+nix-channel --update && \
+nix-collect-garbage -d && \
+nix-store --gc && \
+sudo paccache -r && \
+sudo pacman -Rns $(pacman -Qdtq) || true && \
+sudo journalctl --disk-usage && \
+sudo journalctl --vacuum-time=3d && \
+df -h && \
+rm -rf ~/.cache/oh-my-posh && \
+source ~/.zshrc
+```
+
 #### MacOS
 
 ```sh
@@ -150,7 +168,6 @@ source ~/.zshrc
 #### Linux Cachyos `hp`
 
 install home-manager
-
 
 ```sh
 nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager && \
