@@ -206,6 +206,12 @@ gcld() {
   git clone "$repo_url" "$repo_name/$repo_name"
   cd "$repo_name/$repo_name"
 }
+alias ds='devpod ssh'
+alias dst='devpod stop'
+alias dsd='devpod delete'
+alias ta='tmux attach -t work'
+alias td='tmux detach'
+alias tn='tmux new -t work'
 alias gpf='git push --force-with-lease'
 alias amgp='amend && gpf'
 alias amgpnv='amendnv && gpf'

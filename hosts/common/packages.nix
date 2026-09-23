@@ -9,6 +9,7 @@
     "claude-code"  # AI instrument
     "cookiecutter"
     # "devbox"
+    "devpod"
     "direnv"
     "dive"  # docker image inspecrot
     "dotenvx"
@@ -18,6 +19,7 @@
     "fabric-ai"  # AI instrument
     "fd"
     "fzf"
+    # "gemini-cli"  # AI instrument
     "ggh"
     "gping"
     # "ghostty"  # trouble with building
@@ -35,6 +37,8 @@
     "neovim"
     "nixd"
     "oh-my-posh"
+    "podman"  # docker replacement
+    "podman-compose"
     "pyenv"
     "ripgrep"
     "sshs"

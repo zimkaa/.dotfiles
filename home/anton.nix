@@ -39,6 +39,35 @@
   #   ];
   # };
 
+  # 1. Включаем systemd-сервис ssh-agent для пользователя
+  services.ssh-agent.enable = true;
+
+  # 2. Настраиваем SSH и параметры агента
+  programs.ssh = {
+    enable = true;
+
+    # Отключаем устаревшие дефолты Home Manager, как просит предупреждение
+    enableDefaultConfig = false;
+
+    # Включает импорт внешних файлов, если захотите вынести записи DevPod отдельно
+    includes = [ "my_conf/*" ];
+
+    # Новая структура через settings
+    settings = {
+      "*" = {
+        # Замена для устаревшего addKeysToAgent
+        AddKeysToAgent = "yes";
+        Compression = "no";
+        ControlMaster = "no";
+        ForwardAgent = "no";
+        UserKnownHostsFile = "~/.ssh/known_hosts";
+
+        # Замена для extraConfig IdentityAgent
+        IdentityAgent = "\${XDG_RUNTIME_DIR}/ssh-agent.socket";
+      };
+    };
+  };
+
   programs.hunk = {
     enable = true;
     enableGitIntegration = true; # Интеграция с вашим programs.git.enable = true;
