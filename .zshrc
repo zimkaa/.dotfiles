@@ -209,6 +209,7 @@ gcld() {
 alias ds='devpod ssh'
 alias dst='devpod stop'
 alias dsd='devpod delete'
+alias sr='source ~/.zshrc'
 alias ta='tmux attach -t work'
 alias td='tmux detach'
 alias tn='tmux new -t work'
@@ -291,6 +292,11 @@ if [ -S "$SSH_AUTH_SOCK" ]; then
     # Код возврата 1 означает "Agent has no identities"
     ssh-add ~/.ssh/id_ed25519 2>/dev/null
   fi
+PATH=~/.console-ninja/.bin:$PATH
+
+## ssh agent
+if ssh-add -l | grep -q "The agent has no identities"; then
+  ssh-add ~/.ssh/id_ed25519
 fi
 
 # Shell integrations
