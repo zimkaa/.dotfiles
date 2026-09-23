@@ -195,6 +195,7 @@ alias t='task'
 alias ds='devpod ssh'
 alias dst='devpod stop'
 alias dsd='devpod delete'
+alias sr='source ~/.zshrc'
 alias ta='tmux attach -t work'
 alias td='tmux detach'
 alias tn='tmux new -t work'
@@ -250,10 +251,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 
 PATH=~/.console-ninja/.bin:$PATH
 
-if [ -z "$SSH_AUTH_SOCK" ] ; then
-  eval `ssh-agent -s` > /dev/null
-fi
-
+## ssh agent
 if ssh-add -l | grep -q "The agent has no identities"; then
   ssh-add ~/.ssh/id_ed25519
 fi

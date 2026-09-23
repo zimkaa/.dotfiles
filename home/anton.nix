@@ -50,7 +50,7 @@
     enableDefaultConfig = false;
 
     # Включает импорт внешних файлов, если захотите вынести записи DevPod отдельно
-    includes = [ "my_conf/*" ];
+    includes = [ "~/.ssh/my_conf/*" ];
 
     # Новая структура через settings
     settings = {
@@ -63,7 +63,7 @@
         UserKnownHostsFile = "~/.ssh/known_hosts";
 
         # Замена для extraConfig IdentityAgent
-        IdentityAgent = "/run/user/1000/ssh-agent.socket";
+        IdentityAgent = "/run/user/1000/ssh-agent";
       };
     };
   };
