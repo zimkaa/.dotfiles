@@ -67,11 +67,13 @@
         conflictStyle = "diff3";
         tool = "meld";
       };
-      # pull = {
-      #   rebase = true;
-      # };
+      pull = {
+        rebase = true;
+      };
+      push = {
+        autoSetupRemote = true;
+      };
     };
-    # diff-so-fancy.enable = true;
     lfs.enable = true;
   };
 

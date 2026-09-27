@@ -1,0 +1,29 @@
+version: "3"
+
+dotenv: [".env"]
+
+tasks:
+  default:
+    - task: help
+
+  help:
+    desc: "List all tasks"
+    silent: true
+    cmds:
+      - task --list-all
+
+  keybr_update:
+    desc: "Keyboard update firmware"
+    cmds:
+      - rm ~/.dotfiles/keyboard/bins/old.bin --interactive=never || true
+      - mv ~/.dotfiles/keyboard/bins/previous* ~/.dotfiles/keyboard/bins/old.bin || true
+      - mv ~/.dotfiles/keyboard/bins/actual* ~/.dotfiles/keyboard/bins/previous.bin || true
+      - mv ~/Downloads/zsa_moonlander_*_zimkaa.bin ~/.dotfiles/keyboard/bins/actual.bin
+
+  clean_nvim:
+    desc: "Clear all for nvim"
+    cmds:
+      - rm -rf ~/.local/state/nvim/swap/*
+      - rm -rf ~/.local/share/nvim/snacks/
+      # For clear a empty file inside project when open nvim session
+      - rg "argadd /tmp/" ~/.local/ -l | xargs sed -i '\|argadd /tmp/|d' || echo "already clean"
