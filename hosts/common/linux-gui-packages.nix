@@ -2,6 +2,7 @@
     # "bitwarden-desktop"  # problem with install
     "dbeaver-bin"
     "lmstudio"
+    "remmina"
     "obs-studio"
     # "telegram-desktop"  # old package installed locally
     # "termius"  # Only linux architecture
