@@ -3,6 +3,14 @@
   # 1. Включаем systemd-сервис ssh-agent для пользователя
   services.ssh-agent.enable = true;
 
+  # Добавляем публичный ключ для входящих подключений в ~/.ssh/authorized_keys
+  home.file.".ssh/authorized_keys" = {
+    text = ''
+      ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGx8Y2E89aBCdE1234567890qwertyuiopasdfghjkl anton@workstation
+      ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH9876543210zyxwvutsrqponmlkjihgfedcba0987 anton@laptop
+    '';
+  };
+
   # 2. Настраиваем SSH и параметры агента
   programs.ssh = {
     enable = true;
@@ -25,6 +33,9 @@
 
         # Замена для extraConfig IdentityAgent
         IdentityAgent = "/run/user/1000/ssh-agent";
+      };
+      "*.devpod" = {
+        LocalForward = "3847 localhost:3847";
       };
     };
   };
