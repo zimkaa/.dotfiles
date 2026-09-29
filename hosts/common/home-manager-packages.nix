@@ -34,7 +34,7 @@ in {
       if name == "zed-editor" then
         zedWrapped
       else if builtins.elem name stableList then 
-        stable-pkgs.dotenvx
+        stable-pkgs.${name}
       else
         pkgs.${name}
     ) (packageNames ++ guiPackageNames ++ linuxGuiPackageNames);

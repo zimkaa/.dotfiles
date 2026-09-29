@@ -271,7 +271,7 @@ if ssh-add -l | grep -q "The agent has no identities"; then
 fi
 
 cp ~/.ssh/authorized_keys ~/.ssh/authorized_keys_static && \
-chown 0600 ~/.ssh/authorized_keys_static
+chmod 0600 ~/.ssh/authorized_keys_static
 
 # Shell integrations
 ## pyenv

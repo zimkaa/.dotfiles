@@ -6,8 +6,8 @@
   # Добавляем публичный ключ для входящих подключений в ~/.ssh/authorized_keys
   home.file.".ssh/authorized_keys" = {
     text = ''
-      ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGx8Y2E89aBCdE1234567890qwertyuiopasdfghjkl anton@workstation
-      ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH9876543210zyxwvutsrqponmlkjihgfedcba0987 anton@laptop
+      ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFaF3caKx1xi7anxnxJcUMZ8MjHTbHj9NyHZ7a4aYCoO zimkaa87@gmail.com
+      ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDnDSqLgmB7MJaRqkg3EkoMAk+N86aMnEbO7iXBWr5VN zimkaa87@gmail.com
     '';
   };
 
