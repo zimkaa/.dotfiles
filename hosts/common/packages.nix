@@ -43,7 +43,7 @@
     "pyenv"
     "ripgrep"
     "sshs"
-    "stow"  # TODO: delete
+    "syncthing"
     "templ"  # LSP for GO develop
     "tldr"
     "tmux"
