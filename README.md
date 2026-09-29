@@ -178,6 +178,14 @@ nix flake update --flake ~/.dotfiles && \
 home-manager switch -b backup --flake ~/.dotfiles#hp
 ```
 
+##### update packages
+
+```sh
+nix flake update --flake ~/.dotfiles && \
+home-manager switch -b backup --flake ~/.dotfiles#hp && \
+source ~/.zshrc || sr
+```
+
 ##### kanata
 
 ```sh

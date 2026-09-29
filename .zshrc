@@ -224,11 +224,6 @@ alias wl='wt list'
 alias di='t deb-install -- $(fd -g "*.deb" | fzf)'  # install debian package
 alias sr='source ~/.zshrc'  # source reload
 alias ve='. ./.venv/bin/activate'  # short cut for venv activate
-alias ds='devpod ssh'
-alias dst='devpod stop'
-alias ta='tmux attach -t work'
-alias td='tmux detach'
-alias tn='tmux new -t work'
 alias ls="eza --icons=always"
 alias la="ls -lAhg"
 alias las="ls -lAhg --sort oldest"
@@ -256,15 +251,6 @@ tmux rename-window -t labs:3 turn
 tmux rename-window -t labs:4 dakr
 tmux send-key -t labs:2 'btop' enter
 tmux attach -t labs"
-alias work_tmux="
-tmux new -s work -d
-tmux new-window -a -t work:1
-tmux split-window -v -t work:1.1
-tmux split-window -h -t work:1.1
-tmux split-window -h -t work:1.3
-tmux send-key -t work:2.1 'btop' enter
-tmux new-window -a -t work:2
-tmux attach -t work"
 
 # node version manager
 export NVM_DIR="$HOME/.nvm"
@@ -279,25 +265,13 @@ export FZF_DEFAULT_OPTS="--bind 'ctrl-j:accept'"
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 
-if [ -z "$SSH_AUTH_SOCK" ] || [ ! -S "$SSH_AUTH_SOCK" ] ; then
-  eval "$(ssh-agent -s)" > /dev/null
-fi
-
-# nvim go connection problem
-go env -w GOPROXY=https://goproxy.cn,direct
-
-if [ -S "$SSH_AUTH_SOCK" ]; then
-  ssh-add -l >/dev/null 2>&1
-  if [ $? -eq 1 ]; then
-    # Код возврата 1 означает "Agent has no identities"
-    ssh-add ~/.ssh/id_ed25519 2>/dev/null
-  fi
-PATH=~/.console-ninja/.bin:$PATH
-
 ## ssh agent
 if ssh-add -l | grep -q "The agent has no identities"; then
   ssh-add ~/.ssh/id_ed25519
 fi
+
+cp ~/.ssh/authorized_keys ~/.ssh/authorized_keys_static && \
+chown 0600 ~/.ssh/authorized_keys_static
 
 # Shell integrations
 ## pyenv
