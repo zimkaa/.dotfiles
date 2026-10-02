@@ -11,12 +11,11 @@ fi
 
 OS_NAME=$(. /etc/os-release && echo "$ID")
 
-if [ "$OS_NAME" = "linuxmint" ] || [ "$(uname -s)" = "Darwin" ]; then
-  # main machine
-else
-  # inside container
-  # Load completions
+if [[ -n "$SSH_CONNECTION" || "$OS_NAME" = "cachyos" ]]; then
+  # inside SSH connection or cachyos
   autoload -Uz compinit && compinit
+else
+  # main machine
 fi
 
 # Terminal configs for kitty
@@ -39,7 +38,7 @@ fi
 
 export GPG_TTY="$TTY"
 
-if [ "$OS_NAME" = "linuxmint" ] || [ "$(uname -s)" = "Darwin" ]; then
+if [ "$OS_NAME" = "linuxmint" ] || [ "$OS_NAME" = "cachyos" ] || [ "$(uname -s)" = "Darwin" ]; then
   # main machine
   export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
 else
@@ -50,7 +49,7 @@ fi
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # You may need to manually set your language environment
-if [ "$OS_NAME" = "linuxmint" ]; then
+if [ "$OS_NAME" = "linuxmint" ] || [ "$OS_NAME" = "cachyos" ]; then
   # main machine
   export LANG=en_US.UTF-8
   export LC_ALL=en_US.UTF-8
@@ -266,6 +265,10 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 
 ## ssh agent
+# if [ -z "$SSH_AUTH_SOCK" ] || [ ! -S "$SSH_AUTH_SOCK" ] ; then
+#   eval "$(ssh-agent -s)" > /dev/null
+# fi
+
 if ssh-add -l | grep -q "The agent has no identities"; then
   ssh-add ~/.ssh/id_ed25519
 fi
@@ -275,7 +278,7 @@ chmod 0600 ~/.ssh/authorized_keys_static
 
 # Shell integrations
 ## pyenv
-if [ "$OS_NAME" = "linuxmint" ] || [ "$(uname -s)" = "Darwin" ]; then
+if [ "$OS_NAME" = "linuxmint" ] || [ "$OS_NAME" = "cachyos" ] || [ "$(uname -s)" = "Darwin" ]; then
   # main machine
   export PYENV_ROOT="$HOME/.pyenv"
   [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
@@ -290,7 +293,7 @@ fi
 
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
-if [ "$OS_NAME" = "linuxmint" ] || [ "$(uname -s)" = "Darwin" ]; then
+if [ "$OS_NAME" = "linuxmint" ] || [ "$OS_NAME" = "cachyos" ] || [ "$(uname -s)" = "Darwin" ]; then
   # main machine
   eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/like_p10k.toml)"
 else

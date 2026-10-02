@@ -1,12 +1,11 @@
-
 [
     "aerc"  # email shell client
     "air"  # for GO develop
     "alejandra"
-    "antigravity-cli" #  old name gemini-cli  # AI instrument
+    # "antigravity-cli" #  old name gemini-cli  # AI instrument
     "bat"
     "btop"
-    "claude-code"  # AI instrument
+    # "claude-code"  # AI instrument
     "cookiecutter"
     # "devbox"
     "devpod"
@@ -19,14 +18,13 @@
     "fabric-ai"  # AI instrument
     "fd"
     "fzf"
-    # "gemini-cli"  # AI instrument
     "ggh"
-    "gping"
-    # "ghostty"  # trouble with building
+    # # "ghostty"  # not open trouble with building
     "go"
     "go-task"
+    "gping"
     "hadolint"  # docker linter
-    "herdr"
+    # "herdr"  # temporary
     "htop"
     "httpie"
     "jless"
@@ -34,6 +32,7 @@
     "kubectl"
     "lazydocker"
     "lazygit"
+    "markdownlint-cli2"
     "neovim"
     "netcat-openbsd"
     "nixd"

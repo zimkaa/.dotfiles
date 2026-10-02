@@ -178,6 +178,12 @@ nix flake update --flake ~/.dotfiles && \
 home-manager switch -b backup --flake ~/.dotfiles#hp
 ```
 
+##### update whole system
+
+```sh
+sudp pacman -Syu --noconfirm
+```
+
 ##### update packages
 
 ```sh

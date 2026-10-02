@@ -3,7 +3,7 @@
     "firefox"
     "insomnia"
     "kitty"
-    "obsidian"
     "libreoffice"
+    "obsidian"
     "thunderbird"
 ]

@@ -33,7 +33,7 @@ in {
     home.packages = map (name:
       if name == "zed-editor" then
         zedWrapped
-      else if builtins.elem name stableList then 
+      else if builtins.elem name stableList then
         stable-pkgs.${name}
       else
         pkgs.${name}
