@@ -1,0 +1,25 @@
+    spawn-at-startup "Telegram"
+    spawn-at-startup "firefox"
+
+    workspace "telegram"
+    workspace "browser"
+
+    // Telegram отправляем на 1-й рабочий стол
+    window-rule {
+        match app-id="org.telegram.desktop"
+        open-on-workspace "telegram"
+        open-maximized true
+    }
+
+    // Firefox
+    window-rule {
+        match app-id="firefox"
+        open-on-workspace "browser"
+        open-maximized true
+    }
+
+    // Obsidian
+    window-rule {
+        match app-id="obsidian"
+        open-maximized true
+    }
