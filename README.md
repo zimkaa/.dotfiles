@@ -166,6 +166,51 @@ rm -rf ~/.cache/oh-my-posh && \
 source ~/.zshrc
 ```
 
+#### Linux Cachyos `zimkaa`
+
+install home-manager
+
+```sh
+nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager && \
+nix-channel --update && \
+nix run home-manager switch -- -b backup --flake ~/.dotfiles#zimkaa && \
+nix flake update --flake ~/.dotfiles && \
+home-manager switch -b backup --flake ~/.dotfiles#zimkaa
+```
+
+##### update whole system
+
+```sh
+sudp pacman -Syu --noconfirm
+```
+
+##### update packages
+
+```sh
+nix flake update --flake ~/.dotfiles && \
+home-manager switch -b backup --flake ~/.dotfiles#zimkaa && \
+source ~/.zshrc || sr
+```
+
+##### kanata
+
+```sh
+sudo groupadd --system uinput 2>/dev/null || true
+sudo usermod -aG input,uinput $USER
+sudo modprobe uinput
+echo 'KERNEL=="uinput", MODE="0660", GROUP="uinput", OPTIONS+="static_node=uinput"' | \
+sudo tee /etc/udev/rules.d/99-input.rules > /dev/null
+sudo udevadm control --reload-rules && sudo udevadm trigger
+```
+
+reboot pc
+
+##### devpod
+
+```sh
+devpod provider add github.com/kuju63/devpod-provider-podman
+```
+
 #### Linux Cachyos `hp`
 
 install home-manager
@@ -212,70 +257,6 @@ sudo udevadm control --reload-rules && sudo udevadm trigger
 devpod provider add github.com/kuju63/devpod-provider-podman
 ```
 
-#### Linux Arch `zimaa`
-
-##### Switch `zimaa`
-
-```sh
-home-manager switch -b backup --flake ~/.dotfiles#zimaa
-```
-
-OR
-
-```sh
-nix run --extra-experimental-features 'nix-command flakes' home-manager switch -- -b backup --flake ~/.dotfiles#zimaa
-```
-
-##### Update `zimaa`
-
-```sh
-cd ~/.dotfiles && \
-git pull && \
-nix flake update --flake ~/.dotfiles && \
-home-manager switch -b backup --flake ~/.dotfiles#zimaa
-```
-
-OR
-
-```sh
-cd ~/.dotfiles && \
-git pull && \
-nix flake update --flake ~/.dotfiles && \
-nix run --extra-experimental-features 'nix-command flakes' home-manager switch -- -b backup --flake ~/.dotfiles#zimaa
-```
-
-#### Linux Mint `honor`
-
-##### Switch `honor`
-
-```sh
-home-manager switch -b backup --flake ~/.dotfiles#honor
-```
-
-OR
-
-```sh
-nix run --extra-experimental-features 'nix-command flakes' home-manager switch -- -b backup --flake ~/.dotfiles#honor
-```
-
-##### Update `honor`
-
-```sh
-cd ~/.dotfiles && \
-git pull && \
-nix flake update --flake ~/.dotfiles && \
-home-manager switch -b backup --flake ~/.dotfiles#honor
-```
-
-OR
-
-```sh
-cd ~/.dotfiles && \
-git pull && \
-nix flake update --flake ~/.dotfiles && \
-nix run --extra-experimental-features 'nix-command flakes' home-manager switch -- -b backup --flake ~/.dotfiles#honor
-```
-
 ## See generations
 
 ```sh
@@ -316,42 +297,3 @@ home-manager switch --rollback
 ```sh
 sudo nix-env -p /nix/var/nix/profiles/system --delete-generations 133
 ```
-
-## Old version with stow
-
-Then use GNU stow to create symlinks
-
-```sh
-stow .
-```
-
-To force rewrite files
-
-```sh
-stow --adopt .
-```
-
-## Uninstall
-
-### delete links
-
-```sh
-stow -D .
-```
-
-### delete stow
-
-```sh
-sudo apt remove stow
-```
-
-## Troubles
-
-```text
-rsync (Permission denied в ~/Applications
-```
-
-```sh
-rm -rf "~/Applications/Home Manager Apps"
-```
-
