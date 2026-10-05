@@ -24,7 +24,7 @@
     "go-task"
     "gping"
     "hadolint"  # docker linter
-    # "herdr"  # temporary
+    "herdr"
     "htop"
     "httpie"
     "jless"

@@ -3,7 +3,7 @@
 ## data transfer
 
 ```sh
-rsync -avzP -e "ssh -o PubkeyAuthentication=no -o IdentitiesOnly=yes" /home/what cachyos:/home/where
+rsync -avzP /home/what cachyos:/home/where
 ```
 
 ## `cachyos`
