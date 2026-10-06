@@ -11,12 +11,7 @@ fi
 
 OS_NAME=$(. /etc/os-release && echo "$ID")
 
-if [[ -n "$SSH_CONNECTION" || "$OS_NAME" = "cachyos" ]]; then
-  # inside SSH connection or cachyos
-  autoload -Uz compinit && compinit
-else
-  # main machine
-fi
+autoload -Uz compinit && compinit
 
 # Terminal configs for kitty
 if test -n "$KITTY_INSTALLATION_DIR"; then
