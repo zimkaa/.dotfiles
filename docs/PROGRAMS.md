@@ -1,5 +1,73 @@
 # Info
 
+## `devpod`
+
+add to config `~/.devpod/config.yaml`
+
+```diff
+contexts:
+  default:
+    defaultProvider: podman
++   options:
++     SSH_CONFIG_PATH:
++       value: /home/anton/.ssh/my_conf/devpod.conf
+```
+
+## `kanata`
+
+```sh
+sudo groupadd --system uinput 2>/dev/null || true
+sudo usermod -aG input,uinput $USER
+sudo modprobe uinput
+echo 'KERNEL=="uinput", MODE="0660", GROUP="uinput", OPTIONS+="static_node=uinput"' | \
+sudo tee /etc/udev/rules.d/99-input.rules > /dev/null
+sudo udevadm control --reload-rules && sudo udevadm trigger
+```
+
+## `voxtype`
+
+### install
+
+```sh
+sudo pacman -S --noconfirm wtype rustup alsa-lib clang cmake pkgconf
+git clone https://github.com/peteonrails/voxtype ~/install/voxtype
+cd ~/install/voxtype
+cargo build --release
+sudo install -Dm755 target/release/voxtype /usr/local/bin/voxtype
+voxtype setup systemd
+voxtype setup check
+```
+
+Then configure voxtype driver_order mode:
+
+```sh
+/home/anton/.config/voxtype/config.toml
+```
+
+```diff
+[hotkey]
+- key = "SCROLLLOCK"
++ key = "RIGHTCTRL"
++ modifiers = ["RIGHTALT"]
+
+[whisper]
+- language = "en"
++ language = ["en", "ru"]
+
+[output]
++ driver_order = ["wtype"]
+```
+
+restart service
+
+```sh
+systemctl --user restart voxtype
+```
+
+### hotkeys
+
+<https://voxtype.io/docs/CONFIGURATION#hotkey>
+
 ## `syncthing`
 
 ```sh
@@ -75,4 +143,3 @@ https
 #### 5. Расшарьте папку
 
 После добавления устройства расшарьте нужную папку с новым устройством.
-

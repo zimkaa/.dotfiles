@@ -27,7 +27,7 @@ final_space = true
   newline = true
 
   [[blocks.segments]]
-    template = '{{ if .WSL }}WSL at {{ end }} {{.Icon}} '
+    template = "{{ if .WSL }}WSL at {{ end }} {{.Icon}} "
     foreground = 'p:white'
     background = 'transparent'
     type = 'os'
@@ -35,7 +35,14 @@ final_space = true
 
     [blocks.segments.properties]
       cache_duration = 'none'
-      linux = ' '
+      # # mint
+      # linux = ' '
+      # # ubuntu
+      # linux = "\uF17C \uF31b"
+      # # debian
+      # linux = "\uF17C \uF306"
+      # arch
+      linux = "\uF17C \uF303"
 
   [[blocks.segments]]
     template = '{{ path .Path .Location }}'

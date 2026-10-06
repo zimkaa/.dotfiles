@@ -50,30 +50,6 @@ tmux source ~/.config/tmux/tmux.conf
 ~/.tmux/plugins/tpm/bin/update_plugins all
 ```
 
-### `devpod`
-
-add to config `~/.devpod/config.yaml`
-
-```text
-contexts:
-  default:
-    defaultProvider: podman
-    options:
-      SSH_CONFIG_PATH:
-        value: /home/anton/.ssh/my_conf/devpod.conf
-```
-
-### `kanata`
-
-```sh
-sudo groupadd --system uinput 2>/dev/null || true
-sudo usermod -aG input,uinput $USER
-sudo modprobe uinput
-echo 'KERNEL=="uinput", MODE="0660", GROUP="uinput", OPTIONS+="static_node=uinput"' | \
-sudo tee /etc/udev/rules.d/99-input.rules > /dev/null
-sudo udevadm control --reload-rules && sudo udevadm trigger
-```
-
 ### Terminal `ghostty` and Shell `zsh`
 
 ```sh
