@@ -2,6 +2,7 @@
 let
     packageNames = import ./packages.nix;
     guiPackageNames = import ./gui-packages.nix;
+    linuxPackageNames = import ./linux-packages.nix;
     linuxGuiPackageNames = import ./linux-gui-packages.nix;
 
     stable-pkgs = inputs.nixpkgs-stable.legacyPackages.${pkgs.stdenv.hostPlatform.system};
@@ -30,14 +31,16 @@ in {
     home.username = username;
     home.homeDirectory = "/home/${username}";
 
-    home.packages = map (name:
+    home.packages =[
+      pkgs.nvtopPackages.full
+    ] ++ map (name:
       if name == "zed-editor" then
         zedWrapped
       else if builtins.elem name stableList then
         stable-pkgs.${name}
       else
         pkgs.${name}
-    ) (packageNames ++ guiPackageNames ++ linuxGuiPackageNames);
+    ) (packageNames ++ guiPackageNames ++ linuxPackageNames ++ linuxGuiPackageNames);
 
     xdg.desktopEntries.zed = {
       name = "Zed";

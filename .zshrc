@@ -273,7 +273,6 @@ if ssh-add -l | grep -q "The agent has no identities"; then
   ssh-add ~/.ssh/id_ed25519
 fi
 
-cp ~/.ssh/authorized_keys_static ~/.ssh/backup/authorized_keys.bak_$(date +%Y%m%d_%H%M%S)
 cp ~/.ssh/authorized_keys ~/.ssh/authorized_keys_static && \
 chmod 0600 ~/.ssh/authorized_keys_static
 

@@ -50,6 +50,19 @@ tmux source ~/.config/tmux/tmux.conf
 ~/.tmux/plugins/tpm/bin/update_plugins all
 ```
 
+### `devpod`
+
+add to config `~/.devpod/config.yaml`
+
+```text
+contexts:
+  default:
+    defaultProvider: podman
+    options:
+      SSH_CONFIG_PATH:
+        value: /home/anton/.ssh/my_conf/devpod.conf
+```
+
 ### `kanata`
 
 ```sh

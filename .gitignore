@@ -6,3 +6,5 @@ fzf
 history.txt
 *.bak
 *.backup
+
+.env
