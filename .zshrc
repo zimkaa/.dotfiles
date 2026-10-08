@@ -1,3 +1,6 @@
+# # поиск причины мендленной работы
+# zmodload zsh/zprof
+
 # Shell integrations
 # if [[ $(uname -m) == "arm64" ]]; then  # Other way to check macos
 if [[ -f "/opt/homebrew/bin/brew" ]]; then
@@ -11,7 +14,6 @@ fi
 
 OS_NAME=$(. /etc/os-release && echo "$ID")
 
-autoload -Uz compinit && compinit
 
 # Terminal configs for kitty
 if test -n "$KITTY_INSTALLATION_DIR"; then
@@ -81,6 +83,10 @@ zinit snippet OMZP::kubectl
 zinit snippet OMZP::kubectx
 zinit snippet OMZP::rust
 zinit snippet OMZP::command-not-found
+
+typeset -U fpath
+
+autoload -Uz compinit && compinit
 
 zinit cdreplay -q
 
@@ -303,3 +309,5 @@ eval "$(task --completion zsh)"
 # Включаем уникальность путей один раз для всего .zshrc
 export -U PATH
 
+# # поиск причины мендленной работы
+# zprof

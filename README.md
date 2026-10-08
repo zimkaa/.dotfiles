@@ -61,7 +61,13 @@ sudo journalctl --disk-usage && \
 sudo journalctl --vacuum-time=3d && \
 df -h && \
 rm -rf ~/.cache/oh-my-posh && \
-source ~/.zshrc
+source ~/.zshrc || sr
+```
+
+```sh
+nix flake update --flake ~/.dotfiles && \
+home-manager switch -b backup --flake ~/.dotfiles#zimkaa && \
+source ~/.zshrc || sr
 ```
 
 #### MacOS
