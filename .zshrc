@@ -255,10 +255,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS="--bind 'ctrl-j:accept'"
 
-# pyenv  # TODO: delete
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-
 ## ssh agent
 # if [ -z "$SSH_AUTH_SOCK" ] || [ ! -S "$SSH_AUTH_SOCK" ] ; then
 #   eval "$(ssh-agent -s)" > /dev/null
@@ -303,3 +299,7 @@ if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)
 
 # Taskfile
 eval "$(task --completion zsh)"
+
+# Включаем уникальность путей один раз для всего .zshrc
+export -U PATH
+
