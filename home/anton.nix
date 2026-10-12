@@ -151,6 +151,10 @@
       source = config.lib.file.mkOutOfStoreSymlink "/home/${username}/.dotfiles/.config/worktrunk";
       recursive = true;
     };
+    ".config/fontconfig" = {
+      source = config.lib.file.mkOutOfStoreSymlink "/home/${username}/.dotfiles/.config/fontconfig";
+      recursive = true;
+    };
   };
 
   services.syncthing = {

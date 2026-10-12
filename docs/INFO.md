@@ -14,7 +14,7 @@ rsync -avzP /home/what cachyos:/home/where
 sudo pacman -S --noconfirm ghostty zsh cachyos-zsh-config
 sudo pacman -S --needed --noconfirm sddm qt6-svg qt6-virtualkeyboard qt6-multimedia-ffmpeg qt6-imageformats
 chsh -s $(which zsh)
-sudo pacman -S --noconfirm ttf-firacode-nerd
+sudo pacman -S --noconfirm ttf-fira-code ttf-firacode-nerd
 fc-cache -fv
 mkdir -p ~/install/
 mkdir -p ~/all_notes/
@@ -83,14 +83,21 @@ Current=silent
 
 #### startup windows
 
+find out the name of the window
+
+```sh
+niri msg windows
+```
+
 Edit config `~/.config/niri/cfg/rules.kdl`
 
 ```text
     spawn-at-startup "Telegram"
-    spawn-at-startup "firefox"
+    spawn-at-startup "brave-origin"
+    spawn-at-startup "remmina"
+    spawn-at-startup "obsidian"
 
     workspace "telegram"
-
     // Telegram отправляем на 1-й рабочий стол
     window-rule {
         match app-id="org.telegram.desktop"
@@ -106,10 +113,27 @@ Edit config `~/.config/niri/cfg/rules.kdl`
         open-maximized true
     }
 
+    // Brave
+    window-rule {
+        match app-id="brave-origin"
+        open-on-workspace "browser"
+        open-maximized true
+    }
+
+    workspace "remmina"
+    // Remmina
+    window-rule {
+        match title="Remmina Remote Desktop Client"
+        open-on-workspace "remmina"
+        open-maximized true
+    }
+
+    workspace "wisdom"
     // Obsidian
     window-rule {
         match app-id="obsidian"
         open-maximized true
+        open-on-workspace "wisdom"
     }
 ```
 

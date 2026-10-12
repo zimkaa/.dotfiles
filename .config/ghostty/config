@@ -1,5 +1,6 @@
 # font-family = "FiraCode Nerd Font Mono"
-font-family = "Fira Code"
+# font-family = "Fira Code"
+font-family = "FiraCode Nerd Font"
 
 # sent normal command to terminal ctrl+m = enter
 keybind = ctrl+m=text:\x0D
