@@ -1,10 +1,10 @@
     spawn-at-startup "Telegram"
-    spawn-at-startup "firefox"
+    spawn-at-startup "brave-origin"
+    spawn-at-startup "remmina"
+    spawn-at-startup "obsidian"
 
+    // Telegram
     workspace "telegram"
-    workspace "browser"
-
-    // Telegram отправляем на 1-й рабочий стол
     window-rule {
         match app-id="org.telegram.desktop"
         open-on-workspace "telegram"
@@ -12,14 +12,32 @@
     }
 
     // Firefox
+    workspace "browser"
     window-rule {
         match app-id="firefox"
         open-on-workspace "browser"
         open-maximized true
     }
 
+    // Brave
+    window-rule {
+        match app-id="brave-origin"
+        open-on-workspace "browser"
+        open-maximized true
+    }
+
+    // Remmina
+    workspace "remmina"
+    window-rule {
+        match title="Remmina Remote Desktop Client"
+        open-on-workspace "remmina"
+        open-maximized true
+    }
+
+    workspace "wisdom"
     // Obsidian
     window-rule {
         match app-id="obsidian"
         open-maximized true
+        open-on-workspace "wisdom"
     }

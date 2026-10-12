@@ -70,6 +70,14 @@ home-manager switch -b backup --flake ~/.dotfiles#zimkaa && \
 source ~/.zshrc || sr
 ```
 
+##### useful things
+
+###### memory usage
+
+```sh
+ps aux --sort=-%mem | awk 'NR<=11 {printf "%-10s %-10s %-10s %s\n", $1, $2, $4, $11}'
+```
+
 #### MacOS
 
 ```sh

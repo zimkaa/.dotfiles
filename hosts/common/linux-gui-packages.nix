@@ -1,5 +1,6 @@
 [
     "bitwarden-desktop"
+    "brave-origin"
     "chromium"
     "dbeaver-bin"
     "lmstudio"

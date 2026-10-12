@@ -190,13 +190,18 @@ gcld() {
   git clone "$repo_url" "$repo_name/$repo_name"
   cd "$repo_name/$repo_name"
 }
+psmem() {
+    ps aux --sort=-%mem | awk 'NR<=11 {
+        printf "%-10s %-10s %-10s %s\n", $1, $2, $4, $11
+    }'
+}
 
 alias t='task'
 alias n='nvim'
 alias c='clear'  # Use ctrl + l
 alias vc='nvim --clean'  # for too long text file
 
-## git 
+## git
 gcld() {
   # Берем имя репозитория из URL (удаляем .git и всё до последнего слэша)
   local repo_url=$1
