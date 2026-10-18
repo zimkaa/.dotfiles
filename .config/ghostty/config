@@ -12,3 +12,6 @@ macos-option-as-alt = true
 
 # problem connect inside container
 term = xterm-256color
+
+# mouse
+mouse-hide-while-typing = true

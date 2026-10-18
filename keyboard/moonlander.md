@@ -9,8 +9,16 @@
 
 - install drivers
 
+Debian
+
 ```sh
 sudo apt install libwebkit2gtk-4.1-0 libgtk-3-0 libusb-1.0-0
+```
+
+Arch
+
+```sh
+sudo pacman -S --noconfirm libusb webkit2gtk-4.1 gtk3
 ```
 
 - create file `/etc/udev/rules.d/50-zsa.rules`
@@ -22,8 +30,8 @@ sudo touch /etc/udev/rules.d/50-zsa.rules
 ```sh
 sudo tee /etc/udev/rules.d/50-zsa.rules > /dev/null << 'EOF'
 # Rules for Oryx web flashing and live training
-KERNEL=="hidraw*", ATTRS{idVendor}=="16c0", MODE="0664", GROUP="plugdev"
-KERNEL=="hidraw*", ATTRS{idVendor}=="3297", MODE="0664", GROUP="plugdev"
+KERNEL=="hidraw*", ATTRS{idVendor}=="16c0", MODE="0666", GROUP="plugdev"
+KERNEL=="hidraw*", ATTRS{idVendor}=="3297", MODE="0666", GROUP="plugdev"
 
 # Keymapp / Wally Flashing rules for the Moonlander and Planck EZ
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", MODE:="0666", SYMLINK+="stm32_dfu"
@@ -37,7 +45,8 @@ sudo cat /etc/udev/rules.d/50-zsa.rules
 - usergroup
 
 ```sh
-groups | grep plugdev || sudo groupadd plugdev && sudo usermod -aG plugdev $USER
+groups | grep plugdev || sudo groupadd plugdev
+id -nG "$USER" | grep -qw plugdev || sudo usermod -aG plugdev "$USER"
 ```
 
 - cd to dir with file and do
@@ -64,7 +73,7 @@ Example name: `zsa_moonlander_Ge46V_yo4Rrn_zimkaa.bin`
 - open `keymapp`
 
 ```sh
-sudo -E ~/install/Keyboard/keymapp-latest/keymapp
+~/install/keyboard/keymapp-latest/keymapp
 ```
 
 - section `flash` and select your actual firmware

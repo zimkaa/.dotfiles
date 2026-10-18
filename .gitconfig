@@ -8,3 +8,5 @@
 	template = /Users/antonzimin/.stCommitMsg
 [alias]
 	pr = pull --rebase
+[init]
+	defaultBranch = main
