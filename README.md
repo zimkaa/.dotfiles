@@ -57,8 +57,6 @@ nix-collect-garbage -d && \
 nix-store --gc && \
 sudo paccache -r && \
 sudo pacman -Rns $(pacman -Qdtq) || true && \
-sudo journalctl --disk-usage && \
-sudo journalctl --vacuum-time=3d && \
 df -h && \
 rm -rf ~/.cache/oh-my-posh && \
 source ~/.zshrc || sr

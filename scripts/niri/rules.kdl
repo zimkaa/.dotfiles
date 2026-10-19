@@ -2,6 +2,7 @@
     spawn-at-startup "brave-origin"
     spawn-at-startup "remmina"
     spawn-at-startup "obsidian"
+    spawn-at-startup "zeditor"
 
     // Telegram
     workspace "telegram"
@@ -40,4 +41,12 @@
         match app-id="obsidian"
         open-maximized true
         open-on-workspace "wisdom"
+    }
+
+    workspace "IDE"
+    // Zed
+    window-rule {
+        match app-id="Zed"
+        open-on-workspace "IDE"
+        open-maximized true
     }

@@ -83,7 +83,7 @@ Current=silent
 
 #### startup windows
 
-find out the name of the window
+Find out the name of the window
 
 ```sh
 niri msg windows
@@ -96,6 +96,7 @@ Edit config `~/.config/niri/cfg/rules.kdl`
     spawn-at-startup "brave-origin"
     spawn-at-startup "remmina"
     spawn-at-startup "obsidian"
+    spawn-at-startup "zeditor"
 
     workspace "telegram"
     // Telegram отправляем на 1-й рабочий стол
@@ -134,6 +135,14 @@ Edit config `~/.config/niri/cfg/rules.kdl`
         match app-id="obsidian"
         open-maximized true
         open-on-workspace "wisdom"
+    }
+
+    workspace "IDE"
+    // Zed
+    window-rule {
+        match app-id="Zed"
+        open-on-workspace "IDE"
+        open-maximized true
     }
 ```
 
