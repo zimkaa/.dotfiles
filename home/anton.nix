@@ -162,6 +162,35 @@
     tray.enable = true;
   };
 
+  systemd.user.services.clean_space_alert = {
+    Unit = {
+      Description = "Check disk usage and notify";
+    };
+
+    Service = {
+      Type = "oneshot";
+
+      ExecStart =
+        "${config.home.homeDirectory}/.dotfiles/scripts/clean_space_alert.sh";
+    };
+  };
+
+  systemd.user.timers.clean_space_alert = {
+    Unit = {
+      Description = "Daily disk usage check";
+    };
+
+    Timer = {
+      OnCalendar = "*-*-* 13:00:00";
+      Persistent = true;
+      Unit = "clean_space_alert.service";
+    };
+
+    Install = {
+      WantedBy = [ "timers.target" ];
+    };
+  };
+
   systemd.user.services.kanata = {
     Unit = {
       Description = "Kanata Keyboard Remapper";
@@ -180,6 +209,7 @@
 
   home.sessionVariables = {
     DOCKER_HOST = "unix:///run/user/${toString config.home.uid}/podman/podman.sock";
+    DEVPOD_HELPER_BIN = "devpod";
   };
 
   systemd.user.sockets.podman = {

@@ -37,6 +37,25 @@ ar = "x86_64-w64-mingw32-ar"
 EOF
 ```
 
+#### `podman`
+
+##### Troubleshooting
+
+###### updated podman version
+
+```error
+/nix/store/ml8x1jki0s2s18923xp603wiz731s871-podman-5.8.8/libexec/podman/catatonit: No such file or directory: OCI runtime attempted to invoke a command that was not found
+12:15:28 info : exit status 125
+```
+
+Just download old version or recreate container
+
+```sh
+OLD=/nix/store/ml8x1jki0s2s18923xp603wiz731s871-podman-5.8.8
+nix-store --realise "$OLD"
+ls -l "$OLD/libexec/podman/catatonit"
+```
+
 #### `devpod`
 
 add to config `~/.devpod/config.yaml`

@@ -52,17 +52,12 @@ source ~/.zshrc
 
 ```sh
 sudo pacman -Syu --noconfirm && \
-nix-channel --update && \
-nix-collect-garbage -d && \
-nix-store --gc && \
-sudo paccache -r && \
-sudo pacman -Rns $(pacman -Qdtq) || true && \
-df -h && \
 rm -rf ~/.cache/oh-my-posh && \
 source ~/.zshrc || sr
 ```
 
 ```sh
+nix-channel --update && \
 nix flake update --flake ~/.dotfiles && \
 home-manager switch -b backup --flake ~/.dotfiles#zimkaa && \
 source ~/.zshrc || sr
@@ -74,6 +69,18 @@ source ~/.zshrc || sr
 
 ```sh
 ps aux --sort=-%mem | awk 'NR<=11 {printf "%-10s %-10s %-10s %s\n", $1, $2, $4, $11}'
+```
+
+###### clear space
+
+`Диск почти заполнен`
+
+```sh
+nix-collect-garbage -d && \
+nix-store --gc && \
+sudo paccache -r && \
+sudo pacman -Rns $(pacman -Qdtq) || true && \
+df -h
 ```
 
 #### MacOS
