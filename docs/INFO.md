@@ -59,6 +59,12 @@ chsh -s $(which zsh)
 
 ### `niri`
 
+Default config here
+
+```sh
+la /etc/skel/.config/niri
+```
+
 #### `Simple Desktop Display Manager` config [SDDM](https://github.com/uiriansan/SilentSDDM)
 
 ```sh
