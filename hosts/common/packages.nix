@@ -34,7 +34,6 @@
     "lazygit"
     "markdownlint-cli2"
     "neovim"
-    "netcat-openbsd"
     "nixd"
     "oh-my-posh"
     "podman-compose"

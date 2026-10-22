@@ -52,12 +52,12 @@ source ~/.zshrc
 
 ```sh
 sudo pacman -Syu --noconfirm && \
+nix-channel --update && \
 rm -rf ~/.cache/oh-my-posh && \
 source ~/.zshrc || sr
 ```
 
 ```sh
-nix-channel --update && \
 nix flake update --flake ~/.dotfiles && \
 home-manager switch -b backup --flake ~/.dotfiles#zimkaa && \
 source ~/.zshrc || sr

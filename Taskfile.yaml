@@ -22,13 +22,6 @@ tasks:
       - mv ~/.dotfiles/keyboard/bins/actual* ~/.dotfiles/keyboard/bins/previous.bin || true
       - mv ~/Downloads/zsa_moonlander_*_zimkaa.bin ~/.dotfiles/keyboard/bins/actual.bin
 
-  deb_install:
-    dir: "{{.USER_WORKING_DIR}}"
-    desc: "Install package"
-    cmds:
-      - mv {{.CLI_ARGS}} ~/install/{{.CLI_ARGS}}
-      - apt install ~/install/{{.CLI_ARGS}}
-
   clean_nvim:
     dir: "{{.USER_WORKING_DIR}}"
     desc: "Clear all for nvim"
