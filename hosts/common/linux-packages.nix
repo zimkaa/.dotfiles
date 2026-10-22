@@ -1,4 +1,5 @@
 [
-    "nodejs"  # js language
-    "statix"  # linter for nvim
+  "llmfit"
+  "nodejs"  # js language
+  "statix"  # linter for nvim
 ]

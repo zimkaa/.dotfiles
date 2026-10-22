@@ -110,10 +110,10 @@ in {
 
     brews = [
       "asitop"
+      "llmfit"
       "mas"
       "ollama"  # service
       "openssl@3"
-      # "pkg-config"  # old name
       "pkgconf"  # new name
       "protobuf"
       "syncthing"  # service
