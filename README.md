@@ -51,6 +51,7 @@ source ~/.zshrc
 ##### Update system
 
 ```sh
+sudo cachyos-rate-mirrors && \
 sudo pacman -Syu --noconfirm && \
 nix-channel --update && \
 rm -rf ~/.cache/oh-my-posh && \
