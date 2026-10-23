@@ -45,6 +45,7 @@
     "templ"  # LSP for GO develop
     "tldr"
     "tmux"
+    "tuios"
     "uv"  # replacement for poetry and pyenv
     "vim"
     "w3m"  # text-mode web browser
