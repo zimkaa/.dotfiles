@@ -2,16 +2,6 @@
 
 ## system
 
-### `updates`
-
-#### `The user systemd session is degraded:`
-
-```sh
-systemctl --user reset-failed
-```
-
-And rerun updates
-
 ### sudo password
 
 Fix line
@@ -28,4 +18,20 @@ Restart
 
 ```sh
 faillock --user anton --reset
+```
+
+Optional
+
+```sh
+systemctl --user reset-failed
+```
+
+### `ssh` known hosts
+
+Remove old key
+
+Example
+
+```sh
+ssh-keygen -R "[cachyos.local]:2222"
 ```

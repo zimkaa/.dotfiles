@@ -49,7 +49,7 @@ fi
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # You may need to manually set your language environment
-if [ "$OS_NAME" = "linuxmint" ] || [ "$OS_NAME" = "cachyos" ]; then
+if [ "$OS_NAME" = "debian" ] || [ "$OS_NAME" = "cachyos" ]; then
   # main machine
   export LANG=en_US.UTF-8
   export LC_ALL=en_US.UTF-8
@@ -273,6 +273,8 @@ export FZF_DEFAULT_OPTS="--bind 'ctrl-j:accept'"
 # if [ -z "$SSH_AUTH_SOCK" ] || [ ! -S "$SSH_AUTH_SOCK" ] ; then
 #   eval "$(ssh-agent -s)" > /dev/null
 # fi
+
+[[ -e "$SSH_AUTH_SOCK" ]] || export SSH_AUTH_SOCK="$(find /tmp /run/user -type s -path "*ssh*" 2>/dev/null | head -n 1)"
 
 if ssh-add -l | grep -q "The agent has no identities"; then
   ssh-add ~/.ssh/id_ed25519
