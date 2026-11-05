@@ -1,15 +1,17 @@
 [
     "bitwarden-desktop"
-    "brave-origin"
+    # "brave"
+    # "brave-origin"
     "chromium"
     "dbeaver-bin"
-    "lmstudio"
+    "google-chrome"
+    "librewolf"
     "obs-studio"
     "remmina"
     "slack"
-    "telegram-desktop"  # old package installed locally
+    "telegram-desktop"
     "vivaldi"
     "vlc"  # Cross-platform media player and streaming server
-    "zed-editor"  # AI instrument  # now it's not working on linux
+    "zed-editor"  # zed IDE
     "zoom-us"
 ]

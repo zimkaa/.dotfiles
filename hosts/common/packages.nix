@@ -27,6 +27,7 @@
     "herdr"
     "htop"
     "httpie"
+    "infisical"
     "jless"
     "kanata"
     "kubectl"
