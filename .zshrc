@@ -183,6 +183,53 @@ zstyle ":fzf-tab:complete:cd:*" fzf-preview "eza --icons=always -1 --color=alway
 zstyle ":fzf-tab:complete:code:*" fzf-preview "eza --icons=always -1 --color=always $realpath"
 zstyle ":fzf-tab:complete:__zoxide_z:*" fzf-preview "eza --icons=always -1 --color=always $realpath"
 
+# home-manager switch
+hms() {
+  local log rc cmd target
+
+  case $HOST in
+    zimkaa)   target=zimkaa ;;
+    cachyos)  target=hp ;;
+    *) echo "Неизвестная машина: $HOST"; return 1 ;;
+  esac
+
+  log=$(mktemp)
+  echo "→ Конфигурация: $target"
+
+  home-manager switch -b backup --flake ~/.dotfiles#$target 2>&1 | tee "$log"
+  rc=${pipestatus[1]}
+
+  if (( rc == 0 )); then
+    cmd=$(grep -oE '/nix/store/[a-z0-9]+-non-nixos-gpu/bin/non-nixos-gpu-setup' "$log" | tail -1)
+    if [[ -n $cmd ]]; then
+      echo "\n→ Обновляю GPU-драйверы: sudo $cmd"
+      sudo "$cmd"
+    fi
+  fi
+
+  rm -f "$log"
+  return $rc
+}
+# hms() {
+#   local log rc cmd
+#   log=$(mktemp)
+#
+#   home-manager switch -b backup --flake ~/.dotfiles#hp 2>&1 | tee "$log"
+#   rc=${pipestatus[1]}
+#
+#   if (( rc == 0 )); then
+#     cmd=$(grep -oE '/nix/store/[a-z0-9]+-non-nixos-gpu/bin/non-nixos-gpu-setup' "$log" | tail -1)
+#     if [[ -n $cmd ]]; then
+#       echo "\n→ Обновляю GPU-драйверы: sudo $cmd"
+#       sudo "$cmd"
+#     fi
+#     source ~/.zshrc
+#   fi
+#
+#   rm -f "$log"
+#   return $rc
+# }
+
 ## git clone to directory
 gcld() {
   # Берем имя репозитория из URL (удаляем .git и всё до последнего слэша)
@@ -193,6 +240,7 @@ gcld() {
   git clone "$repo_url" "$repo_name/$repo_name"
   cd "$repo_name/$repo_name"
 }
+
 psmem() {
     ps aux --sort=-%mem | awk 'NR<=11 {
         printf "%-10s %-10s %-10s %s\n", $1, $2, $4, $11
@@ -204,16 +252,6 @@ alias n='nvim'
 alias c='clear'  # Use ctrl + l
 alias vc='nvim --clean'  # for too long text file
 
-## git
-gcld() {
-  # Берем имя репозитория из URL (удаляем .git и всё до последнего слэша)
-  local repo_url=$1
-  local repo_name=$(basename "$repo_url" .git)
-  
-  # Клонируем в структуру имя/имя
-  git clone "$repo_url" "$repo_name/$repo_name"
-  cd "$repo_name/$repo_name"
-}
 alias ds='devpod ssh'
 alias dst='devpod stop'
 alias dsd='devpod delete'

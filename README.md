@@ -58,6 +58,12 @@ source ~/.zshrc || sr
 ```
 
 ```sh
+nix flake update --flake ~/.dotfiles && hms && sr
+```
+
+old version
+
+```sh
 nix flake update --flake ~/.dotfiles && \
 home-manager switch -b backup --flake ~/.dotfiles#zimkaa && \
 source ~/.zshrc || sr
@@ -256,6 +262,12 @@ sudp pacman -Syu --noconfirm
 ```
 
 ##### update packages
+
+```sh
+nix flake update --flake ~/.dotfiles && hms && sr
+```
+
+old version
 
 ```sh
 nix flake update --flake ~/.dotfiles && \
