@@ -53,7 +53,6 @@ source ~/.zshrc
 ```sh
 sudo cachyos-rate-mirrors && \
 sudo pacman -Syu --noconfirm && \
-nix-channel --update && \
 rm -rf ~/.cache/oh-my-posh && \
 source ~/.zshrc || sr
 ```
@@ -62,6 +61,13 @@ source ~/.zshrc || sr
 nix flake update --flake ~/.dotfiles && \
 home-manager switch -b backup --flake ~/.dotfiles#zimkaa && \
 source ~/.zshrc || sr
+```
+
+Local test programm
+
+```sh
+nix-channel --update && \
+nix-shell -p amdgpu_top nvtopPackages.amd
 ```
 
 ##### useful things

@@ -31,6 +31,8 @@ in {
     home.username = username;
     home.homeDirectory = "/home/${username}";
 
+    targets.genericLinux.enable = true;
+
     home.packages =[
       pkgs.nvtopPackages.full
     ] ++ map (name:

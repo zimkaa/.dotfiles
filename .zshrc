@@ -237,7 +237,7 @@ alias la="ls -lAhg"
 alias las="ls -lAhg --sort oldest"
 alias cr="cargo run --release"
 alias ct='cargo test'
-alias ctc="cargo test && cargo clippy --all-targets --fix --allow-dirty"
+alias ctc="cargo test && cargo clippy --all-targets --fix --allow-dirty && cargo fmt"
 if command -v bat >/dev/null 2>&1; then
     alias cat='bat'
 elif command -v batcat >/dev/null 2>&1; then
@@ -270,11 +270,16 @@ export NVM_DIR="$HOME/.nvm"
 export FZF_DEFAULT_OPTS="--bind 'ctrl-j:accept'"
 
 ## ssh agent
-# if [ -z "$SSH_AUTH_SOCK" ] || [ ! -S "$SSH_AUTH_SOCK" ] ; then
-#   eval "$(ssh-agent -s)" > /dev/null
-# fi
-
-[[ -e "$SSH_AUTH_SOCK" ]] || export SSH_AUTH_SOCK="$(find /tmp /run/user -type s -path "*ssh*" 2>/dev/null | head -n 1)"
+if [[ ! -S $SSH_AUTH_SOCK ]] || { SSH_AUTH_SOCK=$SSH_AUTH_SOCK ssh-add -l &>/dev/null; (( $? == 2 )) }; then
+  for s in /tmp/auth-agent*/listener.sock(N=om); do
+    SSH_AUTH_SOCK=$s ssh-add -l &>/dev/null
+    if (( $? == 2 )); then
+      rm -f $s; rmdir ${s:h} 2>/dev/null      # мёртвый — убираем
+    else
+      export SSH_AUTH_SOCK=$s; break           # живой — используем
+    fi
+  done
+fi
 
 if ssh-add -l | grep -q "The agent has no identities"; then
   ssh-add ~/.ssh/id_ed25519
