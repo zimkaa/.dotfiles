@@ -1,5 +1,5 @@
     spawn-at-startup "Telegram"
-    spawn-at-startup "brave-origin"
+    spawn-at-startup "vivaldi"
     spawn-at-startup "remmina"
     spawn-at-startup "obsidian"
     spawn-at-startup "zeditor"
@@ -20,9 +20,9 @@
         open-maximized true
     }
 
-    // Brave
+    // Vivaldi
     window-rule {
-        match app-id="brave-origin"
+        match app-id="vivaldi"
         open-on-workspace "browser"
         open-maximized true
     }

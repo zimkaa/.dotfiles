@@ -9,22 +9,6 @@ let
     stableList = [
         "dotenvx"
     ];
-
-    nixVulkanIntel = inputs.nixgl.packages.${pkgs.system}.nixVulkanIntel;
-
-    # Создаем обертку для zeditor
-    zedWrapped = pkgs.symlinkJoin {
-      name = "zeditor";
-      paths = [ pkgs.zed-editor ];
-      buildInputs = [ pkgs.makeWrapper ];
-      postBuild = ''
-        # Переименовываем оригинальный бинарник в zeditor-orig,
-        # а вместо zeditor создаем обертку, которая явно вызывает nixVulkanIntel и оригинальный бинарник
-        mv $out/bin/zeditor $out/bin/zeditor-orig
-        makeWrapper ${nixVulkanIntel}/bin/nixVulkanIntel $out/bin/zeditor \
-        --add-flags "$out/bin/zeditor-orig"
-      '';
-    };
 in {
     home.stateVersion = stateVersion;
 
@@ -33,25 +17,16 @@ in {
 
     targets.genericLinux.enable = true;
 
+    targets.genericLinux.gpu.enable = true;
+
     home.packages =[
       pkgs.nvtopPackages.full
     ] ++ map (name:
-      if name == "zed-editor" then
-        zedWrapped
-      else if builtins.elem name stableList then
+      if builtins.elem name stableList then
         stable-pkgs.${name}
       else
         pkgs.${name}
     ) (packageNames ++ guiPackageNames ++ linuxPackageNames ++ linuxGuiPackageNames);
-
-    xdg.desktopEntries.zed = {
-      name = "Zed";
-      exec = "${zedWrapped}/bin/zeditor %F";
-      icon = "zed";
-      comment = "A high-performance, multiplayer code editor.";
-      categories = [ "Development" "TextEditor" "IDE" ];
-      mimeType = [ "text/plain" "text/markdown" ];
-    };
 
     imports = [
       ./../../home/${username}.nix

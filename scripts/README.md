@@ -20,3 +20,9 @@ Test start
 ```sh
 systemctl --user start clean_space_alert.service
 ```
+
+## window name
+
+```sh
+niri msg windows
+```

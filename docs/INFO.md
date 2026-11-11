@@ -11,10 +11,9 @@ rsync -avzP /home/what cachyos:/home/where
 ### Init scritp
 
 ```sh
-sudo pacman -S --noconfirm ghostty zsh cachyos-zsh-config
+sudo pacman -S --noconfirm zed telegram-desktop ttf-fira-code ttf-firacode-nerd ghostty zsh cachyos-zsh-config
 sudo pacman -S --needed --noconfirm sddm qt6-svg qt6-virtualkeyboard qt6-multimedia-ffmpeg qt6-imageformats
 chsh -s $(which zsh)
-sudo pacman -S --noconfirm ttf-fira-code ttf-firacode-nerd
 fc-cache -fv
 mkdir -p ~/install/
 mkdir -p ~/all_notes/
@@ -48,6 +47,18 @@ cat ~/.dotfiles/scripts/niri/input.kdl | sudo tee ~/.config/niri/cfg/input.kdl >
 tmux source ~/.config/tmux/tmux.conf
 ~/.tmux/plugins/tpm/bin/install_plugins
 ~/.tmux/plugins/tpm/bin/update_plugins all
+```
+
+### `Telegram`
+
+```sh
+sudo pacman -S telegram-desktop
+```
+
+### `Zed`
+
+```sh
+sudo pacman -S zed
 ```
 
 ### Terminal `ghostty` and Shell `zsh`

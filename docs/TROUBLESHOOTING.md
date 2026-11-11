@@ -59,6 +59,12 @@ niri msg action spawn -- noctalia
 enable_power_sounds = true   # sound on charger connect/disconnect
 ```
 
+Find what
+
+```sh
+while true; do pactl list sink-inputs | grep -E 'application.name|application.process.binary|media.name'; sleep 0.2; done
+```
+
 ### sudo password
 
 Fix line

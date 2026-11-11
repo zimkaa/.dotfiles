@@ -9,9 +9,9 @@
     "obs-studio"
     "remmina"
     "slack"
-    "telegram-desktop"
+    # "telegram-desktop"  # installed from pacman
     "vivaldi"
     "vlc"  # Cross-platform media player and streaming server
-    "zed-editor"  # zed IDE
+    # "zed-editor"  # zed IDE # installed from pacman
     "zoom-us"
 ]
