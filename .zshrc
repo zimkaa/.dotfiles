@@ -226,6 +226,7 @@ psmem() {
     for f in /proc/[0-9]*/status; do awk '/^Name/{n=$2} /^VmRSS/{r=$2} /^VmSwap/{s=$2} END{if(r+s>100000) printf "%7d MB  rss=%d swap=%d  %s\n",(r+s)/1024,r/1024,s/1024,n}' $f 2>/dev/null; done | sort -rn | head -20
 }
 
+alias telegram='Telegram'
 alias t='task'
 alias n='nvim'
 alias c='clear'  # Use ctrl + l
@@ -237,7 +238,7 @@ alias dsd='devpod delete'
 alias sr='source ~/.zshrc'
 alias ta='tmux attach -t work'
 alias td='tmux detach'
-alias tn='tmux new -t work'
+alias tn='tmux new -As work'
 alias gpf='git push --force-with-lease'
 alias amgp='amend && gpf'
 alias amgpnv='amendnv && gpf'
@@ -267,7 +268,7 @@ alias md='mkdir'
 alias diff='diff --color=always'
 
 alias my_tmux="
-tmux new -s labs -d
+tmux new -As labs -d
 tmux new-window -a -t labs:1
 tmux new-window -a -t labs:2
 tmux new-window -a -t labs:3
