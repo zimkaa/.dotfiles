@@ -210,25 +210,6 @@ hms() {
   rm -f "$log"
   return $rc
 }
-# hms() {
-#   local log rc cmd
-#   log=$(mktemp)
-#
-#   home-manager switch -b backup --flake ~/.dotfiles#hp 2>&1 | tee "$log"
-#   rc=${pipestatus[1]}
-#
-#   if (( rc == 0 )); then
-#     cmd=$(grep -oE '/nix/store/[a-z0-9]+-non-nixos-gpu/bin/non-nixos-gpu-setup' "$log" | tail -1)
-#     if [[ -n $cmd ]]; then
-#       echo "\n→ Обновляю GPU-драйверы: sudo $cmd"
-#       sudo "$cmd"
-#     fi
-#     source ~/.zshrc
-#   fi
-#
-#   rm -f "$log"
-#   return $rc
-# }
 
 ## git clone to directory
 gcld() {
@@ -242,9 +223,7 @@ gcld() {
 }
 
 psmem() {
-    ps aux --sort=-%mem | awk 'NR<=11 {
-        printf "%-10s %-10s %-10s %s\n", $1, $2, $4, $11
-    }'
+    for f in /proc/[0-9]*/status; do awk '/^Name/{n=$2} /^VmRSS/{r=$2} /^VmSwap/{s=$2} END{if(r+s>100000) printf "%7d MB  rss=%d swap=%d  %s\n",(r+s)/1024,r/1024,s/1024,n}' $f 2>/dev/null; done | sort -rn | head -20
 }
 
 alias t='task'
