@@ -95,7 +95,12 @@ voxtype setup check
 voxtype setup model
 systemctl --user daemon-reload
 systemctl --user restart voxtype
+systemctl --user disable --now voxtype
 ```
+
+Activate/deactivate
+
+MOD+G (super+g)
 
 ##### `Model`
 

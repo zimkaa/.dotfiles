@@ -226,6 +226,43 @@ psmem() {
     for f in /proc/[0-9]*/status; do awk '/^Name/{n=$2} /^VmRSS/{r=$2} /^VmSwap/{s=$2} END{if(r+s>100000) printf "%7d MB  rss=%d swap=%d  %s\n",(r+s)/1024,r/1024,s/1024,n}' $f 2>/dev/null; done | sort -rn | head -20
 }
 
+gpgcreate() {
+  local f=$(fd -HI -d 1 -t f | fzf)
+  gpg -c --no-symkey-cache "$f"
+}
+
+gpgedit() {
+  local f=$(fd -HI -d 1 -e gpg | fzf) tmp=/dev/shm/pw.$$ pw
+  read -rs "pw?Пароль: "; echo
+  _gpg() { print -r -- "$pw" | gpg --batch --yes --pinentry-mode loopback --passphrase-fd 0 --no-symkey-cache "$@"; }
+
+  _gpg -d -o "$tmp" "$f" || { echo "Неверный пароль"; unset pw; return 1; }
+  ${EDITOR:-nvim} "$tmp"
+  if _gpg -c -o "$f.new" "$tmp"; then
+    cp "$f" "$f.bak" && mv "$f.new" "$f"
+  else
+    echo "Шифрование не удалось, старый файл не тронут"
+  fi
+  shred -u "$tmp"
+  unset pw
+}
+
+gpgread() {
+  local f out
+  f=$(fd -HI -d 1 -e gpg | fzf) || return
+
+  if ! out=$(gpg -d --quiet --no-symkey-cache "$f" 2>/dev/null) || [[ -z $out ]]; then
+    echo "Неверный пароль или не удалось расшифровать: $f" >&2
+    return 1
+  fi
+
+  print -r -- "$out" | nvim -n -R -i NONE -
+  unset out
+
+  setsid -f sh -c 'sleep 30; printf " " | wl-copy; sleep 1; noctalia msg clipboard-clear' >/dev/null 2>&1
+}
+
+# alias ='gpg -c --no-symkey-cache $(fd -HI -d 1 -g "*.txt" | fzf)'
 alias telegram='Telegram'
 alias t='task'
 alias n='nvim'
@@ -285,7 +322,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # autoconfig fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_OPTS="--bind 'ctrl-j:accept'"
+# export FZF_DEFAULT_OPTS="--bind 'ctrl-j:accept'"
 
 ## ssh agent
 if [[ ! -S $SSH_AUTH_SOCK ]] || { SSH_AUTH_SOCK=$SSH_AUTH_SOCK ssh-add -l &>/dev/null; (( $? == 2 )) }; then
