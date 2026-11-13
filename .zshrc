@@ -224,6 +224,7 @@ gcld() {
 
 psmem() {
     for f in /proc/[0-9]*/status; do awk '/^Name/{n=$2} /^VmRSS/{r=$2} /^VmSwap/{s=$2} END{if(r+s>100000) printf "%7d MB  rss=%d swap=%d  %s\n",(r+s)/1024,r/1024,s/1024,n}' $f 2>/dev/null; done | sort -rn | head -20
+    free -h
 }
 
 gpgcreate() {
@@ -262,7 +263,7 @@ gpgread() {
   setsid -f sh -c 'sleep 30; printf " " | wl-copy; sleep 1; noctalia msg clipboard-clear' >/dev/null 2>&1
 }
 
-# alias ='gpg -c --no-symkey-cache $(fd -HI -d 1 -g "*.txt" | fzf)'
+
 alias telegram='Telegram'
 alias t='task'
 alias n='nvim'
@@ -383,3 +384,10 @@ export -U PATH
 
 # # поиск причины мендленной работы
 # zprof
+
+# Claude Code sets CLAUDECODE=1 and builds its shell from this file: give it
+# plain tools, since icons, colours and prompts break the output it parses.
+if [[ -n $CLAUDECODE ]]; then
+    unalias ls la las cat rm diff 2>/dev/null
+fi
+
