@@ -11,7 +11,7 @@ rsync -avzP /home/what cachyos:/home/where
 ### Init scritp
 
 ```sh
-sudo pacman -S --noconfirm zed telegram-desktop ttf-fira-code ttf-firacode-nerd ghostty zsh cachyos-zsh-config
+sudo pacman -S --noconfirm keepassxc restic zed telegram-desktop ttf-fira-code ttf-firacode-nerd ghostty zsh cachyos-zsh-config
 sudo pacman -S --needed --noconfirm sddm qt6-svg qt6-virtualkeyboard qt6-multimedia-ffmpeg qt6-imageformats
 chsh -s $(which zsh)
 fc-cache -fv
@@ -53,6 +53,18 @@ tmux source ~/.config/tmux/tmux.conf
 
 ```sh
 sudo pacman -S telegram-desktop
+```
+
+### `restic` backup service
+
+```sh
+sudo pacman -S restic
+```
+
+### `keepass` password manager
+
+```sh
+sudo pacman -S keepassxc
 ```
 
 ### `Zed`
