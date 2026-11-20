@@ -52,7 +52,7 @@ source ~/.zshrc
 
 ```sh
 sudo cachyos-rate-mirrors && \
-sudo pacman -Syu --noconfirm && \
+sudo pacman -Syu && \
 rm -rf ~/.cache/oh-my-posh && \
 source ~/.zshrc || sr
 ```
@@ -213,7 +213,7 @@ home-manager switch -b backup --flake ~/.dotfiles#zimkaa
 ##### update whole system
 
 ```sh
-sudp pacman -Syu --noconfirm
+sudo pacman -Syu
 ```
 
 ##### update packages
@@ -258,7 +258,7 @@ home-manager switch -b backup --flake ~/.dotfiles#hp
 ##### update whole system
 
 ```sh
-sudp pacman -Syu --noconfirm
+sudo pacman -Syu
 ```
 
 ##### update packages

@@ -13,6 +13,8 @@ rsync -avzP /home/what cachyos:/home/where
 ```sh
 sudo pacman -S --noconfirm keepassxc restic zed telegram-desktop ttf-fira-code ttf-firacode-nerd ghostty zsh cachyos-zsh-config
 sudo pacman -S --needed --noconfirm sddm qt6-svg qt6-virtualkeyboard qt6-multimedia-ffmpeg qt6-imageformats
+sudo sh -c 'grep -q "^en_GB.UTF-8 UTF-8" /etc/locale.gen || echo "en_GB.UTF-8 UTF-8" >> /etc/locale.gen; \
+locale-gen && sed -i "s/^LC_TIME=.*/LC_TIME=en_GB.UTF-8/" /etc/locale.conf'
 chsh -s $(which zsh)
 fc-cache -fv
 mkdir -p ~/install/
@@ -47,6 +49,28 @@ cat ~/.dotfiles/scripts/niri/input.kdl | sudo tee ~/.config/niri/cfg/input.kdl >
 tmux source ~/.config/tmux/tmux.conf
 ~/.tmux/plugins/tpm/bin/install_plugins
 ~/.tmux/plugins/tpm/bin/update_plugins all
+```
+
+### locale
+
+```sh
+sudo vim /etc/locale.gen
+```
+
+```text
+en_GB.UTF-8 UTF-8
+```
+
+Generate
+
+```sh
+sudo locale-gen
+```
+
+Change `/etc/locale.conf`
+
+```text
+LC_TIME=en_GB.UTF-8
 ```
 
 ### `Telegram`
