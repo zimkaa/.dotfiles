@@ -73,10 +73,29 @@ Change `/etc/locale.conf`
 LC_TIME=en_GB.UTF-8
 ```
 
+### `paru`
+
+```sh
+sudo pacman -S paru
+```
+
 ### `Telegram`
 
 ```sh
 sudo pacman -S telegram-desktop
+```
+
+Or in trouble
+Find which Version is bad and wait until it is not updated
+
+```sh
+checkupdates && pacman -Si telegram-desktop --dbpath /tmp/checkup-db-$(id -u) | grep -E 'Version|Repository'
+```
+
+OR install from paru
+
+```sh
+paru -S telegram-desktop-bin
 ```
 
 ### `restic` backup service
