@@ -264,7 +264,7 @@ gpgread() {
 }
 
 
-alias telegram='Telegram'
+# alias telegram='Telegram'
 alias t='task'
 alias n='nvim'
 alias c='clear'  # Use ctrl + l

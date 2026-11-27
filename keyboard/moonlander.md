@@ -52,6 +52,11 @@ id -nG "$USER" | grep -qw plugdev || sudo usermod -aG plugdev "$USER"
 - cd to dir with file and do
 
 ```sh
+tar -xf keymapp-v2.1.0.tar.gz -C ./keymapp-v2.1.0
+mv keymapp ~/.local/bin/
+```
+
+```sh
 chmod +x keymapp
 ```
 
